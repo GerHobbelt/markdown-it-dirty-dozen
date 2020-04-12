@@ -1,0 +1,25 @@
+{
+  "name": "markdown-it-dirty-dozen",
+  "version": "1.0.1-1",
+  "description": "A bunch of markdown-it plugins which have been verified to cooperate.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test",
+    "build": "make",
+    "pub": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GerHobbelt/markdown-it-dirty-dozen.git"
+  },
+  "keywords": [
+    "markdown",
+    "markdown-it"
+  ],
+  "author": "GerHobbelt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GerHobbelt/markdown-it-dirty-dozen/issues"
+  },
+  "homepage": "https://github.com/GerHobbelt/markdown-it-dirty-dozen#readme"
+}
