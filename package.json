@@ -4,8 +4,15 @@
   "description": "A bunch of markdown-it plugins which have been verified to cooperate.",
   "main": "index.js",
   "scripts": {
-    "test": "make test",
     "build": "make",
+    "test": "make test",
+    "todo": "make todo",
+    "clean": "make clean",
+    "superclean": "make superclean",
+    "doc": "make doc",
+    "lint": "make lint",
+    "lintfix": "make lintfix",
+    "cov": "make coverage",
     "pub": "npm publish --access public"
   },
   "repository": {
@@ -21,5 +28,66 @@
   "bugs": {
     "url": "https://github.com/GerHobbelt/markdown-it-dirty-dozen/issues"
   },
-  "homepage": "https://github.com/GerHobbelt/markdown-it-dirty-dozen#readme"
+  "homepage": "https://github.com/GerHobbelt/markdown-it-dirty-dozen#readme",
+  "engines": {
+    "node": ">=8.0"
+  },
+  "dependencies": {
+    "@gerhobbelt/markdown-it-abbr": "1.0.4-13",
+    "@gerhobbelt/markdown-it-anchor": "4.0.0-11",
+    "@gerhobbelt/markdown-it-attrs": "3.0.2-14",
+    "@gerhobbelt/markdown-it-chain": "1.3.0-2",
+    "@gerhobbelt/markdown-it-checkbox": "1.1.2-2",
+    "@gerhobbelt/markdown-it-container": "2.0.1-3",
+    "@gerhobbelt/markdown-it-deflist": "2.0.4-1",
+    "@gerhobbelt/markdown-it-emoji": "1.2.1-5",
+    "@gerhobbelt/markdown-it-fontawesome": "0.3.0-1",
+    "@gerhobbelt/markdown-it-footnote": "3.0.2-3",
+    "@gerhobbelt/markdown-it-for-inline": "0.1.2-1",
+    "@gerhobbelt/markdown-it-front-matter": "0.1.2-1",
+    "@gerhobbelt/markdown-it-hashtag": "0.4.0-1",
+    "@gerhobbelt/markdown-it-header-sections": "0.2.2-1",
+    "@gerhobbelt/markdown-it-headinganchor": "1.2.1-1",
+    "@gerhobbelt/markdown-it-highlighted": "1.0.1-2",
+    "@gerhobbelt/markdown-it-highlightjs": "3.1.0-6",
+    "@gerhobbelt/markdown-it-implicit-figures": "0.9.0-3",
+    "@gerhobbelt/markdown-it-ins": "2.0.1-1",
+    "@gerhobbelt/markdown-it-kbd": "2.0.0-1",
+    "@gerhobbelt/markdown-it-mark": "2.0.1-1",
+    "@gerhobbelt/markdown-it-mathjax": "2.0.1-3",
+    "@gerhobbelt/markdown-it-modify-token": "1.0.2-1",
+    "@gerhobbelt/markdown-it-named-headings": "1.1.0-1",
+    "@gerhobbelt/markdown-it-prism": "2.0.5-3",
+    "@gerhobbelt/markdown-it-regexp": "0.4.0-1",
+    "@gerhobbelt/markdown-it-responsive": "0.1.1-3",
+    "@gerhobbelt/markdown-it-samp": "0.0.4-1",
+    "@gerhobbelt/markdown-it-sanitizer": "0.4.3-1",
+    "@gerhobbelt/markdown-it-smartarrows": "1.0.1-1",
+    "@gerhobbelt/markdown-it-strikethrough-alt": "1.0.0-1",
+    "@gerhobbelt/markdown-it-sub": "1.0.1-5",
+    "@gerhobbelt/markdown-it-sup": "1.0.1-4",
+    "@gerhobbelt/markdown-it-table-of-contents": "0.4.3-1",
+    "@gerhobbelt/markdown-it-testgen": "0.1.6-7",
+    "@gerhobbelt/markdown-it-title": "1.0.4-1",
+    "@gerhobbelt/markdown-it-toc": "1.1.0-1",
+    "@gerhobbelt/markdown-it-toc-and-anchor": "4.2.0-1",
+    "@gerhobbelt/markdown-it-wikilinks": "1.0.1-2"
+  },
+  "devDependencies": {
+    "browserify": "16.5.1",
+    "chai": "4.2.0",
+    "eslint": "6.8.0",
+    "mocha": "7.1.2",
+    "nyc": "15.0.1",
+    "rollup": "2.7.2",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-json": "4.0.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "terser": "4.6.12"
+  },
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary"
+  ]
 }

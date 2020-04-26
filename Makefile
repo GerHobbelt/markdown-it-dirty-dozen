@@ -25,12 +25,12 @@ rollup:
 	# Rollup
 	rollup -c
 
-test: specsplit
+test: lint
 	-rm -rf coverage
 	nyc mocha
 
 coverage: test
-	# node_modules/.bin/cross-env NODE_ENV=test node_modules/.bin/nyc node_modules/mocha/bin/_mocha
+	# cross-env NODE_ENV=test nyc mocha
 
 report-coverage: coverage
 
@@ -49,11 +49,11 @@ browserify:
 	-rm -rf ./dist
 	mkdir dist
 	# Browserify
-	browserify ./index.js --no-browser-field --standalone markdown-it-attrs -o markdown-it-attrs.browser.js
+	browserify ./index.js --no-browser-field --standalone markdown-it-attrs -o markdown-it-plugin-for-browser.js
 	( printf "/*! ${NPM_PACKAGE} ${NPM_VERSION} ${GITHUB_PROJ} @license MIT */\n\n" ; \
-		 cat markdown-it-attrs.browser.js \
+		 cat markdown-it-plugin-for-browser.js \
 	) > dist/${NPM_PACKAGE}.js
-	rm -f markdown-it-attrs.browser.js
+	rm -f markdown-it-plugin-for-browser.js
 
 minify: browserify
 	# Minify
@@ -97,5 +97,5 @@ prep: superclean
 	-npm install
 
 
-.PHONY: clean superclean prep publish lint lintfix test todo coverage report-coverage doc build browserify minify gh-demo gh-doc specsplit rollup
-.SILENT: help lint test todo
+.PHONY: clean superclean prep publish lint lintfix test todo coverage report-coverage doc build browserify minify gh-doc specsplit rollup
+.SILENT: help todo
