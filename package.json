@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-dirty-dozen",
-  "version": "1.0.1-2",
+  "version": "1.0.1-3",
   "description": "A bunch of markdown-it plugins which have been verified to cooperate.",
   "main": "index.js",
   "scripts": {
@@ -57,7 +57,7 @@
     "@gerhobbelt/markdown-it-mathjax": "2.0.1-3",
     "@gerhobbelt/markdown-it-modify-token": "1.0.2-1",
     "@gerhobbelt/markdown-it-named-headings": "1.1.0-1",
-    "@gerhobbelt/markdown-it-prism": "2.0.5-3",
+    "@gerhobbelt/markdown-it-prism": "2.0.5-4",
     "@gerhobbelt/markdown-it-regexp": "0.4.0-1",
     "@gerhobbelt/markdown-it-responsive": "0.1.1-3",
     "@gerhobbelt/markdown-it-samp": "0.0.4-1",
