@@ -30,7 +30,7 @@ test: lint
 	nyc mocha
 
 coverage: test
-	# cross-env NODE_ENV=test nyc mocha
+	node_modules/.bin/cross-env NODE_ENV=test node_modules/.bin/nyc node_modules/mocha/bin/_mocha
 
 report-coverage: coverage
 
@@ -44,6 +44,22 @@ gh-doc: doc
 	touch ./demo/.nojekyll
 	git commit -m "Auto-generate API doc"
 	#rm -rf ./apidoc
+
+publish:
+	@if test 0 -ne `git status --porcelain | wc -l` ; then \
+		echo "Unclean working tree. Commit or stash changes first." >&2 ; \
+		exit 128 ; \
+		fi
+	@if test 0 -ne `git fetch ; git status | grep '^# Your branch' | wc -l` ; then \
+		echo "Local/Remote history differs. Please push/pull changes." >&2 ; \
+		exit 128 ; \
+		fi
+	@if test 0 -ne `git tag -l ${NPM_VERSION} | wc -l` ; then \
+		echo "Tag ${NPM_VERSION} exists. Update package.json" >&2 ; \
+		exit 128 ; \
+		fi
+	git tag ${NPM_VERSION} && git push origin ${NPM_VERSION}
+	npm run pub
 
 browserify:
 	-rm -rf ./dist

@@ -15,20 +15,13 @@
     "cov": "make coverage",
     "pub": "npm publish --access public"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GerHobbelt/markdown-it-dirty-dozen.git"
-  },
+  "repository": "GerHobbelt/markdown-it-dirty-dozen",
   "keywords": [
     "markdown",
     "markdown-it"
   ],
   "author": "GerHobbelt",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GerHobbelt/markdown-it-dirty-dozen/issues"
-  },
-  "homepage": "https://github.com/GerHobbelt/markdown-it-dirty-dozen#readme",
   "engines": {
     "node": ">=8.0"
   },
@@ -51,6 +44,7 @@
     "@gerhobbelt/markdown-it-highlighted": "1.0.1-2",
     "@gerhobbelt/markdown-it-highlightjs": "3.1.0-6",
     "@gerhobbelt/markdown-it-implicit-figures": "0.9.0-3",
+    "@gerhobbelt/markdown-it-include": "1.1.0-3",
     "@gerhobbelt/markdown-it-ins": "2.0.1-1",
     "@gerhobbelt/markdown-it-kbd": "2.0.0-1",
     "@gerhobbelt/markdown-it-mark": "2.0.1-1",
@@ -74,16 +68,17 @@
     "@gerhobbelt/markdown-it-wikilinks": "1.0.1-2"
   },
   "devDependencies": {
+    "@gerhobbelt/markdown-it": "^10.0.0-32",
     "browserify": "16.5.1",
     "chai": "4.2.0",
     "eslint": "6.8.0",
     "mocha": "7.1.2",
     "nyc": "15.0.1",
-    "rollup": "2.7.2",
+    "rollup": "2.7.6",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
     "rollup-plugin-node-resolve": "5.2.0",
-    "terser": "4.6.12"
+    "terser": "4.6.13"
   },
   "reporter": [
     "lcov",
