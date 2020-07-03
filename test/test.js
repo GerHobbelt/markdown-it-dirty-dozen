@@ -2,6 +2,8 @@
 /* eslint-env mocha, es6 */
 
 const path = require('path');
+const fs = require('fs');
+const glob = require('globby');
 const generate = require('@gerhobbelt/markdown-it-testgen');
 const Md = require('@gerhobbelt/markdown-it');
 const pluginCollective = require('../');
@@ -37,5 +39,15 @@ describe('markdown-it-dirty-dozen', function () {
 
   pluginCollective.use_dirty_dozen(md, true);
 
-  generate(path.join(__dirname, 'fixtures/examples.txt'), md);
+  let scanDir = path.join(__dirname, 'fixtures/').replace(/\\/g, '/');
+
+  let files = glob.sync(scanDir + '**/*.txt');
+
+  for (let file of files) {
+  	let title = file.replace(/^.*fixtures\//, '').replace(/\.txt$/, '').replace(/\//g, '_');
+
+    generate(file, {}, md, null, {
+      desc: title
+    });
+  	}
 });

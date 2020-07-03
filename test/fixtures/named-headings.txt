@@ -1,0 +1,54 @@
+add ids
+
+.
+# hello
+.
+<h1 id="hello">hello</h1>
+.
+
+unicode cyrillic
+
+.
+# заголовок
+.
+<h1 id="zagholovok">заголовок</h1>
+.
+
+unicode japanese
+
+.
+# タイトル
+.
+<h1 id="taitoru">タイトル</h1>
+.
+
+unicode japanese 2
+
+.
+# 再度確認し
+.
+<h1 id="zai-du-que-ren-si">再度確認し</h1>
+.
+
+kebabcase ids
+
+.
+# hello there
+.
+<h1 id="hello-there">hello there</h1>
+.
+
+handle collisions
+
+.
+# hello there
+
+# hello there
+
+# hello there
+.
+<h1 id="hello-there">hello there</h1>
+<h1 id="hello-there-1">hello there</h1>
+<h1 id="hello-there-2">hello there</h1>
+.
+

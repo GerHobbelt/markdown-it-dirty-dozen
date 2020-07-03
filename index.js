@@ -42,7 +42,7 @@ const tocDoneRight = require('@gerhobbelt/markdown-it-toc-done-right');
 const wikilinks = require('@gerhobbelt/markdown-it-wikilinks');
 
 const defaultOptions = {
-  wikilinks: {
+  include: {
     //root: '.',
     includeRe: /#include(.+)/,
     throwError: true,
@@ -51,7 +51,10 @@ const defaultOptions = {
 
   ins: true,
   mark: true,
-  kbd: true,
+  kbd: {
+    MARKER_OPEN: '[=',
+    MARKER_CLOSE: '=]'
+  },
   samp: true,
   sub: true,
   sup: true,
@@ -64,10 +67,12 @@ const defaultOptions = {
   checkbox: true,
   emoji: true,
 
-  prism: true
+  prism: true,
+  wikilinks: true
 };
 
 function use_dirty_dozen(md, options) {
+  console.log('dirty dozen init A:', options, typeof options);
   if (typeof options === 'object') {
     options = Object.assign({}, defaultOptions, options);
   } else if (options === true) {
@@ -78,6 +83,7 @@ function use_dirty_dozen(md, options) {
   } else {
     throw new Error('options must be an object or boolean!');
   }
+  console.log('dirty dozen init:', options);
 
   function usePlugin(plugin, options, defaultOptions) {
     if (options) {
@@ -95,6 +101,7 @@ function use_dirty_dozen(md, options) {
     }
   }
 
+  console.log('dirty-dozen options:', options);
   if (options) {
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
     usePlugin(alerts, options.alerts, defaultOptions.alerts);
@@ -142,48 +149,50 @@ function use_dirty_dozen(md, options) {
   return md;
 }
 
-module.exports = {
+const pluginDef = {
   use_dirty_dozen,
 
-	 abbr,
-	 alerts,
-	 anchor,
-	 attribution,
-	 attrs,
-	 checkbox,
-	 container,
-	 deflist,
-	 emoji,
-	 fontawesome,
-	 footnote,
-	 forInline,
-	 frontMatter,
+  abbr,
+  alerts,
+  anchor,
+  attribution,
+  attrs,
+  checkbox,
+  container,
+  deflist,
+  emoji,
+  fontawesome,
+  footnote,
+  forInline,
+  frontMatter,
   githubHeadings,
-	 hashtag,
-	 headerSections,
-	 headinganchor,
-	 highlighted,
-	 highlightjs,
-	 implicitFigures,
-	 include,
-	 ins,
-	 kbd,
-	 mark,
-	 mathjax,
-	 modifyToken,
-	 namedHeadings,
-	 prism,
-	 regexp,
-	 responsive,
-	 samp,
-	 sanitizer,
-	 smartarrows,
-	 strikethroughAlt,
-	 sub,
-	 sup,
-	 tableOfContents,
-	 title,
-	 toc,
+  hashtag,
+  headerSections,
+  headinganchor,
+  highlighted,
+  highlightjs,
+  implicitFigures,
+  include,
+  ins,
+  kbd,
+  mark,
+  mathjax,
+  modifyToken,
+  namedHeadings,
+  prism,
+  regexp,
+  responsive,
+  samp,
+  sanitizer,
+  smartarrows,
+  strikethroughAlt,
+  sub,
+  sup,
+  tableOfContents,
+  title,
+  toc,
   tocDoneRight,
-	 wikilinks
+  wikilinks
 };
+
+module.exports = pluginDef;

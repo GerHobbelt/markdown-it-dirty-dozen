@@ -1,0 +1,27 @@
+Basic example:
+.
+::: warning
+Hello world! [Link](#).
+:::
+.
+<div class="alert alert-warning" role="alert">
+<p>Hello world! <a href="#" class="alert-link">Link</a>.</p>
+</div>
+.
+
+With option `links` enabled (by default):
+.
+This is a test. [Link](#).
+
+::: success
+Hello world! [Link](#).
+:::
+
+This is a test. [Link](#).
+.
+<p>This is a test. <a href="#">Link</a>.</p>
+<div class="alert alert-success" role="alert">
+<p>Hello world! <a href="#" class="alert-link">Link</a>.</p>
+</div>
+<p>This is a test. <a href="#">Link</a>.</p>
+.
