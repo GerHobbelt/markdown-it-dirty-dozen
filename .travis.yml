@@ -1,21 +1,9 @@
 language: node_js
 node_js:
- - 'lts/*'
- - 8
- - 10
- - 12
- - node
-script: make
-sudo: false
-after_success: npm run report_coverage
-
-# Quick fix for TravisCI test failures:
-# 
-#    SyntaxError: Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
-#    
-matrix:
-  allow_failures:
-    - node_js: 4
-    - node_js: 5
-    - node_js: 6
-    - node_js: 7
+  - 'lts/*'
+  - 10
+  - 12
+  - node
+script: npm run build
+before_install: make prep-ci
+after_success: npm run cov

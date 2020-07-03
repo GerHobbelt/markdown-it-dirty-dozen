@@ -124,5 +124,5 @@ From CommonMark test suite, replacing `**` with our marker:
 .
 a++"foo"++
 .
-<p>a++&quot;foo&quot;++</p>
+<p>a++“foo”++</p>
 .
