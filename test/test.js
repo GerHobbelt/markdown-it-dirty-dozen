@@ -3,7 +3,7 @@
 
 const path = require('path');
 const fs = require('fs');
-const glob = require('globby');
+const glob = require('glob');
 const generate = require('@gerhobbelt/markdown-it-testgen');
 const Md = require('@gerhobbelt/markdown-it');
 const pluginCollective = require('../');

@@ -79,7 +79,7 @@
     "chai": "4.2.0",
     "cross-env": "7.0.2",
     "eslint": "7.4.0",
-    "globby": "^11.0.1",
+    "glob": "7.1.6",
     "microbundle": "0.12.2",
     "mocha": "8.0.1",
     "nyc": "15.1.0"
