@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@gerhobbelt/markdown-it": "11.0.1-42",
-    "@gerhobbelt/markdown-it-testgen": "0.1.6-9",
+    "@gerhobbelt/markdown-it-testgen": "0.1.6-12",
     "@gerhobbelt/prepend-header": "1.0.8-3",
     "camelcase": "6.0.0",
     "chai": "4.2.0",

@@ -45,9 +45,9 @@ describe('markdown-it-dirty-dozen', function () {
 
   for (let file of files) {
   	let title = file.replace(/^.*fixtures\//, '').replace(/\.txt$/, '').replace(/\//g, '_');
-
-    generate(file, {}, md, null, {
-      desc: title
-    });
+    console.log('desc:', title);
+    generate(file, {
+    	      desc: title
+    	  }, md);
   	}
 });
