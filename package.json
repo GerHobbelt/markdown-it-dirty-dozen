@@ -50,7 +50,7 @@
     "@gerhobbelt/markdown-it-implicit-figures": "0.10.0-6",
     "@gerhobbelt/markdown-it-include": "1.1.2-6",
     "@gerhobbelt/markdown-it-ins": "2.0.1-1",
-    "@gerhobbelt/markdown-it-kbd": "2.0.0-5",
+    "@gerhobbelt/markdown-it-kbd": "2.0.0-6",
     "@gerhobbelt/markdown-it-mark": "2.0.1-1",
     "@gerhobbelt/markdown-it-mathjax": "2.0.1-3",
     "@gerhobbelt/markdown-it-modify-token": "1.0.2-1",
@@ -72,7 +72,7 @@
     "@gerhobbelt/prismjs": "1.20.1-2"
   },
   "devDependencies": {
-    "@gerhobbelt/markdown-it": "11.0.1-41",
+    "@gerhobbelt/markdown-it": "11.0.1-42",
     "@gerhobbelt/markdown-it-testgen": "0.1.6-9",
     "@gerhobbelt/prepend-header": "1.0.8-3",
     "camelcase": "6.0.0",
