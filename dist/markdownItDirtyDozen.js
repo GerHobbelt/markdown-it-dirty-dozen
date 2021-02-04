@@ -1,88 +1,44 @@
 /*! markdown-it-dirty-dozen 1.0.1-5 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
 
-'use strict';
-
-const abbr = require('@gerhobbelt/markdown-it-abbr');
-
-const alerts = require('@gerhobbelt/markdown-it-alerts');
-
-const anchor = require('@gerhobbelt/markdown-it-anchor');
-
-const attribution = require('@gerhobbelt/markdown-it-attribution');
-
-const attrs = require('@gerhobbelt/markdown-it-attrs');
-
-const checkbox = require('@gerhobbelt/markdown-it-checkbox');
-
-const container = require('@gerhobbelt/markdown-it-container');
-
-const deflist = require('@gerhobbelt/markdown-it-deflist');
-
-const emoji = require('@gerhobbelt/markdown-it-emoji');
-
-const fontawesome = require('@gerhobbelt/markdown-it-fontawesome');
-
-const footnote = require('@gerhobbelt/markdown-it-footnote');
-
-const forInline = require('@gerhobbelt/markdown-it-for-inline');
-
-const frontMatter = require('@gerhobbelt/markdown-it-front-matter');
-
-const githubHeadings = require('@gerhobbelt/markdown-it-github-headings');
-
-const hashtag = require('@gerhobbelt/markdown-it-hashtag');
-
-const headerSections = require('@gerhobbelt/markdown-it-header-sections');
-
-const headinganchor = require('@gerhobbelt/markdown-it-headinganchor');
-
-const highlighted = require('@gerhobbelt/markdown-it-highlighted');
-
-const highlightjs = require('@gerhobbelt/markdown-it-highlightjs');
-
-const implicitFigures = require('@gerhobbelt/markdown-it-implicit-figures');
-
-const include = require('@gerhobbelt/markdown-it-include');
-
-const ins = require('@gerhobbelt/markdown-it-ins');
-
-const kbd = require('@gerhobbelt/markdown-it-kbd');
-
-const mark = require('@gerhobbelt/markdown-it-mark');
-
-const mathjax = require('@gerhobbelt/markdown-it-mathjax');
-
-const modifyToken = require('@gerhobbelt/markdown-it-modify-token');
-
-const namedHeadings = require('@gerhobbelt/markdown-it-named-headings');
-
-const prism = require('@gerhobbelt/markdown-it-prism');
-
-const regexp = require('@gerhobbelt/markdown-it-regexp');
-
-const responsive = require('@gerhobbelt/markdown-it-responsive');
-
-const samp = require('@gerhobbelt/markdown-it-samp');
-
-const sanitizer = require('@gerhobbelt/markdown-it-sanitizer');
-
-const smartarrows = require('@gerhobbelt/markdown-it-smartarrows');
-
-const strikethroughAlt = require('@gerhobbelt/markdown-it-strikethrough-alt');
-
-const sub = require('@gerhobbelt/markdown-it-sub');
-
-const sup = require('@gerhobbelt/markdown-it-sup');
-
-const tableOfContents = require('@gerhobbelt/markdown-it-table-of-contents');
-
-const title = require('@gerhobbelt/markdown-it-title');
-
-const toc = require('@gerhobbelt/markdown-it-toc');
-
-const tocDoneRight = require('@gerhobbelt/markdown-it-toc-done-right');
-
-const wikilinks = require('@gerhobbelt/markdown-it-wikilinks');
+import abbr from '@gerhobbelt/markdown-it-abbr';
+import alerts from '@gerhobbelt/markdown-it-alerts';
+import anchor from '@gerhobbelt/markdown-it-anchor';
+import attribution from '@gerhobbelt/markdown-it-attribution';
+import attrs from '@gerhobbelt/markdown-it-attrs';
+import checkbox from '@gerhobbelt/markdown-it-checkbox';
+import container from '@gerhobbelt/markdown-it-container';
+import deflist from '@gerhobbelt/markdown-it-deflist';
+import emoji from '@gerhobbelt/markdown-it-emoji';
+import fontawesome from '@gerhobbelt/markdown-it-fontawesome';
+import footnote from '@gerhobbelt/markdown-it-footnote';
+import forInline from '@gerhobbelt/markdown-it-for-inline';
+import frontMatter from '@gerhobbelt/markdown-it-front-matter';
+import githubHeadings from '@gerhobbelt/markdown-it-github-headings';
+import hashtag from '@gerhobbelt/markdown-it-hashtag';
+import headerSections from '@gerhobbelt/markdown-it-header-sections';
+import headinganchor from '@gerhobbelt/markdown-it-headinganchor';
+import implicitFigures from '@gerhobbelt/markdown-it-implicit-figures';
+import include from '@gerhobbelt/markdown-it-include';
+import ins from '@gerhobbelt/markdown-it-ins';
+import mark from '@gerhobbelt/markdown-it-mark';
+import mathjax from '@gerhobbelt/markdown-it-mathjax';
+import modifyToken from '@gerhobbelt/markdown-it-modify-token';
+import namedHeadings from '@gerhobbelt/markdown-it-named-headings';
+import prism from '@gerhobbelt/markdown-it-prism';
+import regexp from '@gerhobbelt/markdown-it-regexp';
+import responsive from '@gerhobbelt/markdown-it-responsive';
+import samp from '@gerhobbelt/markdown-it-samp';
+import sanitizer from '@gerhobbelt/markdown-it-sanitizer';
+import smartarrows from '@gerhobbelt/markdown-it-smartarrows';
+import strikethroughAlt from '@gerhobbelt/markdown-it-strikethrough-alt';
+import sub from '@gerhobbelt/markdown-it-sub';
+import sup from '@gerhobbelt/markdown-it-sup';
+import tableOfContents from '@gerhobbelt/markdown-it-table-of-contents';
+import title from '@gerhobbelt/markdown-it-title';
+import toc from '@gerhobbelt/markdown-it-toc';
+import tocAndAnchor from '@gerhobbelt/markdown-it-toc-and-anchor';
+import tocDoneRight from '@gerhobbelt/markdown-it-toc-done-right';
+import wikilinks from '@gerhobbelt/markdown-it-wikilinks';
 
 const defaultOptions = {
   include: {
@@ -116,6 +72,7 @@ function use_dirty_dozen(md, options) {
   if (typeof options === 'object') {
     options = Object.assign({}, defaultOptions, options);
   } else if (options === true) {
+    // use all plugins in the set, their configuration augmented with the settings specified above.
     options = Object.assign({}, defaultOptions);
   } else if (options === false) {
     // all plugins are disabled
@@ -163,13 +120,13 @@ function use_dirty_dozen(md, options) {
     usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
     usePlugin(headerSections, options.headerSections, defaultOptions.headerSections);
-    usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor);
-    usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
-    usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
+    usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
+    //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
+
     usePlugin(implicitFigures, options.implicitFigures, defaultOptions.implicitFigures);
     usePlugin(include, options.include, defaultOptions.include);
-    usePlugin(ins, options.ins, defaultOptions.ins);
-    usePlugin(kbd, options.kbd, defaultOptions.kbd);
+    usePlugin(ins, options.ins, defaultOptions.ins); //usePlugin(kbd, options.kbd, defaultOptions.kbd);
+
     usePlugin(mark, options.mark, defaultOptions.mark);
     usePlugin(mathjax, options.mathjax, defaultOptions.mathjax);
     usePlugin(modifyToken, options.modifyToken, defaultOptions.modifyToken);
@@ -186,6 +143,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(tableOfContents, options.tableOfContents, defaultOptions.tableOfContents);
     usePlugin(title, options.title, defaultOptions.title);
     usePlugin(toc, options.toc, defaultOptions.toc);
+    usePlugin(tocAndAnchor, options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight, options.tocDoneRight, defaultOptions.tocDoneRight);
     usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
   }
@@ -212,12 +170,12 @@ const pluginDef = {
   hashtag,
   headerSections,
   headinganchor,
-  highlighted,
-  highlightjs,
+  //highlighted,
+  //highlightjs,
   implicitFigures,
   include,
   ins,
-  kbd,
+  //kbd,
   mark,
   mathjax,
   modifyToken,
@@ -234,8 +192,10 @@ const pluginDef = {
   tableOfContents,
   title,
   toc,
+  tocAndAnchor,
   tocDoneRight,
   wikilinks
 };
-module.exports = pluginDef;
-//# sourceMappingURL=markdownItDirtyDozen.js.map
+
+export default pluginDef;
+//# sourceMappingURL=markdownItDirtyDozen.modern.js.map

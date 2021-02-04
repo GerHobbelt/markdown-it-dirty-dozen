@@ -1,12 +1,18 @@
-
 /* eslint-env mocha, es6 */
 
-const path = require('path');
-const fs = require('fs');
-const glob = require('glob');
-const generate = require('@gerhobbelt/markdown-it-testgen');
-const Md = require('@gerhobbelt/markdown-it');
-const pluginCollective = require('../');
+import path from 'path';
+import fs from 'fs';
+import glob from 'glob';
+import generate from '@gerhobbelt/markdown-it-testgen';
+import Md from '@gerhobbelt/markdown-it';
+import pluginCollective from '../index.js';
+
+
+import { fileURLToPath } from 'url';
+// see https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_no_require_exports_module_exports_filename_dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 describe('markdown-it-dirty-dozen', function () {
   const md = Md({
