@@ -6,6 +6,7 @@ import attribution from '@gerhobbelt/markdown-it-attribution';
 import attrs from '@gerhobbelt/markdown-it-attrs';
 import checkbox from '@gerhobbelt/markdown-it-checkbox';
 import container from '@gerhobbelt/markdown-it-container';
+import criticMarkup from '@gerhobbelt/markdown-it-criticmarkup';
 import deflist from '@gerhobbelt/markdown-it-deflist';
 import emoji from '@gerhobbelt/markdown-it-emoji';
 //console.log({ emoji });
@@ -35,6 +36,7 @@ import regexp from '@gerhobbelt/markdown-it-regexp';
 import responsive from '@gerhobbelt/markdown-it-responsive';
 import samp from '@gerhobbelt/markdown-it-samp';
 import sanitizer from '@gerhobbelt/markdown-it-sanitizer';
+import shortcodeTag from '@gerhobbelt/markdown-it-shortcode-tag';
 import smartarrows from '@gerhobbelt/markdown-it-smartarrows';
 import strikethroughAlt from '@gerhobbelt/markdown-it-strikethrough-alt';
 import sub from '@gerhobbelt/markdown-it-sub';
@@ -71,6 +73,9 @@ const defaultOptions = {
   attribution: true,
   checkbox: true,
   emoji: true,
+  criticMarkup: true,
+  modifyToken: true,
+  shortcodeTag: true,
 
   prism: true,
   wikilinks: true
@@ -118,6 +123,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(container, options.container, defaultOptions.container);
     usePlugin(deflist, options.deflist, defaultOptions.deflist);
     usePlugin(emoji, options.emoji, defaultOptions.emoji);
+    usePlugin(criticMarkup, options.criticMarkup, defaultOptions.criticMarkup);
     usePlugin(fontawesome, options.fontawesome, defaultOptions.fontawesome);
     usePlugin(footnote, options.footnote, defaultOptions.footnote);
     usePlugin(forInline, options.forInline, defaultOptions.forInline);
@@ -141,6 +147,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(responsive, options.responsive, defaultOptions.responsive);
     usePlugin(samp, options.samp, defaultOptions.samp);
     usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
+    usePlugin(shortcodeTag, options.shortcodeTag, defaultOptions.shortcodeTag);
     usePlugin(smartarrows, options.smartarrows, defaultOptions.smartarrows);
     usePlugin(strikethroughAlt, options.strikethroughAlt, defaultOptions.strikethroughAlt);
     usePlugin(sub, options.sub, defaultOptions.sub);
@@ -166,6 +173,7 @@ const pluginDef = {
   attrs,
   checkbox,
   container,
+  criticMarkup,
   deflist,
   emoji,
   fontawesome,
@@ -191,6 +199,7 @@ const pluginDef = {
   responsive,
   samp,
   sanitizer,
+  shortcodeTag,
   smartarrows,
   strikethroughAlt,
   sub,
