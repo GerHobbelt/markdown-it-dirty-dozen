@@ -14,6 +14,7 @@ import fontawesome from '@gerhobbelt/markdown-it-fontawesome';
 import footnote from '@gerhobbelt/markdown-it-footnote';
 import forInline from '@gerhobbelt/markdown-it-for-inline';
 import frontMatter from '@gerhobbelt/markdown-it-front-matter';
+import furigana from '@gerhobbelt/markdown-it-furigana';
 import githubHeadings from '@gerhobbelt/markdown-it-github-headings';
 import hashtag from '@gerhobbelt/markdown-it-hashtag';
 import headerSections from '@gerhobbelt/markdown-it-header-sections';
@@ -116,6 +117,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(include, options.include, defaultOptions.include);
     usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
 
+    usePlugin(furigana, options.furigana, defaultOptions.furigana);
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
     usePlugin(attribution, options.attribution, defaultOptions.attribution);
     usePlugin(attrs, options.attrs, defaultOptions.attrs);
@@ -192,6 +194,7 @@ const pluginDef = {
   footnote,
   forInline,
   frontMatter,
+  furigana,
   githubHeadings,
   hashtag,
   headerSections,

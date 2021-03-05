@@ -43,7 +43,8 @@
     "@gerhobbelt/markdown-it-footnote": "3.0.2-5",
     "@gerhobbelt/markdown-it-for-inline": "0.1.2-1",
     "@gerhobbelt/markdown-it-front-matter": "0.2.3-3",
-    "@gerhobbelt/markdown-it-github-headings": "2.0.0-1",
+    "@gerhobbelt/markdown-it-furigana": "1.0.3-3",
+    "@gerhobbelt/markdown-it-github-headings": "2.0.0-2",
     "@gerhobbelt/markdown-it-hashtag": "0.4.0-1",
     "@gerhobbelt/markdown-it-header-sections": "0.2.2-1",
     "@gerhobbelt/markdown-it-headinganchor": "1.2.1-1",
@@ -70,7 +71,7 @@
     "@gerhobbelt/markdown-it-table-of-contents": "0.4.4-2",
     "@gerhobbelt/markdown-it-title": "3.0.0-3",
     "@gerhobbelt/markdown-it-toc": "1.1.1-2",
-    "@gerhobbelt/markdown-it-toc-and-anchor": "4.5.0-3",
+    "@gerhobbelt/markdown-it-toc-and-anchor": "4.5.0-4",
     "@gerhobbelt/markdown-it-toc-done-right": "4.1.0-3",
     "@gerhobbelt/markdown-it-wikilinks": "1.1.1-10",
     "@gerhobbelt/prismjs": "1.20.1-2"
