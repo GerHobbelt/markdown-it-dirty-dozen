@@ -109,50 +109,62 @@ function use_dirty_dozen(md, options) {
   console.log('dirty-dozen options:', options);
 
   if (options) {
+    usePlugin(include, options.include, defaultOptions.include);
+    usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
+
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
-    usePlugin(alerts, options.alerts, defaultOptions.alerts);
-    usePlugin(anchor, options.anchor, defaultOptions.anchor);
     usePlugin(attribution, options.attribution, defaultOptions.attribution);
     usePlugin(attrs, options.attrs, defaultOptions.attrs);
     usePlugin(checkbox, options.checkbox, defaultOptions.checkbox);
-    usePlugin(container, options.container, defaultOptions.container);
-    usePlugin(deflist, options.deflist, defaultOptions.deflist);
     usePlugin(emoji, options.emoji, defaultOptions.emoji);
     usePlugin(criticMarkup, options.criticMarkup, defaultOptions.criticMarkup);
     usePlugin(fontawesome, options.fontawesome, defaultOptions.fontawesome);
-    usePlugin(footnote, options.footnote, defaultOptions.footnote);
     usePlugin(forInline, options.forInline, defaultOptions.forInline);
-    usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
-    usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
-    usePlugin(headerSections, options.headerSections, defaultOptions.headerSections);
-    usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
-    //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
 
-    usePlugin(implicitFigures, options.implicitFigures, defaultOptions.implicitFigures);
-    usePlugin(include, options.include, defaultOptions.include);
     usePlugin(ins, options.ins, defaultOptions.ins); //usePlugin(kbd, options.kbd, defaultOptions.kbd);
 
     usePlugin(mark, options.mark, defaultOptions.mark);
-    usePlugin(mathjax, options.mathjax, defaultOptions.mathjax);
-    usePlugin(modifyToken, options.modifyToken, defaultOptions.modifyToken);
-    usePlugin(namedHeadings, options.namedHeadings, defaultOptions.namedHeadings);
-    usePlugin(prism, options.prism, defaultOptions.prism);
-    usePlugin(regexp, options.regexp, defaultOptions.regexp);
-    usePlugin(responsive, options.responsive, defaultOptions.responsive);
     usePlugin(samp, options.samp, defaultOptions.samp);
-    usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
     usePlugin(shortcodeTag, options.shortcodeTag, defaultOptions.shortcodeTag);
     usePlugin(smartarrows, options.smartarrows, defaultOptions.smartarrows);
     usePlugin(strikethroughAlt, options.strikethroughAlt, defaultOptions.strikethroughAlt);
     usePlugin(sub, options.sub, defaultOptions.sub);
     usePlugin(sup, options.sup, defaultOptions.sup);
+
+    usePlugin(deflist, options.deflist, defaultOptions.deflist);
+    usePlugin(footnote, options.footnote, defaultOptions.footnote);
+    usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
+    usePlugin(implicitFigures, options.implicitFigures, defaultOptions.implicitFigures);
+    usePlugin(responsive, options.responsive, defaultOptions.responsive);
+
+    usePlugin(mathjax, options.mathjax, defaultOptions.mathjax);
+    usePlugin(prism, options.prism, defaultOptions.prism);
+    //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
+
+    usePlugin(container, options.container, defaultOptions.container);
+    usePlugin(alerts, options.alerts, defaultOptions.alerts);
+
+    usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
+
+    usePlugin(regexp, options.regexp, defaultOptions.regexp);
+
+    usePlugin(headerSections, options.headerSections, defaultOptions.headerSections);
+    usePlugin(title, options.title, defaultOptions.title);
+
+    usePlugin(namedHeadings, options.namedHeadings, defaultOptions.namedHeadings);
+
     usePlugin(tableOfContents, options.tableOfContents, defaultOptions.tableOfContents);
     usePlugin(title, options.title, defaultOptions.title);
     usePlugin(toc, options.toc, defaultOptions.toc);
     usePlugin(tocAndAnchor, options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight, options.tocDoneRight, defaultOptions.tocDoneRight);
-    usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
+
+    usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
+    usePlugin(anchor, options.anchor, defaultOptions.anchor);
+    usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
+
+    usePlugin(modifyToken, options.modifyToken, defaultOptions.modifyToken);
   }
 
   return md;
