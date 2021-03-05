@@ -1,4 +1,4 @@
-/*! markdown-it-dirty-dozen 1.0.1-5 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
+/*! markdown-it-dirty-dozen 1.0.1-6 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
 
 import abbr from '@gerhobbelt/markdown-it-abbr';
 import alerts from '@gerhobbelt/markdown-it-alerts';
@@ -111,7 +111,6 @@ function use_dirty_dozen(md, options) {
   if (options) {
     usePlugin(include, options.include, defaultOptions.include);
     usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
-
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
     usePlugin(attribution, options.attribution, defaultOptions.attribution);
     usePlugin(attrs, options.attrs, defaultOptions.attrs);
@@ -121,7 +120,6 @@ function use_dirty_dozen(md, options) {
     usePlugin(fontawesome, options.fontawesome, defaultOptions.fontawesome);
     usePlugin(forInline, options.forInline, defaultOptions.forInline);
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
-
     usePlugin(ins, options.ins, defaultOptions.ins); //usePlugin(kbd, options.kbd, defaultOptions.kbd);
 
     usePlugin(mark, options.mark, defaultOptions.mark);
@@ -131,35 +129,26 @@ function use_dirty_dozen(md, options) {
     usePlugin(strikethroughAlt, options.strikethroughAlt, defaultOptions.strikethroughAlt);
     usePlugin(sub, options.sub, defaultOptions.sub);
     usePlugin(sup, options.sup, defaultOptions.sup);
-
     usePlugin(deflist, options.deflist, defaultOptions.deflist);
     usePlugin(footnote, options.footnote, defaultOptions.footnote);
     usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
     usePlugin(implicitFigures, options.implicitFigures, defaultOptions.implicitFigures);
     usePlugin(responsive, options.responsive, defaultOptions.responsive);
-
     usePlugin(mathjax, options.mathjax, defaultOptions.mathjax);
-    usePlugin(prism, options.prism, defaultOptions.prism);
-    //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
+    usePlugin(prism, options.prism, defaultOptions.prism); //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
 
     usePlugin(container, options.container, defaultOptions.container);
     usePlugin(alerts, options.alerts, defaultOptions.alerts);
-
     usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
-
     usePlugin(regexp, options.regexp, defaultOptions.regexp);
-
     usePlugin(headerSections, options.headerSections, defaultOptions.headerSections);
     usePlugin(title, options.title, defaultOptions.title);
-
     usePlugin(namedHeadings, options.namedHeadings, defaultOptions.namedHeadings);
-
     usePlugin(tableOfContents, options.tableOfContents, defaultOptions.tableOfContents);
     usePlugin(title, options.title, defaultOptions.title);
     usePlugin(toc, options.toc, defaultOptions.toc);
     usePlugin(tocAndAnchor, options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight, options.tocDoneRight, defaultOptions.tocDoneRight);
-
     usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
     usePlugin(anchor, options.anchor, defaultOptions.anchor);
     usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);

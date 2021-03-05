@@ -127,7 +127,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(forInline, options.forInline, defaultOptions.forInline);
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
 
-    usePlugin(ins, options.ins, defaultOptions.ins); 
+    usePlugin(ins, options.ins, defaultOptions.ins);
     //usePlugin(kbd, options.kbd, defaultOptions.kbd);
 
     usePlugin(mark, options.mark, defaultOptions.mark);
