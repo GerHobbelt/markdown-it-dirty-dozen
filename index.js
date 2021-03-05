@@ -25,8 +25,7 @@ import headinganchor from '@gerhobbelt/markdown-it-headinganchor';
 import implicitFigures from '@gerhobbelt/markdown-it-implicit-figures';
 import include from '@gerhobbelt/markdown-it-include';
 import ins from '@gerhobbelt/markdown-it-ins';
-//import * as kbd from '@gerhobbelt/markdown-it-kbd';
-//console.log({ kbd });
+import kbd from '@gerhobbelt/markdown-it-kbd';
 import mark from '@gerhobbelt/markdown-it-mark';
 import mathjax from '@gerhobbelt/markdown-it-mathjax';
 import modifyToken from '@gerhobbelt/markdown-it-modify-token';
@@ -128,7 +127,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
 
     usePlugin(ins, options.ins, defaultOptions.ins);
-    //usePlugin(kbd, options.kbd, defaultOptions.kbd);
+    usePlugin(kbd, options.kbd, defaultOptions.kbd);
 
     usePlugin(mark, options.mark, defaultOptions.mark);
     usePlugin(samp, options.samp, defaultOptions.samp);
@@ -202,7 +201,7 @@ const pluginDef = {
   implicitFigures,
   include,
   ins,
-  //kbd,
+  kbd,
   mark,
   mathjax,
   modifyToken,
