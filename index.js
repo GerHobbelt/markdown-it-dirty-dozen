@@ -140,7 +140,6 @@ function use_dirty_dozen(md, options) {
     usePlugin(sup, options.sup, defaultOptions.sup);
 
     usePlugin(deflist, options.deflist, defaultOptions.deflist);
-    usePlugin(footnote, options.footnote, defaultOptions.footnote);
     usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
     usePlugin(implicitFigures, options.implicitFigures, defaultOptions.implicitFigures);
     usePlugin(responsive, options.responsive, defaultOptions.responsive);
@@ -166,6 +165,8 @@ function use_dirty_dozen(md, options) {
     usePlugin(toc, options.toc, defaultOptions.toc);
     usePlugin(tocAndAnchor, options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight, options.tocDoneRight, defaultOptions.tocDoneRight);
+
+    usePlugin(footnote, options.footnote, defaultOptions.footnote);
 
     usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
     usePlugin(anchor, options.anchor, defaultOptions.anchor);
