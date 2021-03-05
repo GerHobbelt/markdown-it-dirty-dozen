@@ -1,4 +1,4 @@
-/*! markdown-it-dirty-dozen 1.0.1-6 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
+/*! markdown-it-dirty-dozen 1.0.1-7 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
 
 import abbr from '@gerhobbelt/markdown-it-abbr';
 import alerts from '@gerhobbelt/markdown-it-alerts';
