@@ -31,7 +31,7 @@
   "dependencies": {
     "@gerhobbelt/markdown-it-abbr": "1.0.4-27",
     "@gerhobbelt/markdown-it-alerts": "0.2.0-5",
-    "@gerhobbelt/markdown-it-anchor": "7.0.1-25",
+    "@gerhobbelt/markdown-it-anchor": "7.0.2-27",
     "@gerhobbelt/markdown-it-attribution": "0.1.2-1",
     "@gerhobbelt/markdown-it-attrs": "3.0.3-20",
     "@gerhobbelt/markdown-it-checkbox": "1.1.2-2",
@@ -69,10 +69,10 @@
     "@gerhobbelt/markdown-it-sub": "1.0.1-5",
     "@gerhobbelt/markdown-it-sup": "1.0.1-4",
     "@gerhobbelt/markdown-it-table-of-contents": "0.4.4-2",
-    "@gerhobbelt/markdown-it-title": "3.0.0-3",
+    "@gerhobbelt/markdown-it-title": "3.0.0-5",
     "@gerhobbelt/markdown-it-toc": "1.1.1-2",
     "@gerhobbelt/markdown-it-toc-and-anchor": "4.5.0-5",
-    "@gerhobbelt/markdown-it-toc-done-right": "4.1.0-3",
+    "@gerhobbelt/markdown-it-toc-done-right": "4.2.0-4",
     "@gerhobbelt/markdown-it-wikilinks": "1.1.1-10",
     "@gerhobbelt/prismjs": "1.20.1-2"
   },

@@ -151,11 +151,11 @@ function use_dirty_dozen(md, options) {
     usePlugin(toc, options.toc, defaultOptions.toc);
     usePlugin(tocAndAnchor, options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight, options.tocDoneRight, defaultOptions.tocDoneRight);
-    usePlugin(footnote, options.footnote, defaultOptions.footnote);
     usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
     usePlugin(anchor, options.anchor, defaultOptions.anchor);
     usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
 
+    usePlugin(footnote, options.footnote, defaultOptions.footnote);
     usePlugin(modifyToken, options.modifyToken, defaultOptions.modifyToken);
   }
 
