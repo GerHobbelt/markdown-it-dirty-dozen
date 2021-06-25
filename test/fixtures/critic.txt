@@ -1,0 +1,47 @@
+critic markup	        HTML         	          				LaTeX
+
+{--[text]--}	        <del>[text]</del>	                    \st{[text]}
+{++[text]++}          	<ins>[text]</ins>	                    \underline{[text]}
+{~~[text1]~>[text2]~~}	<del>[text1]</del><ins>[text2]</ins>	\st{[text1]}\underline{[text2]}
+{==[text]==}          	<mark>[text]</mark>	                  	\hl{[text]}
+{>>[text]<<}          	<aside>[text]</aside>                	\marginpar{[text]}
+
+An editor can delete text
+.
+An editor can delete text as he {--bloody well--} pleases.
+.
+<p>An editor can delete text as he <del>bloody well</del> pleases.</p>
+.
+
+
+An editor can also insert text
+.
+An editor can also insert text, {++as this is his prerogative++} and duty when the writer dropped the, ah, word.
+.
+<p>An editor can also insert text, <ins>as this is his prerogative</ins> and duty when the writer dropped the, ah, word.</p>
+.
+
+
+Then there's replacements:
+.
+As you know {~~theres~>there's~~} always that fuss about their and {~~ their ~> there ~~}...
+.
+<p>As you know <del>theres</del><ins>there's</ins> always that fuss about their and <del> their </del><ins> there </ins>...</p>
+.
+
+
+We may also mark bits and pieces:
+.
+Among all the bla bla there's a golden nugget to be found, {==if only you'ld go looking==}.
+.
+<p>Among all the bla bla there's a golden nugget to be found, <mark>if only you'ld go looking</mark>.</p>
+.
+
+
+And last but not least there's the side note:
+.
+JS HTTP is a collection of low-level javascript HTTP-related modules. {>>It's awesome!<<}
+.
+<p>JS HTTP is a collection of low-level javascript HTTP-related modules. <aside>It's awesome!</aside></p>
+.
+
