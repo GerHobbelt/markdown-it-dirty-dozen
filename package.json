@@ -69,7 +69,7 @@
     "@gerhobbelt/markdown-it-sub": "1.0.1-5",
     "@gerhobbelt/markdown-it-sup": "1.0.1-4",
     "@gerhobbelt/markdown-it-table-of-contents": "0.4.4-2",
-    "@gerhobbelt/markdown-it-title": "3.0.0-5",
+    "@gerhobbelt/markdown-it-title": "4.0.0-6",
     "@gerhobbelt/markdown-it-toc": "1.1.1-2",
     "@gerhobbelt/markdown-it-toc-and-anchor": "4.5.0-5",
     "@gerhobbelt/markdown-it-toc-done-right": "4.2.0-4",

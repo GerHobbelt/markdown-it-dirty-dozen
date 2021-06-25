@@ -55,6 +55,7 @@ const defaultOptions = {
     throwError: true,
     bracesAreOptional: true
   },
+  frontMatter: true,
 
   ins: true,
   mark: true,
@@ -68,6 +69,11 @@ const defaultOptions = {
 
   footnote: true,
 
+  abbr: true,
+  headerSections: true,
+  namedHeadings: true,
+
+  furigana: true,
   deflist: true,
   alerts: true,
   attribution: true,
@@ -78,7 +84,12 @@ const defaultOptions = {
   shortcodeTag: true,
 
   prism: true,
-  wikilinks: true
+  wikilinks: true,
+
+  title: {
+    level: 0,     // grab the FIRST header we encounter and serve that as the page title! (even when that's not a H1!)
+    excerpt: 0    // no excerpt...
+  }
 };
 
 function use_dirty_dozen(md, options) {
@@ -115,15 +126,17 @@ function use_dirty_dozen(md, options) {
   console.log('dirty-dozen options:', options);
   if (options) {
     usePlugin(include, options.include, defaultOptions.include);
+    usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
+
     usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
 
     usePlugin(furigana, options.furigana, defaultOptions.furigana);
+    usePlugin(criticMarkup, options.criticMarkup, defaultOptions.criticMarkup);
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
     usePlugin(attribution, options.attribution, defaultOptions.attribution);
     usePlugin(attrs, options.attrs, defaultOptions.attrs);
     usePlugin(checkbox, options.checkbox, defaultOptions.checkbox);
     usePlugin(emoji, options.emoji, defaultOptions.emoji);
-    usePlugin(criticMarkup, options.criticMarkup, defaultOptions.criticMarkup);
     usePlugin(fontawesome, options.fontawesome, defaultOptions.fontawesome);
     usePlugin(forInline, options.forInline, defaultOptions.forInline);
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
@@ -140,7 +153,6 @@ function use_dirty_dozen(md, options) {
     usePlugin(sup, options.sup, defaultOptions.sup);
 
     usePlugin(deflist, options.deflist, defaultOptions.deflist);
-    usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
     usePlugin(implicitFigures, options.implicitFigures, defaultOptions.implicitFigures);
     usePlugin(responsive, options.responsive, defaultOptions.responsive);
 
@@ -149,19 +161,18 @@ function use_dirty_dozen(md, options) {
     //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
 
     usePlugin(container, options.container, defaultOptions.container);
+
+    usePlugin(title, options.title, defaultOptions.title);
+
+    usePlugin(footnote, options.footnote, defaultOptions.footnote);
+
     usePlugin(alerts, options.alerts, defaultOptions.alerts);
 
-    usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
-
-    usePlugin(regexp, options.regexp, defaultOptions.regexp);
-
     usePlugin(headerSections, options.headerSections, defaultOptions.headerSections);
-    usePlugin(title, options.title, defaultOptions.title);
 
     usePlugin(namedHeadings, options.namedHeadings, defaultOptions.namedHeadings);
 
     usePlugin(tableOfContents, options.tableOfContents, defaultOptions.tableOfContents);
-    usePlugin(title, options.title, defaultOptions.title);
     usePlugin(toc, options.toc, defaultOptions.toc);
     usePlugin(tocAndAnchor, options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight, options.tocDoneRight, defaultOptions.tocDoneRight);
@@ -170,7 +181,9 @@ function use_dirty_dozen(md, options) {
     usePlugin(anchor, options.anchor, defaultOptions.anchor);
     usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
 
-    usePlugin(footnote, options.footnote, defaultOptions.footnote);
+    usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
+
+    usePlugin(regexp, options.regexp, defaultOptions.regexp);
 
     usePlugin(modifyToken, options.modifyToken, defaultOptions.modifyToken);
   }
