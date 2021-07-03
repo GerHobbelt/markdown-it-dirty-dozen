@@ -62,12 +62,17 @@ const defaultOptions = {
   sub: true,
   sup: true,
   footnote: true,
-  abbr: true,
+  abbr: false,
+  // damages tickboxes, etc.
   headerSections: true,
   namedHeadings: true,
   furigana: true,
+  attrs: true,
   deflist: true,
-  alerts: true,
+  alerts: {
+    links: true,
+    icons: true
+  },
   attribution: true,
   checkbox: true,
   emoji: true,
@@ -125,16 +130,16 @@ function use_dirty_dozen(md, options) {
     usePlugin(include, options.include, defaultOptions.include);
     usePlugin(frontMatter, options.frontMatter, defaultOptions.frontMatter);
     usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
+    usePlugin(checkbox, options.checkbox, defaultOptions.checkbox);
     usePlugin(furigana, options.furigana, defaultOptions.furigana);
-    usePlugin(criticMarkup, options.criticMarkup, defaultOptions.criticMarkup);
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
     usePlugin(attribution, options.attribution, defaultOptions.attribution);
     usePlugin(attrs, options.attrs, defaultOptions.attrs);
-    usePlugin(checkbox, options.checkbox, defaultOptions.checkbox);
     usePlugin(emoji, options.emoji, defaultOptions.emoji);
     usePlugin(fontawesome, options.fontawesome, defaultOptions.fontawesome);
     usePlugin(forInline, options.forInline, defaultOptions.forInline);
     usePlugin(hashtag, options.hashtag, defaultOptions.hashtag);
+    usePlugin(criticMarkup, options.criticMarkup, defaultOptions.criticMarkup);
     usePlugin(ins, options.ins, defaultOptions.ins);
     usePlugin(kbd, options.kbd, defaultOptions.kbd);
     usePlugin(mark, options.mark, defaultOptions.mark);
@@ -222,4 +227,4 @@ const pluginDef = {
 };
 
 export default pluginDef;
-//# sourceMappingURL=markdownItDirtyDozen.modern.js.map
+//# sourceMappingURL=markdownItDirtyDozen.mjs.map

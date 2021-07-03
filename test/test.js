@@ -68,12 +68,12 @@ pluginCollective.use_dirty_dozen(md, {
 
 
 xdescribe('markdown-it-dirty-dozen', function () {
-  let scanDir = path.join(__dirname, 'fixtures/').replace(/\\/g, '/');
+  const scanDir = path.join(__dirname, 'fixtures/').replace(/\\/g, '/');
 
-  let files = glob.sync(scanDir + '**/*.txt');
+  const files = glob.sync(scanDir + '**/*.txt');
 
-  for (let file of files) {
-  	let title = file.replace(/^.*fixtures\//, '').replace(/\.txt$/, '').replace(/\//g, '_');
+  for (const file of files) {
+  	const title = file.replace(/^.*fixtures\//, '').replace(/\.txt$/, '').replace(/\//g, '_');
     console.log('desc:', title);
     generate(file, {
       desc: title
@@ -90,10 +90,10 @@ function cleanOutput(src) {
 
 
 describe('checking cooperation between plugins', function () {
-  let scanDir = path.join(__dirname, 'fixture-mixes/sources').replace(/\\/g, '/');
+  const scanDir = path.join(__dirname, 'fixture-mixes/sources').replace(/\\/g, '/');
 
-  let sollWertDir = fs.realpathSync(path.join(scanDir, '..', 'sollwerte'));
-  let istWertDir = fs.realpathSync(path.join(sollWertDir, '..', 'istwerte'));
+  const sollWertDir = fs.realpathSync(path.join(scanDir, '..', 'sollwerte'));
+  const istWertDir = fs.realpathSync(path.join(sollWertDir, '..', 'istwerte'));
   if (!fs.existsSync(istWertDir)) {
   	fs.mkdirSync(istWertDir);
   }
@@ -101,20 +101,20 @@ describe('checking cooperation between plugins', function () {
   	fs.mkdirSync(sollWertDir);
   }
 
-  let files = glob.sync(scanDir + '**/*.md');
+  const files = glob.sync(scanDir + '**/*.md');
 
   const mkTest = (file, md) => {
-  	let title = file.replace(/^.*\/([^\/]+?)\.md$/, '$1');
+  	const title = file.replace(/^.*\/([^\/]+?)\.md$/, '$1');
   	let relSourcePath = file.slice(scanDir.length);
   	if (relSourcePath.startsWith('/')) { relSourcePath = relSourcePath.slice(1); }
     console.log('desc:', { title, relSourcePath, sollWertDir, istWertDir });
 
     it(title, () => {
-    	let src = fs.readFileSync(file, 'utf8');
-    	let env = {};
+    	const src = fs.readFileSync(file, 'utf8');
+    	const env = {};
     	const out = md.render(src, env);
     	console.log({ outlen: out.length, out_path: path.join(istWertDir, relSourcePath), env });
-    	let title = env.title || '???';
+    	const title = env.title || '???';
 
 
 
@@ -135,6 +135,112 @@ describe('checking cooperation between plugins', function () {
     padding: 0 1rem;
     max-width: 65rem;
 }    
+.red {
+	color: red;
+}
+
+/* can't have two ::before on the same node (which happens in our tests): the last one wins then. So we use before and after... */
+.c1::before {
+  content: " ♥ C1! ";
+}
+.c2::after {
+  content: " ♥ C2! ";
+}
+
+p[with="attrs"] {
+	border: blue solid 1px;
+	padding: 0.1em;
+}
+
+
+ruby > rt {
+    font-size: 75%;
+}
+
+/* override mini-default.css */
+nav * {
+    padding: calc(0.1 * var(--universal-padding)) calc(1.5 * var(--universal-padding));
+}
+
+
+
+/* critic markup test aide */
+
+aside {
+    display: inline-block;
+    background-color: #defbea;
+    padding: 0.1em;
+    border: 1px solid #00823d;
+    margin-left: -3.5em;
+}
+
+
+
+/* alert CSS ripped from the BBootstrap demo & documentation pages */
+
+.alert+.alert, .navbar+.navbar, .progress+.progress {
+    margin-top: 1rem;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert::after, .alert::before {
+    box-sizing: border-box;
+}
+
+.alert-primary {
+    color: #084298;
+    background-color: #cfe2ff;
+    border-color: #b6d4fe;
+}
+.alert-dark {
+    color: #141619;
+    background-color: #d3d3d4;
+    border-color: #bcbebf;
+}
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-primary .alert-link {
+    color: #06357a;
+}
+.alert-link {
+    font-weight: 700;
+}
+.alert-success .alert-link {
+    color: #0c4128;
+}
+.alert-warning .alert-link {
+    color: #523e02;
+}
+.alert-danger .alert-link {
+    color: #6a1a21;
+}
+
     </style>
     ${ '' }
   </head>
@@ -196,7 +302,7 @@ describe('checking cooperation between plugins', function () {
   };
 
   console.error('################ setting up cooperation tests', files);
-  for (let file of files) {
+  for (const file of files) {
   	mkTest(file, md);
   }
 });

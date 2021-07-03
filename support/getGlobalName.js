@@ -11,16 +11,16 @@ async function action() {
   const cli = new argparse.ArgumentParser({
     prog: 'getGlobalName',
     version: hdr.version,
-    add_help: true
+    addHelp: true
   });
 
-  cli.add_argument([ 'type' ], {
+  cli.addArgument([ 'type' ], {
     help: 'type of name/string to produce',
     nargs: '?',
     choices: [ 'global', 'package', 'version', 'license', 'microbundle' ]
   });
 
-  const options = cli.parse_args();
+  const options = cli.parseArgs();
 
   function print(msg) {
     process.stdout.write(msg);
