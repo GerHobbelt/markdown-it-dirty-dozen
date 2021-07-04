@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 import glob from 'glob';
 import assert from 'assert';
-import generate from '@gerhobbelt/markdown-it-testgen';
+import testgen from '@gerhobbelt/markdown-it-testgen';
 import Md from '@gerhobbelt/markdown-it';
 import pluginCollective from '../index.js';
 
@@ -45,10 +45,10 @@ const md = Md({
 
 pluginCollective.use_dirty_dozen(md, {
   frontMatter: {
-	  callback: function (fm, token, state) {
-	    //console.error('FRONTMATTER: ', { fm, token, state });
-	    state.env.frontMatter = fm;
-	  }
+    callback: function (fm, token, state) {
+        //console.error('FRONTMATTER: ', { fm, token, state });
+      state.env.frontMatter = fm;
+    }
   },
 
   tableOfContents: true,
@@ -65,19 +65,87 @@ pluginCollective.use_dirty_dozen(md, {
 
 
 
+console.error('desc!!!!')
 
 
-xdescribe('markdown-it-dirty-dozen', function () {
+
+function N(n) {
+  const rv = '00000' + n;
+  return rv.slice(rv.length - 4);
+}
+
+// Most of the rest of this is inlined from generate(), but modified
+// so we can pass in an `env` object
+function generate(fixturePath, md, env, dump_json) {
+  testgen.load(fixturePath, {}, function (data) {
+    data.meta = data.meta || {};
+
+    const desc = '' + (data.meta.desc || path.relative(fixturePath, data.file));
+    console.error('desc:', {desc, fixturePath});
+
+    (data.meta.skip ? describe.skip : describe)(desc, function () {
+      data.fixtures.forEach(function (fixture, idx) {
+        //if ((fixture.first.range[0] - 1) !== 3) return;
+
+        it(fixture.header + ' [line #' + (fixture.first.range[0] - 1) + ']', function () {
+          const test_env = Object.assign({}, env || {});
+          const rv = md.render(fixture.first.text, test_env);
+
+          // make this a decent html file, if possible.
+          const html_rv = `<html>
+          <head>
+          ${ data.meta.css || '' }
+          </head>
+          <body>
+          ${rv}
+          `;
+
+          const diagnostic_filename_base = fixturePath.replace('fixtures', 'results').replace('.txt', '-LINE' + N(fixture.first.range[0] - 1));
+
+          if (!fs.existsSync(path.dirname(diagnostic_filename_base))) {
+            fs.mkdirSync(path.dirname(diagnostic_filename_base));
+          }
+
+          fs.writeFileSync(diagnostic_filename_base + '.istwert.html', html_rv, 'utf8');
+          delete test_env.state_block.env;
+          if (dump_json) {
+            fs.writeFileSync(diagnostic_filename_base + '.dump.json', JSON.stringify(test_env, null, 2), 'utf8');
+          }
+          const sollwert_filepath = diagnostic_filename_base + '.sollwert.html';
+          if (!fs.existsSync(sollwert_filepath)) {
+            fs.writeFileSync(sollwert_filepath, html_rv, 'utf8');
+          }
+
+          let istwert = html_rv.trim();
+          let sollwert = fs.readFileSync(sollwert_filepath, 'utf8').trim();
+
+          // add variant character after "↩", so we don't have to worry about
+          // invisible characters in tests
+          sollwert = sollwert.replace(/\u21a9(?!\ufe0e)?/g, '\u21a9\ufe0e');
+          istwert = istwert.replace(/\u21a9(?!\ufe0e)?/g, '\u21a9\ufe0e');
+
+          assert.strictEqual(
+            istwert,
+            sollwert
+          );
+        });
+      });
+    });
+  });
+}
+
+
+
+
+
+
+describe('markdown-it-dirty-dozen', function () {
   const scanDir = path.join(__dirname, 'fixtures/').replace(/\\/g, '/');
 
   const files = glob.sync(scanDir + '**/*.txt');
 
   for (const file of files) {
-  	const title = file.replace(/^.*fixtures\//, '').replace(/\.txt$/, '').replace(/\//g, '_');
-    console.log('desc:', title);
-    generate(file, {
-      desc: title
-	  }, md);
+    generate(file, md);
   }
 });
 
@@ -95,26 +163,26 @@ describe('checking cooperation between plugins', function () {
   const sollWertDir = fs.realpathSync(path.join(scanDir, '..', 'sollwerte'));
   const istWertDir = fs.realpathSync(path.join(sollWertDir, '..', 'istwerte'));
   if (!fs.existsSync(istWertDir)) {
-  	fs.mkdirSync(istWertDir);
+    fs.mkdirSync(istWertDir);
   }
   if (!fs.existsSync(sollWertDir)) {
-  	fs.mkdirSync(sollWertDir);
+    fs.mkdirSync(sollWertDir);
   }
 
   const files = glob.sync(scanDir + '**/*.md');
 
   const mkTest = (file, md) => {
-  	const title = file.replace(/^.*\/([^\/]+?)\.md$/, '$1');
-  	let relSourcePath = file.slice(scanDir.length);
-  	if (relSourcePath.startsWith('/')) { relSourcePath = relSourcePath.slice(1); }
+    const title = file.replace(/^.*\/([^\/]+?)\.md$/, '$1');
+    let relSourcePath = file.slice(scanDir.length);
+    if (relSourcePath.startsWith('/')) { relSourcePath = relSourcePath.slice(1); }
     console.log('desc:', { title, relSourcePath, sollWertDir, istWertDir });
 
     it(title, () => {
-    	const src = fs.readFileSync(file, 'utf8');
-    	const env = {};
-    	const out = md.render(src, env);
-    	console.log({ outlen: out.length, out_path: path.join(istWertDir, relSourcePath), env });
-    	const title = env.title || '???';
+      const src = fs.readFileSync(file, 'utf8');
+      const env = {};
+      const out = md.render(src, env);
+      console.log({ outlen: out.length, out_path: path.join(istWertDir, relSourcePath), env });
+      const title = env.title || '???';
 
 
 
@@ -136,7 +204,7 @@ describe('checking cooperation between plugins', function () {
     max-width: 65rem;
 }    
 .red {
-	color: red;
+    color: red;
 }
 
 /* can't have two ::before on the same node (which happens in our tests): the last one wins then. So we use before and after... */
@@ -148,8 +216,8 @@ describe('checking cooperation between plugins', function () {
 }
 
 p[with="attrs"] {
-	border: blue solid 1px;
-	padding: 0.1em;
+    border: blue solid 1px;
+    padding: 0.1em;
 }
 
 
@@ -245,10 +313,10 @@ aside {
     ${ '' }
   </head>
   <body>
-  	<pre>
+    <pre>
     Title: ${ title }
-  	</pre>
-  	<pre>
+    </pre>
+    <pre>
     ${ env.frontMatter || '' }
     </pre>
 
@@ -266,16 +334,16 @@ aside {
 
 
 
-    	fs.writeFileSync(path.join(istWertDir, relSourcePath + '.html'), content, 'utf8');
+      fs.writeFileSync(path.join(istWertDir, relSourcePath + '.html'), content, 'utf8');
 
-    	let refFilePath = path.join(sollWertDir, relSourcePath + '.html');
-    	let refOut;
-    	if (fs.existsSync(refFilePath)) {
-    		refOut = fs.readFileSync(refFilePath, 'utf8');
+      let refFilePath = path.join(sollWertDir, relSourcePath + '.html');
+      let refOut;
+      if (fs.existsSync(refFilePath)) {
+        refOut = fs.readFileSync(refFilePath, 'utf8');
       } else {
-      	// auto-fill sollwerte:
-    		fs.writeFileSync(refFilePath, content, 'utf8');
-    		refOut = content;
+        // auto-fill sollwerte:
+        fs.writeFileSync(refFilePath, content, 'utf8');
+        refOut = content;
       }
 
 
@@ -284,25 +352,25 @@ aside {
       delete env.state_block.src;
       delete env.state_block.md;
       const out2 = JSON.stringify(env, null, 2);
-    	fs.writeFileSync(path.join(istWertDir, relSourcePath + '.json'), out2, 'utf8');
+      fs.writeFileSync(path.join(istWertDir, relSourcePath + '.json'), out2, 'utf8');
 
-    	refFilePath = path.join(sollWertDir, relSourcePath + '.json');
-    	let refOut2;
-    	if (fs.existsSync(refFilePath)) {
-    		refOut2 = fs.readFileSync(refFilePath, 'utf8');
+      refFilePath = path.join(sollWertDir, relSourcePath + '.json');
+      let refOut2;
+      if (fs.existsSync(refFilePath)) {
+        refOut2 = fs.readFileSync(refFilePath, 'utf8');
       } else {
-      	// auto-fill sollwerte:
-    		fs.writeFileSync(refFilePath, out2, 'utf8');
-    		refOut2 = out2;
+        // auto-fill sollwerte:
+        fs.writeFileSync(refFilePath, out2, 'utf8');
+        refOut2 = out2;
       }
 
-     	assert.strictEqual(cleanOutput(content), cleanOutput(refOut));
-     	assert.strictEqual(cleanOutput(out2), cleanOutput(refOut2));
+      assert.strictEqual(cleanOutput(content), cleanOutput(refOut));
+      assert.strictEqual(cleanOutput(out2), cleanOutput(refOut2));
     });
   };
 
   console.error('################ setting up cooperation tests', files);
   for (const file of files) {
-  	mkTest(file, md);
+    mkTest(file, md);
   }
 });

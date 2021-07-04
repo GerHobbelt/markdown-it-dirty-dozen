@@ -1,0 +1,657 @@
+------
+css: |
+    <style>
+    /* WARNING: @media queries don't work with var(...): https://bholmes.dev/blog/alternative-to-css-variable-media-queries/ */
+    :root {
+      --aside-min-width: 53rem;
+    }    
+
+    body {
+        margin-left: 20em;
+        max-width: 55em;
+
+        font-family: system-ui, sans-serif;
+    }
+
+    /* footnote reference styling in the text */
+    sup.footnote-ref > a {
+        color: #0066a5;
+        font-weight: bold;
+        text-decoration: none;
+        /* https://cssgradient.io/ */
+        background-color: rgb(255,128,0);
+        background: linear-gradient(188deg, rgb(255 183 111) 0%, rgb(255,230,152) 7%, rgb(255,255,202) 100%);
+        padding-bottom: 0.35em;
+    }
+    sup.footnote-ref > a:hover {
+        background: #0066a5;        /* override the gradient! */
+        color:  white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    sup.footnote-ref-combiner {
+        /* display: none; */
+        /* opacity: 0; */
+        margin-left: -0.2em;   /* compensate for left-side link's SUP having 0.3em padding */
+    }
+
+    span.footnote-ref-extra-text {
+        color: #d00000;
+        font-size: 66%;
+        font-weight: 300;
+    }
+
+    /* footnote styling in the footnote sections */
+    li.footnote-item {
+        list-style-type: none;
+        position:  relative;        /* used to position the BACKREF links */
+
+        border-top: 1px solid #adadad;
+        margin-left: 0;
+    }
+    span.footnote-caption {
+        position: absolute;
+        xfloat: left;
+        margin-left:  -2.2em;
+
+        margin-top: -1px;
+        border-top: 1px solid #adadad;
+
+        font-weight: bold;
+
+        /* use gradient to fake a bar that cannot be placed there with border style,
+           because we want the top border to continue uninterrupted along the entire width of float+LI.
+
+           [Edit:]Now this same technique is used to accentuate the caption a tad while the UL
+           has been pressed into service for rendering that desired 'bar' as we want it to span
+           the entire height of the footnote! */
+        background: linear-gradient(90deg, #f3f3f3 0%, #f3f3f3 1.75em, rgba(255,255,255,0) 1.75em, rgba(255,255,255,0) 100%);
+        width: 2.2em;
+        box-sizing: border-box;
+        display: block;
+        margin-right: 0;
+        padding-bottom: 0.3em;   /* make the footnote caption symbol look more centered while sticking to the baseline. */
+        padding-left: 0.1em;
+    }
+    span.footnote-caption > sup {
+        background-color: #f3f3f3a0
+    }
+
+    /* correct for Chrome jumpiness when we scale the page */
+    .footnote-content p:first-of-type {
+        margin-block-start: 0;
+    }
+
+    /* back-ref link at footnote:  small and positioned low and a little off so it's clearly not part of the content. */
+    a.footnote-backref {
+        color: #0066a5;
+        font-weight: bold;
+        text-decoration: none;
+        font-size:  65%;
+        vertical-align: bottom;
+        padding-left: 0.05em;
+        padding-right: 0.05em;
+
+        position: absolute;
+        /* right: 0.5em; */
+        bottom: -1.4em;        /* relative to LI */
+
+        xfloat: right;
+        display: inline-block;
+        background-color: #b3b3b329;
+    }
+
+    a.footnote-backref-R0 {
+        right: 0.1em; 
+    }
+    a.footnote-backref-R1 {
+        right: 1.3em; 
+    }
+    a.footnote-backref-R2 {
+        right: 2.5em; 
+    }
+    a.footnote-backref-R3 {
+        right: 3.7em; 
+    }
+    a.footnote-backref-R4 {
+        right: 4.9em; 
+    }
+
+    /* rendering sidenotes, section notes' sections and endnote sections: */
+    hr.footnotes-sep {
+        display:  none;
+    }
+    aside.footnotes {
+        padding-left: 0.5em;
+        border-left: solid 2em orange;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        border-top: solid 4px #ff9614;
+        border-bottom: solid 1px #f1b694;
+        margin-top: 0.5em;
+        margin-bottom: 2em;
+    }
+    aside.footnotes > h3 {
+        color: #ff9614;
+    }
+    aside.footnotes > ul.footnotes-list {
+        margin-top: 0;
+        /* margin-bottom: -1em; */  /* correct for P tag's margin-block-end: 1em */
+        margin-bottom: -0.2em;      /* compensates for dropped BACKREF links */
+
+        /* use gradient to fake a bar that cannot be placed there with border style,
+           because we want the footnote marker to stick out to the other side of this 'border'. */
+        background: linear-gradient(90deg, #f3f3f3 0%, #f3f3f3 1.75em, rgb(255,128,0) 1.75em, rgb(255,128,0) 2em, rgb(255,255,255) 2em, rgb(255,255,255) 100%);
+
+        /* make space for the footnote caption FLOAT: */
+        padding-left: 2.2em;
+    }
+
+    aside.footnotes-category-aside {
+        float: left;
+        clear: left;
+        /* position: absolute; */
+
+        /* move into the left edge of BODY: */
+        margin-left: -19.5em;
+        width: 19em;
+
+        /* make sure the sidenote takes the exact width and no surprises when we fiddle with the border styles! */
+        box-sizing: border-box;
+
+        /* move up; rough guestimate to land alongside the footnote reference itself. */
+        margin-top: -3em;
+        /* fix for the margin-top hack:  make sure multiple loating sidenotes don't overlap and have a bit of space between them (0.5em). */
+        margin-bottom: 3.5em;
+
+        padding-left: 0.5em;
+        border-right: solid 1em #34af39;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        border-top: solid 4px #3b8c27;
+        border-bottom: solid 1px #52a563;
+        border-left: solid 1px #3b8c27;
+
+        background: #ffffffa6;
+    }
+    aside.footnotes-category-aside > ul.footnotes-list {
+        margin-top: 0;
+        /* margin-bottom: -1em; */  /* correct for P tag's margin-block-end: 1em */
+        margin-bottom: -0.2em;      /* compensates for dropped BACKREF links */
+
+        /* use gradient to fake a bar that cannot be placed there with border style,
+           because we want the footnote marker to stick out to the other side of this 'border'. */
+        background: linear-gradient(90deg, #f3f3f3 0%, #f3f3f3 1.75em, #3b8c27 1.75em, #3b8c27 2em, rgb(255,255,255) 2em, rgb(255,255,255) 100%);
+
+        /* make space for the footnote caption FLOAT: */
+        padding-left: 2.2em;
+
+        font-size: 85%;
+    }
+
+    /* force a bit of breathing room in the floating sidenote between the ASIDE border and the P text. */
+    aside.footnotes-category-aside p {
+        margin-right: 0.3em;
+    }
+    aside.footnotes-category-aside > h3 {
+        margin: 0;
+        color: #3b8c27;
+
+        font-size: 85%;
+    }
+
+    /* ... and then the real horror begins:  correcting floats for NESTED notes:  */
+    @media (min-width: 53rem) {
+        aside.footnotes aside.footnotes-category-aside {
+            margin-left: -24em;
+        }
+        aside.footnotes li aside.footnotes-category-aside {
+            margin-left: -26.5em;
+        }
+        /* ... and FLOATING sidenotes inside LISTS */
+        li aside.footnotes-category-aside {
+            margin-left: -22em;
+        }
+        /* ... and the error cases that are simply too much work otherwise: */
+        #fnsection-13 {
+            margin-left: -24em;
+        }
+    }
+
+    /* more legible footnote symbols */
+    sup.footnote-ref, sup.footnote-caption {
+        font-family: serif;
+    }
+    sup.footnote-ref {
+        margin-right: 0.3em;
+        margin-left: 0.15em;
+    }
+    a.footnote-ref {
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    aside.footnotes-category-Error_Unused span.footnote-caption {
+        margin-left: -7.2em;
+        width:  7.2em;
+        padding-right:  0.5em;
+        background: none;
+    }
+    aside.footnotes-category-Error_Unused sup.footnote-caption {
+        background-color: #f3f3f35c;
+    }
+    aside.footnotes-category-Error_Unused ul.footnotes-list {
+        padding-left: 7.2em;
+        background: linear-gradient(90deg, #ffdede 0%, #f3f3f3 6.75em, red 6.75em, red 7em, rgb(255,255,255) 7em, rgb(255,255,255) 100%);
+    }
+
+    /* and move the ASIDE sidenotes IN-LINE when the screen isn't wide enough to easily facilitate them. */
+    @media (max-width: 53rem) {
+        aside.footnotes-category-aside {
+            float: none;
+            clear: none;
+
+            margin-left: auto;
+            width: auto;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+    </style>
+------
+
+
+And then here's a big example where we expect **multiple sections** filled with footnotes, at the spot where they have been defined!
+
+Meanhwile, **inline footnotes** should produce an ASIDE at the end of the active paragraph!
+
+.
+# Testing 1
+
+## Sub heading 2
+
+How to style this using classical CSS?
+
+Example:
+
+```css
+li.footnote-item {
+    list-style-type: none;
+    /* position:  relative; */
+}
+span.footnote-caption {
+    /* position: absolute; */
+    float:  left;
+    margin-left:  -1em;
+}
+```
+
+
+### Subsub heading 2.1
+
+Some even nicer text
+
+
+### Subsub heading 2.2
+
+Some even nicer text
+
+Here is an inline footnote reference^[:the `(B)` way you might imagine, we got fruitcakes all around Santa Monica] for every one of us.
+
+Plus an aside^[>that `(A1)` should be plugged in right at the end of this paragraph!] for every one of us.
+
+Plus a 2nd aside^[>that `(A2)` should be plugged in right at the end of this paragraph!] for every one of us.
+Plus a 3rd aside^[>that `(A3)` should be plugged in right at the end of this paragraph!] for every one of us.
+
+Avec du blah blah surplus pour les experiments...
+
+## Sub heading 3
+
+Some even nicer text
+
+
+## Sub heading 4
+
+Some even nicer text
+
+
+# Testing 2
+
+## Footnotes Exemplified...
+
+Here is a footnote reference[^1], and another[^longnote].
+
+[^1]: Here `(C)` is the footnote.
+
+[^longnote]: Here's `(D)` one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won't be part of the note, because it
+isn't indented.
+
+# Testing 3
+
+## Footnotes Galore
+
+Here is a footnote reference[^2], and another[^3].
+
+[^2]:> Here `(E)` is the 2nd footnote.
+
+[^3]: Here `(F)` is the 3rd footnote.
+
+## Sub heading 3
+
+Some even nicer text with *nested* inline footnotes A^[`(G)` nested^[into `(H)` the deep^[that's `(I)` closer to a black hole^[getting `(J)` scientific, are we now?] of footnote **depth**^[one `(K)` wonders how many *fathom* this would be, then...] ravine.] end near a rabbit hole.] horrors abound. Chtulhu footnote style?] & Alice.
+
+### Footnotes Galore
+
+Here is a footnote reference[^x], and another[^y]. **Note that the footnotes all have a letter in braces, e.g. `(B)`, to denote their *expected* order in the final output. This is done to ease visual (manual) inspection and debugging while testing the (*insanely*) nested footnotes.**
+
+
+[^x]: Here `(L)` is the X footnote. With a footnote[^z] nested in itself^[it `(M)` can get complicated[^sure] if you are not careful!] and of itself. Yada.
+
+[^z]: that's `(N)` what *he*[^y] said.
+
+[^sure LBL]: Can `(O)` I interest you in bridge for sale? 
+
+    This one comes cheap, one careful owner. Satisfaction guaranteed!
+
+[^y]: Here `(P)` is the Y footnote. And a bit[^2] of cross[^3][^x][^z] fertilization[^sure][^x (with local label override!)]. We even have a cycle[^x]!
+
+
+
+
+
+
+
+
+
+# Een verhaal of opstel schrijven
+
+Als je iets wilt vertellen -- en een verhaal schrijven is ook "iets vertellen": het maakt niet uit of je het hoort of leest -- dan zijn er een paar dingen die helpen om het "een goed verhaal" te maken:
+
+- Een begin, (een midden) en een eind.
+- Enige samenhang: waar gaat het over? Wat wil je overdragen? Oftewel: hoe wil je dat de lezer / toehoorder het verhaal beleeft?
+- Enige structuur.
+- En enige variatie in de taal: "dynamiek" -- net als in muziek.
+
+
+En heel belangrijk: 
+
+- Voor *wie* is het verhaal bedoeld? (Je "doelgroep"; Engels: "target audience") Wat vinden ze leuk? Wat is hun "niveau"? -- beter gezegd: wat kun je voeren aan taal en wat wil je bereiken?[^reminisce1]
+
+
+[^reminisce1]: Terwijl je deze tekst leest, is deze tekst zelf ook onderworpen aan deze zelfde vragen:
+
+    - Heeft dit verhaal een begin, een midden en een eind?
+
+    - Is het verhaal goed te volgen? Komen de ideeën^[[Idee: ideeën / ideëen* / ideën*?](https://www.vlaanderen.be/taaladvies/idee-idee%C3%ABn-ide%C3%ABen-ide%C3%ABn)], gegevens en aanbevolen aanpak uit de tekst bij je binnen?
+
+    - Zit er enig verband in? Is het verhaal goed geörganiseerd? Volgen de onderdelen elkaar logisch op?
+
+    - Waar is de *dynamiek*? Ìs er enige *dynamiek* in het verhaal te vinden? En zo ja, hoe komt die over? Helpt die om de tekst te *verteren* of blijft 't steken bij *herkauwen*?
+
+    - En de belangrijkste van het rijtje: voor *wie* is dit verhaal geschreven[^target]? En wat lijkt de doelstelling van de schrijver? Is er, naar de doelgroep -- of doelgroep-**en**! -- toe misschien nog sprake van een *dubbele agenda*, een dubbel doel, een "*undercurrent*^[Engels voor "onderstroom". Wat er "*tussen de regels door gezegd of gedaan wordt.*" De "*verborgen berichtenstroom*," zeg maar.]? Hoe goed pas ik in die doelgroep[^target]?
+
+
+[^target]: 🤯 Wat de doelgroep is, dat weten we wellicht al. 🤨 Toch?
+
+    Maar wat de schrijver daar mee *doet*, met die doelgroep, dat is even andere koek.
+
+    In ieder geval lijkt het me wel duidelijk dat de schrijver zich helemaal geen zorgen maakt over de *woordenschat* van de lezer. En die is niet *klein*, integendeel! 
+
+    Of is het zo, *wetende wie de doelgroep zijn*, dat de schrijver wellicht een *extra* *leerdoel* heeft gesteld? Of misschien zelfs wel twéé extra leerdoelen, want de schrijver is niet zo van "lekker eenvoudig", hm? 😜 
+
+    Inderdaad, de schrijver heeft als extra *leerdoelen* gekozen voor: 
+
+    1. **nieuwe woorden leren**? "woordenschat verruimen" zoals dat dan heet. Dat zien we aan de uitleg en verwijzingen naar het woordenboek in de notities die door de tekst verspreid staan.
+
+      Daarbij valt op dat de schrijver vaak *spreektaal* gebruikt en "er een handje van heeft" om naast nieuwe woorden ook "*idioom*" te gebruiken: *idioom* is in *taalvaardigheid* een volgende stap: het gebruiken van *zinsneden* (kleine stukjes tekst), die *samen* een betekenis hebben die niet hetzelfde is als de letterlijke betekenis van elk woord uit die *zinsnede*.
+
+      *Uitdrukkingen & gezegden* ken je al. *Idioom* is al datgeen in taal wat een uitdrukking of een gezegde vormt, maar *idioom* is veel meer dan dat! Eigenlijk is *idioom* al datgeen wat in taal niet letterlijk genomen moet worden. 
+
+      "*Er een handje van hebben*" is een voorbeeld van *idioom*^[Nederlands: idoom = Engels: *idiom*]. 
+
+      "Denkraam" is ook zoiets en onderdeel van *idioom*: in deze tekst is het een "hommage" (indirecte verwijzing met respect) aan een andere schrijver. 
+      Uit de context van "*\[...] kan helpen om het denkraam te reinigen*" is direct de betekenis van deze *zinsnede* duidelijk, ondanks dat dit een woordcombinatie is, die nog niet eerder zo is ingezet in Nederland (bij mijn weten), ondanks dat de oorspronkelijke auteur, die het woord in de Nederlandse taal heeft geïntroduceerd met "brein/intelligentie" als betekenis, het woord veelvuldig in zijn verhalen heeft gebruikt. 
+
+      ::: tip
+
+      Hier zie je dus een voorbeeld van *taalvariatie en -vernieuwing*: we zijn dan al volledig bezig met de *dynamiek* van de taal in de tekst: we *spelen* met de taal. En dàt is een niet-zo-subtiel doelgroep filter: denk maar eens na over hoeveel taalvaardigheid je moet hebben (hoe goed je taal moet zijn) om dit te kunnen volgen. Hoe goed je taal moet zijn om hier *plezier* uit te halen in plaats van bonkende slapen en zware oogleden.
+
+      Dit soort werk vind je niet alleen bij literatuur maar komt ook voor bij rappers en andere artiesten die hun taal niet alleen als *middel* maar ook als *filter* of *wapen* inzetten, om gericht een doelgroep aan te spreken -- en vaak tegelijkertijd precies dezelfde tekst onbegrijpelijk maken voor mensen die buiten die doelgroep vallen. Taalvernieuwing (of is het taal-*verandering*?) is van alle tijden.
+
+      :::
+
+      In dit geval verwijs ik graag naar [het Afrikaanse Wikipedia artikel over *idioom*](https://af.wikipedia.org/wiki/Idioom): veel leuker dan de Nederlandsee versie, die gortdroog haar verhaal doet voor de *gestudeerden* onder ons.
+
+    2. leren lezen en *begrijpen* van teksten **zover als mogelijk**: de belangrijke vaardigheid om teksten te kunnen lezen, waar je (nog) niet alle kennis vboor aan boord hebt, maar wel in staat bent om een beeld, een idee, over te krijgen.
+
+      Dit is namelijk dezelfde soort brein-vaardigheid die je ontwikkelt door bijvoorbeeld met diverse computersystemen te werken: je leert gaandeweg makkelijk de grote lijnen in een verhaal of beeldstructuur (computer: *user interface*) te ontdekken en dan zelf deze te gebruiken: de plaatjes (*icoontjes*) zijn elke keer weer anders, waar ze staan en hoe je er bij komt (*interface layout*) is elke keer weer anders, maar na een aantal systemen ervaren te hebben ontwikkel je een *gevoel* (*intuïtie*) wat er beschikbaar zou moeten zijn, waar je dat wellicht kunt vinden en hoe je er mee kunt werken.
+
+      Met tekst is het net zo: geen *pixels* dit keer maar *taal*: je hoeft niet alles direct op te pikken om de tekst toch voor je eigen doel te kunnen gebruiken: ontdekken wat de nuttige informatie voor jou is, die jou kan helpen om zelf nog betere verhalen te gaan schrijven.
+
+
+
+
+
+## Begin & Einde (of, ehhh, ...?)
+
+Tsja. Moeilijk. 😰 Wat wilde ik ook alweer precies vertellen? Ik dacht nog: een mooi einde er aan breien is lastig en nu zit ik al stuk op "beginnen". 😰
+
+Heb je al een begin, schrijf het op. Type het in.
+
+::: tip
+
+TIP! Type het in, fouten verbeteren doen we later. Uit je hoofd, in de computer ermee!
+
+:::
+
+Daarom eerst, voordat we het over die onderwerpen hierboven gaan hebben, eerst een belangrijk ding voor een schrijver: het *proces*.
+
+## Schrijven is een *proces*
+
+Het is uiterst zelden dat je gaat zitten, je pen of computer pakt en gaat schrijven of typen, af en toe misschien even een slok drinken neemt, doorgaat en dóór gaat en dan: 🍾 Tah💪Dah!! 🎉 Klaarrrr!!! ✨🎈
+
+Prachtig als het een keer gebeurt. 🦄Magisch!🦄 De rest van de tijd is het:
+
+- 🤔 Beetje Denken
+- 👩‍🔧 Beginnen = Doen
+- 🏗 Structuur opzetten
+- ✍ Kladje maken
+- 👷 Bijwerken
+
+En dat alles niet noodzakelijkerwijs in die volgorde maar zeker wel meerdere rondjes, tot je tevreden bent met het resultaat.
+
+### Beetje Denken
+
+Niet te veel en vooral niet te lang doen. 
+
+Lijkt misschien heel verstandig, dat "denken voordat je doet", maar uit alle mogelijke hoeken en gaten en een hele lange historie van verhalen en hun makers en vertellers komt één ding duidelijk naar voren: 
+
+### **Beginnen!**
+
+Het maakt niet uit hoe het er uit ziet of wat je er nú van denkt, maar schrijf het op. 
+
+Dus: begin met schrijven en ga er mee door tot je "leeg" bent. 
+
+Wees niet bang om het later nòg een keer op te schrijven: zelfs de beroemdste en beste schrijvers, die je nonchalant vertellen dat het allemaal vanzelf ging bij hen, houden angstvallig geheim dat ze een torenhoge stapel zware dozen, propvol papieren volgekriebeld met hun handschrift naar het Oud Papier brengen. Elke maand weer. 
+
+En als je denkt: "dat kan slimmer!" dan hebben we nieuws voor je: *ja, dat kan slimmer!* Daarom typen we het tegenwoordig in de computer of spreken het in (met hulp van spraakherkenning) en slepen we ons geen breuk meer aan oud papier maar hameren we heden ten dage des te vaker op de {Delete} en {Backspace} toets. 
+
+👩‍🔬 Slimme, nieuwsgierige onderzoekers zijn er ook al lange tijd mee bezig. En wat hebben zij ontdekt? 
+
+Dat het uiteindelijk het snelste gaat en beste werk oplevert als je "*itereert*". Da's chique taal voor "rondjes draaien". *Herhalen* dus. Rondjes draaien door *Het Proces* wat ik eerder heb benoemd: *Beetje Denken* en dan *Doen*, *Doen* en nog een stukje *Doen*. 😁 En dan weer *Beetje Denken*, *en zo voort*. 
+
+Want wat hebben die slimme onderzoekers namelijk ontdekt: 
+
+- Schrijven (en een hele hoop andere actiteiten) zijn zo complex dat ze niet in één keer, helemaal tot in het díepste detail, lekker toegankelijk in ons hoofd passen. 't *Kan*, maar 't blijft *proppen*. 
+
+- Èn dat dè manier om daarmee om te gaan is door het in *fasen* te doen.
+
+"Fasen" klinkt wellicht als heel gestructureerd werken van begin tot bitter eind, maar dat is nu juist níet de goede manier bij een creatief proces: daarom praten velen liever over "*itereren als proces*": gewoon èrgens mee beginnen, dat een tijdje volhouden tot je niet verder komt, dan een ander onderdeel oppakken en mee aan de slag gaan, tot je weer tegen barrières aan begint te lopen, en zo gaan we rond & rond, zodat het geheel langzaam tot leven komt en er beter uit gaat zien.
+
+Natuurlijk zijn er mensen die liever eerst een structuurtje opzetten om daarna pas stukken tekst bij die onderdelen te schrijven, maar er zijn ook genoeg die baat hebben bij eerst een paar stukken tekst schrijven en pas daarna meer aandacht te geven aan organiseren van hun epistel.
+
+Vroeger, voordat de computer overal gemeengoed was, had de tweede groep het moeilijker, want copy&paste doe je héél snel in een *editor* op de computer, terwijl dat knip&plak toch best wel een gedoe geeft als je alleen pen en papier (en schaar en lijm) bij de hand hebt. Zo komt het dat nu nog op school heel sterk de nadruk ligt op de eerste variant, waarbij je met structuur opzetten begint. Dat is misschien nog handig als je heel formulaïsche stukken (bijvoorbeeld een rapport over onderzoeksresultaten of een meetverslag in een laboratorium) moet opstellen maar voor creatief schrijven is het nogal beperkend als het niet je manier van denken is. Laten we wel zijn: als je een creatief idee hebt, dan begint dat toch met een *idee*, dus een stukje verhaal, en niet met een technische *structuur*?
+
+Het punt van dit betoog is: alles is even belangrijk en je kunt jezelf, dankzij moderne techniek zoals *editors* (computer-software), permiteren om te ontdekken waar je voorkeur ligt qua *start* van het proces. Uiteindelijk moet je toch alle punten aandacht geven en dat *itereren* betekent dat je ze ook allemaal meerdere keren zult oppakken.
+
+#### Oeps!?
+
+Fijn allemaal, maar wat nu met die Diepe Denkers en ander volk dat dogmatisch^[niet voor rede vatbaar, vasthoudend aan één enkel vast stramien alsof het een onwrikbare natuurwet betreft.
+(Zie ook [het woordenboek](https://www.ensie.nl/van-dale/dogmatisch).)] met Structureren begint bij elke nieuwe klus? Waarom blijven ze dat zo doen als het minder zou werken?! 
+
+- Mensen zijn niet altijd even logisch en rationeel, ongeacht wat ze zelf beweren: bij velen werkt het zo dat als ze eenmaal een bepaald patroon hebben ontdekt of aangeleerd -- of het nu goed of slecht is maakt niet uit, zolang ze maar *ooit* het idee kregen dat dít hen ging helpen -- dan blijven ze er soms zelfs een leven lang heilig in geloven en sterk aan verknocht. *Psychologie*^[mensen proberen te begrijpen. Hoe denken ze. Waarom doen ze wat ze doen. Waarom doen ze zo raar? Alleen^[*psychologie*], of met z'n allen^[*sociale psychologie*].]. Héél leerzaam.
+
+- Daarbij lopen die Diepe Denkers, die graag alles eerst uitdenken -- *uitpuzzelen* -- vóórdat ze er mee aan de slag gaan, vaak loeihard vast in hun eigen Denken. Zó hard zelfs dat er dan geen letter op papier komt, ook niet als de tijd dringt en je het al in had moeten leveren. Met Gierende Paniek in de bol tot gevolg. Daar is zelfs een *naam* voor: [Writers' Block](https://owl.purdue.edu/owl/general_writing/the_writing_process/writers_block/index.html). 
+
+En wij dan? Is "itereren" dan ook niet één vast systeem? Lopen wij dan niet óók de kans op *vastlopen*? 
+
+Tsja, in principe niet, *nee* dus, maar het menselijk brein is nogal halsstarrig en wij maken daardoor kans op "rondgieren": dat gebeurt als je een onderdeeltje oppakt, er even geen gat in ziet en dan (*logisch*!) dus maar meteen doorschiet naar het volgende onderdeel^[want dat was toch de bedoeling van *itereren*?!]. Waar je tegen die tijd natuurlijk ook niet uit komt, want je hoofd is al op hol, dus blijf je door je proces heen draven zonder ook maar één stap vooruit te komen. 
+
+Wat kun je dàn nog doen? 
+
+Tsja, lastig. Maar de *consensus* onder de geleerden is wel: **Even Totaal Wat Anders Doen**. 
+
+Daarom hebben we pauzes, eten we niet altijd heel precies om klokslag 8, 12 en 6 dezelfde drie maaltijden per dag, maar pakken we "tussendoor" een drankje of snacken we even wat als we ons tè leeg voelen. En schuift "het eten" wel eens voren, dan naar achteren. 
+
+Zulke momenten, waar je net hebt ontdekt dat je vast zat in een muur van eigen Denken of als een malle in je proces aan het rondjes draven was, zijn *ideaal* om de boel even de boel te laten en even naar de sportschool te gaan of een wandeling te maken zonder gedachten. *Even Een Frisse Neus Halen.*  Verkwist je dan je tijd? Nee, want je productiviteit was al nul en die kan door de onderbreking alleen maar verbeteren daarna. 
+
+Moet je d'r natuurlijk geen gewoonte van maken om bij het eerste beste obstakeltje de deur uit te stuiteren of andere dingen te gaan doen, want het enige wat je dan bereikt is dat je riant voer voor psychologen wordt maar voor jezelf niet veel nuttigs meer kunt doen: de *crux* is om te leren ontdekken wanneer je werkelijk *vast* komt te zitten en een onderbreking van je activiteit *werkelijk* kan helpen om het denkraam te reinigen.
+
+
+
+
+
+# Bunch of Citations 
+
+## Normative References
+
+Here's one[^CSS-SYNTAX-3]. But the others will be listed in the UNUSED section at the end! 
+
+Incidentally, it doesn't matter if you reference it like this: *regular[^CSS-SYNTAX-3]:* 
+
+    [^CSS-SYNTAX-3]
+
+or with "*label override marker `@`*" as in *ref[^@CSS-SYNTAX-3]*: 
+
+    [^@CSS-SYNTAX-3]
+
+as the override flag has already been set below at the footnote *definition*: 
+
+    [^@CSS-SYNTAX-3]:: yada yada...
+
+*One* spot with that override flag suffices!
+
+
+
+[^@CSS-CASCADE-5]:: Elika Etemad; Miriam Suzanne; Tab Atkins Jr.. CSS Cascading and Inheritance Level 5. 8 June 2021. WD. URL: https://www.w3.org/TR/css-cascade-5/
+
+[^@CSS-CONDITIONAL-3]:: David Baron; Elika Etemad; Chris Lilley. CSS Conditional Rules Module Level 3. 8 December 2020. CR. URL: https://www.w3.org/TR/css-conditional-3/
+
+[^@CSS-SYNTAX-3]:: Tab Atkins Jr.; Simon Sapin. CSS Syntax Module Level 3. 16 July 2019. CR. URL: https://www.w3.org/TR/css-syntax-3/
+
+[^@CSS-VALUES-3]:: Tab Atkins Jr.; Elika Etemad. CSS Values and Units Module Level 3. 6 June 2019. CR. URL: https://www.w3.org/TR/css-values-3/
+
+[^@CSS-VALUES-4]:: Tab Atkins Jr.; Elika Etemad. CSS Values and Units Module Level 4. 11 November 2020. WD. URL: https://www.w3.org/TR/css-values-4/
+
+[^@CSS-VARIABLES-1]:: Tab Atkins Jr.. CSS Custom Properties for Cascading Variables Module Level 1. 3 December 2015. CR. URL: https://www.w3.org/TR/css-variables-1/
+
+[^@DOM]:: Anne van Kesteren. DOM Standard. Living Standard. URL: https://dom.spec.whatwg.org/
+
+[^@RFC2119]:: S. Bradner. Key words for use in RFCs to Indicate Requirement Levels. March 1997. Best Current Practice. URL: https://tools.ietf.org/html/rfc2119
+
+
+
+
+
+
+
+# Fer yer scolling and jumping services: some trailblazing ipsum!
+
+Receive fiat corporate investment financial health public corporate bonds municipal bear market Moody's return risk market index. Lucrative credit upswing corporate bonds exchange passively federal potential tax consulting municipal bonds. Market exposure rates municipal bonds value fall tax index funds established fiat return.
+
+Index funds notes holder quarterly. Exchange municipal money established funds value notes capital quarterly IRA bear term lucrative. Interest funds credit debt shares established corporate bull.
+
+Corporation consulting funds exchange growth junk bonds. Passively Standard & Poor's credit quality growth funds private. Nikkei comodity federal securities credit quality performance bull Standard & Poor's. Fitch rollover notes potential mutual funds government expenses risk.
+
+Corporate district upswing holder rates NASDAQ lucrative financial health exchange traded funds prices fluctuate taxpayer substantially income. Improve mutual funds private NYSE receive expenses junk bonds established credit fiat NASDAQ maturities notes. Market index prices exchange traded funds junk bonds credit quality substantially capitalization appeal money dividends mutual funds performance inverse. Market receive funds rollover index yield exchange traded funds interest rate municipal growth mutual funds. Investment comodity funds dividends downturn corporate issuer money.
+
+NYSE index funds benchmark called interest volatile default passively financial health. Bull quarterly called dividends managed mutual funds treasury risk district prices market index.
+
+Maturities capital Fitch management benchmark inverse. Issuer finance rise industry capitalization interest rate NASDAQ federal managed Dow Jones lucrative value money. Securities management investment grade bonds. Securities debt shares downturn. Exchange bear management established shares investment funds downturn hedge fund. Funds Standard & Poor's interest rate bear established downturn credit shares improve fall appeal Dow Jones index. Interest rate money municipal bonds bondholders Moody's debt managed economy quarterly credit.
+
+Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+
+Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+
+Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+
+Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.
+
+Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
+
+Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.
+
+Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.
+
+Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.
+
+Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing. Holistically pontificate installed base portals after maintainable products.
+
+Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.
+
+Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services. Seamlessly empower fully researched growth strategies and interoperable internal or "organic" sources.
+
+Credibly innovate granular internal or "organic" sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas with optimal networks.
+
+Interactively procrastinate high-payoff content without backward-compatible data. Quickly cultivate optimal processes and tactical architectures. Completely iterate covalent strategic theme areas via accurate e-markets.
+
+Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.
+
+Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies without market-driven best practices.
+
+Distinctively exploit optimal alignments for intuitive bandwidth. Quickly coordinate e-business applications through revolutionary catalysts for change. Seamlessly underwhelm optimal testing procedures whereas bricks-and-clicks processes.
+
+Synergistically evolve 2.0 technologies rather than just in time initiatives. Quickly deploy strategic networks with compelling e-business. Credibly pontificate highly efficient manufactured products and enabled data.
+
+Dynamically target high-payoff intellectual capital for customized technologies. Objectively integrate emerging core competencies before process-centric communities. Dramatically evisculate holistic innovation rather than client-centric data.
+
+Progressively maintain extensive infomediaries via extensible niches. Dramatically disseminate standardized metrics after resource-leveling processes. Objectively pursue diverse catalysts for change for interoperable meta-services.
+
+Proactively fabricate one-to-one materials via effective e-business. Completely synergize scalable e-commerce rather than high standards in e-services. Assertively iterate resource maximizing products after leading-edge intellectual capital.
+
+Distinctively re-engineer revolutionary meta-services and premium architectures. Intrinsically incubate intuitive opportunities and real-time potentialities. Appropriately communicate one-to-one technology after plug-and-play networks.
+
+Quickly aggregate B2B users and worldwide potentialities. Progressively plagiarize resource-leveling e-commerce through resource-leveling core competencies. Dramatically mesh low-risk high-yield alignments before transparent e-tailers.
+
+Appropriately empower dynamic leadership skills after business portals. Globally myocardinate interactive supply chains with distinctive quality vectors. Globally revolutionize global sources through interoperable services.
+
+Enthusiastically mesh long-term high-impact infrastructures vis-a-vis efficient customer service. Professionally fashion wireless leadership rather than prospective experiences. Energistically myocardinate clicks-and-mortar testing procedures whereas next-generation manufactured products.
+
+Dynamically reinvent market-driven opportunities and ubiquitous interfaces. Energistically fabricate an expanded array of niche markets through robust products. Appropriately implement visionary e-services vis-a-vis strategic web-readiness.
+
+Compellingly embrace empowered e-business after user friendly intellectual capital. Interactively actualize front-end processes with effective convergence. Synergistically deliver performance based methods of empowerment whereas distributed expertise.
+
+Efficiently enable enabled sources and cost effective products. Completely synthesize principle-centered information after ethical communities. Efficiently innovate open-source infrastructures via inexpensive materials.
+
+Objectively integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets.
+
+Uniquely matrix economically sound value through cooperative technology. Competently parallel task fully researched data and enterprise process improvements. Collaboratively expedite quality manufactured products via client-focused results.
+
+Quickly communicate enabled technology and turnkey leadership skills. Uniquely enable accurate supply chains rather than frictionless technology. Globally network focused materials vis-a-vis cost effective manufactured products[^z].
+
+.
+xxx
+.
+

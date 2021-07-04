@@ -1,0 +1,67 @@
+Sidenotes could have arbitrary markup:
+
+.
+foo^[ *bar* ]
+.
+xxx
+.
+
+
+
+test inline in middle of paragraph:
+
+.
+foo^[ bar ]baz
+.
+xxx
+.
+
+
+
+test multiple paragraphs
+
+.
+foo^[ bar ]baz
+
+this is the second paragraph
+.
+xxx
+.
+
+
+
+Also, sidenotes can be nested:
+
+.
+foo^[the bar is open^[there's no COVID in this test] and the drinks are free]
+.
+xxx
+.
+
+
+And sidenotes can contain regular footnote references too, obviously:
+
+.
+foo^[the bar is open[^bar] and the drinks are free]
+
+[^bar]: there's no COVID in this test
+.
+xxx
+.
+
+
+You can also direct *any* footnote to become a sidenote, section note or endnote using the `>`, '=' and `:` flags respectively:
+
+.
+foo^[=the bar is open[^bar] and this has become a section note^[:while this inline note has been flagged[^buzz] as endnote too!]]
+
+[^bar]:: this has become an endnote
+
+[^buzz]:> this has become an aside^[>that's another name for a *sidenote*, as is this one -- with explicit (superfluous[^boss]?!) flag...]
+
+[^boss]:= Well, `^[>...]` may look superfluous at first glance, but we MAY change behaviour one day and have the `options.modeOverride` *only override non-explicitly flagged footnotes*.
+.
+xxx
+.
+
+
