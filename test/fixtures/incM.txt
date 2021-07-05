@@ -1,6 +1,6 @@
 Simple include
 .
-#include(a.md)
+#include(test/fixtures/a.md)
 
 *content*
 .
@@ -10,7 +10,7 @@ Simple include
 
 Without braces around the path:
 .
-#include a.md
+#include test/fixtures/a.md
 
 *content*
 .

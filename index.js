@@ -18,7 +18,6 @@ import furigana from '@gerhobbelt/markdown-it-furigana';
 import githubHeadings from '@gerhobbelt/markdown-it-github-headings';
 import hashtag from '@gerhobbelt/markdown-it-hashtag';
 import headerSections from '@gerhobbelt/markdown-it-header-sections';
-import headinganchor from '@gerhobbelt/markdown-it-headinganchor';
 //import * as highlighted from '@gerhobbelt/markdown-it-highlighted';
 //console.log({ highlighted });
 //import * as highlightjs from '@gerhobbelt/markdown-it-highlightjs';
@@ -186,7 +185,7 @@ function use_dirty_dozen(md, options) {
 
     usePlugin(githubHeadings, options.githubHeadings, defaultOptions.githubHeadings);
     usePlugin(anchor, options.anchor, defaultOptions.anchor);
-    usePlugin(headinganchor, options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
+    //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
 
     usePlugin(wikilinks, options.wikilinks, defaultOptions.wikilinks);
 
@@ -219,7 +218,6 @@ const pluginDef = {
   githubHeadings,
   hashtag,
   headerSections,
-  headinganchor,
   //highlighted,
   //highlightjs,
   implicitFigures,

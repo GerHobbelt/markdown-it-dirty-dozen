@@ -20,7 +20,6 @@ var furigana = require('@gerhobbelt/markdown-it-furigana');
 var githubHeadings = require('@gerhobbelt/markdown-it-github-headings');
 var hashtag = require('@gerhobbelt/markdown-it-hashtag');
 var headerSections = require('@gerhobbelt/markdown-it-header-sections');
-var headinganchor = require('@gerhobbelt/markdown-it-headinganchor');
 var implicitFigures = require('@gerhobbelt/markdown-it-implicit-figures');
 var include = require('@gerhobbelt/markdown-it-include');
 var ins = require('@gerhobbelt/markdown-it-ins');
@@ -66,7 +65,6 @@ var furigana__default = /*#__PURE__*/_interopDefaultLegacy(furigana);
 var githubHeadings__default = /*#__PURE__*/_interopDefaultLegacy(githubHeadings);
 var hashtag__default = /*#__PURE__*/_interopDefaultLegacy(hashtag);
 var headerSections__default = /*#__PURE__*/_interopDefaultLegacy(headerSections);
-var headinganchor__default = /*#__PURE__*/_interopDefaultLegacy(headinganchor);
 var implicitFigures__default = /*#__PURE__*/_interopDefaultLegacy(implicitFigures);
 var include__default = /*#__PURE__*/_interopDefaultLegacy(include);
 var ins__default = /*#__PURE__*/_interopDefaultLegacy(ins);
@@ -214,8 +212,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(tocAndAnchor__default['default'], options.tocAndAnchor, defaultOptions.tocAndAnchor);
     usePlugin(tocDoneRight__default['default'], options.tocDoneRight, defaultOptions.tocDoneRight);
     usePlugin(githubHeadings__default['default'], options.githubHeadings, defaultOptions.githubHeadings);
-    usePlugin(anchor__default['default'], options.anchor, defaultOptions.anchor);
-    usePlugin(headinganchor__default['default'], options.headinganchor, defaultOptions.headinganchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
+    usePlugin(anchor__default['default'], options.anchor, defaultOptions.anchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
 
     usePlugin(wikilinks__default['default'], options.wikilinks, defaultOptions.wikilinks);
     usePlugin(regexp__default['default'], options.regexp, defaultOptions.regexp);
@@ -245,7 +242,6 @@ const pluginDef = {
   githubHeadings: githubHeadings__default['default'],
   hashtag: hashtag__default['default'],
   headerSections: headerSections__default['default'],
-  headinganchor: headinganchor__default['default'],
   //highlighted,
   //highlightjs,
   implicitFigures: implicitFigures__default['default'],

@@ -65,7 +65,7 @@ pluginCollective.use_dirty_dozen(md, {
 
 
 
-console.error('desc!!!!')
+console.error('desc!!!!');
 
 
 
@@ -81,7 +81,7 @@ function generate(fixturePath, md, env, dump_json) {
     data.meta = data.meta || {};
 
     const desc = '' + (data.meta.desc || path.relative(fixturePath, data.file));
-    console.error('desc:', {desc, fixturePath});
+    console.error('desc:', { desc, fixturePath });
 
     (data.meta.skip ? describe.skip : describe)(desc, function () {
       data.fixtures.forEach(function (fixture, idx) {
@@ -157,17 +157,24 @@ function cleanOutput(src) {
 }
 
 
+function mkdirp(p) {
+  const rv = p;
+  const plist = [];
+  while (!fs.existsSync(p)) {
+    plist.unshift(p);
+    p = path.dirname(p);
+  }
+  for (const d of plist) {
+    fs.mkdirSync(d);
+  }
+  return rv;
+}
+
 describe('checking cooperation between plugins', function () {
   const scanDir = path.join(__dirname, 'fixture-mixes/sources').replace(/\\/g, '/');
 
-  const sollWertDir = fs.realpathSync(path.join(scanDir, '..', 'sollwerte'));
-  const istWertDir = fs.realpathSync(path.join(sollWertDir, '..', 'istwerte'));
-  if (!fs.existsSync(istWertDir)) {
-    fs.mkdirSync(istWertDir);
-  }
-  if (!fs.existsSync(sollWertDir)) {
-    fs.mkdirSync(sollWertDir);
-  }
+  const sollWertDir = fs.realpathSync(mkdirp(path.normalize(path.join(scanDir, '..', '..', 'output', 'sollwerte'))));
+  const istWertDir = fs.realpathSync(mkdirp(path.normalize(path.join(sollWertDir, '..', '..', 'output', 'istwerte'))));
 
   const files = glob.sync(scanDir + '**/*.md');
 
