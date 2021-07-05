@@ -1,4 +1,4 @@
-/*! markdown-it-dirty-dozen 1.0.1-7 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
+/*! markdown-it-dirty-dozen 1.0.1-8 https://github.com//GerHobbelt/markdown-it-dirty-dozen @license MIT */
 
 'use strict';
 
