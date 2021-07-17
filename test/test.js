@@ -59,8 +59,12 @@ pluginCollective.use_dirty_dozen(md, {
 
   githubHeadings: true,
   anchor: true,
-  headinganchor: true
+  headinganchor: true,
 
+  codeSnippet: {
+    root: __dirname,
+    throwOnError: true
+  }
 });
 
 

@@ -8,6 +8,7 @@ var anchor = require('@gerhobbelt/markdown-it-anchor');
 var attribution = require('@gerhobbelt/markdown-it-attribution');
 var attrs = require('@gerhobbelt/markdown-it-attrs');
 var checkbox = require('@gerhobbelt/markdown-it-checkbox');
+var codeSnippet = require('@gerhobbelt/markdown-it-code-snippet-enhanced');
 var container = require('@gerhobbelt/markdown-it-container');
 var criticMarkup = require('@gerhobbelt/markdown-it-criticmarkup');
 var deflist = require('@gerhobbelt/markdown-it-deflist');
@@ -53,6 +54,7 @@ var anchor__default = /*#__PURE__*/_interopDefaultLegacy(anchor);
 var attribution__default = /*#__PURE__*/_interopDefaultLegacy(attribution);
 var attrs__default = /*#__PURE__*/_interopDefaultLegacy(attrs);
 var checkbox__default = /*#__PURE__*/_interopDefaultLegacy(checkbox);
+var codeSnippet__default = /*#__PURE__*/_interopDefaultLegacy(codeSnippet);
 var container__default = /*#__PURE__*/_interopDefaultLegacy(container);
 var criticMarkup__default = /*#__PURE__*/_interopDefaultLegacy(criticMarkup);
 var deflist__default = /*#__PURE__*/_interopDefaultLegacy(deflist);
@@ -121,6 +123,7 @@ const defaultOptions = {
   },
   attribution: true,
   checkbox: true,
+  codeSnippet: true,
   emoji: true,
   criticMarkup: true,
   modifyToken: true,
@@ -177,6 +180,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(frontMatter__default['default'], options.frontMatter, defaultOptions.frontMatter);
     usePlugin(sanitizer__default['default'], options.sanitizer, defaultOptions.sanitizer);
     usePlugin(checkbox__default['default'], options.checkbox, defaultOptions.checkbox);
+    usePlugin(codeSnippet__default['default'], options.codeSnippet, defaultOptions.codeSnippet);
     usePlugin(furigana__default['default'], options.furigana, defaultOptions.furigana);
     usePlugin(abbr__default['default'], options.abbr, defaultOptions.abbr);
     usePlugin(attribution__default['default'], options.attribution, defaultOptions.attribution);
@@ -230,6 +234,7 @@ const pluginDef = {
   attribution: attribution__default['default'],
   attrs: attrs__default['default'],
   checkbox: checkbox__default['default'],
+  codeSnippet: codeSnippet__default['default'],
   container: container__default['default'],
   criticMarkup: criticMarkup__default['default'],
   deflist: deflist__default['default'],

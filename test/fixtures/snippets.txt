@@ -1,0 +1,217 @@
+
+You can now import code snippets into your markdown files with the following syntax:
+
+.
+@[code](@/docs/code.js)
+.
+<pre><code class="language-js">export default {
+  mounted() {
+    alert('yay!');
+  }
+};
+</code></pre>
+.
+
+The `@` in the path spec represents plugin' `options.root` path. Without it, the path is used verbatim:
+
+.
+@[code](test/docs/code.js)
+.
+<pre><code class="language-js">export default {
+  mounted() {
+    alert('yay!');
+  }
+};
+</code></pre>
+.
+
+
+
+## Options
+
+### Language
+
+You can specify any language for syntax highlighting as follows:
+
+.
+@[code lang=ruby](@/docs/code.rb)
+.
+<pre><code class="language-ruby">require 'lib'
+require 'other'
+
+def hello
+  puts 'hello'
+  puts 'vue'
+end
+
+def goodebye
+  puts 'bye...'
+end</code></pre>
+.
+
+
+
+### Transclusion
+
+You can transclude a single or multiple parts of a file using `transclude`, `transcludeWith`, or `transcludeTag`.
+
+#### transcludeWith
+
+Use `transcludeWith` for transcluding *one or more* parts of a file, specify a unique pattern.
+
+Example 2 (Illustrating multiple transclusions in the same file)
+
+.
+@[code transcludeWith=|_|](@/docs/code_compound.rb)
+.
+<pre><code class="language-rb">def hello
+  puts 'hello'
+  puts 'vue'
+end
+def goodebye
+  puts 'bye...'
+end
+</code></pre>
+.
+
+
+
+#### transcludeAuto
+
+This matches any comment which carries the given marker:
+
+.
+@[code transcludeAuto=|_|](@/docs/code_compound.rb)
+.
+<pre><code class="language-rb">def hello
+  puts 'hello'
+  puts 'vue'
+end
+def goodebye
+  puts 'bye...'
+end
+def bonus_track
+  puts 'bonus...'
+end
+</code></pre>
+.
+
+
+
+#### transcludeTag
+
+Useful when working `Vue` single file components.
+
+.
+@[code transcludeTag=template](@/docs/code.vue)
+@[code transcludeTag=script](@/docs/code.vue)
+@[code transcludeTag=style](@/docs/code.vue)
+.
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div class=&quot;component&quot;&gt;&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-vue">&lt;script&gt;
+export default {
+  mounted () {
+    alert('yay!')
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<pre><code class="language-vue">&lt;style lang=&quot;scss&quot; scoped&gt;
+.component {
+  display: flex;
+}
+&lt;/style&gt;
+</code></pre>
+.
+
+
+
+#### transclude
+
+Use a range indicating the `start` and `end` lines. This option is inclusive.
+
+.
+@[code transclude=5-8|19|21-24|29-31|35|37](@/docs/code_compound.rb)
+.
+<pre><code class="language-rb">def hello
+  puts 'hello'
+  puts 'vue'
+end
+
+# Lorem Ipsum,
+# or is it
+# Quantum Leap
+# instead?
+def goodebye
+  puts 'bye...'
+end
+def bonus_track
+end
+</code></pre>
+.
+
+Next to '|' and '-', we also accept ',' in line ranges as an alternative for '|':
+
+.
+@[code transclude=5-8,19,21-24,29-31,35,37](@/docs/code_compound.rb)
+.
+<pre><code class="language-rb">def hello
+  puts 'hello'
+  puts 'vue'
+end
+
+# Lorem Ipsum,
+# or is it
+# Quantum Leap
+# instead?
+def goodebye
+  puts 'bye...'
+end
+def bonus_track
+end
+</code></pre>
+.
+
+
+### Highlight a section
+
+An example with a couple of lines highlighted:
+
+.
+@[code lang=js highlight={5,7}](@/docs/example.js)
+.
+<pre><code class="language-js{5,7}">export default function autolink(state, silent) {
+  let tail, linkMatch, emailMatch, url, fullUrl, token,
+      pos = state.pos;
+
+  if (state.src.charCodeAt(pos) !== 0x3C /* &lt; */) {
+    return false;
+  }
+
+  tail = state.src.slice(pos);
+
+  if (tail.indexOf('&gt;') &lt; 0) {
+    return false;
+  }
+}
+</code></pre>
+.
+
+
+
+
+### Input Markdown
+
+.
+@[code highlight={1-6} transcludeTag=style](@/docs/code.vue)
+.
+<pre><code class="language-vue{1-6}">&lt;style lang=&quot;scss&quot; scoped&gt;
+.component {
+  display: flex;
+}
+&lt;/style&gt;
+</code></pre>
+.

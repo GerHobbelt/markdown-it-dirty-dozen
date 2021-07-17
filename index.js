@@ -5,6 +5,7 @@ import anchor from '@gerhobbelt/markdown-it-anchor';
 import attribution from '@gerhobbelt/markdown-it-attribution';
 import attrs from '@gerhobbelt/markdown-it-attrs';
 import checkbox from '@gerhobbelt/markdown-it-checkbox';
+import codeSnippet from '@gerhobbelt/markdown-it-code-snippet-enhanced';
 import container from '@gerhobbelt/markdown-it-container';
 import criticMarkup from '@gerhobbelt/markdown-it-criticmarkup';
 import deflist from '@gerhobbelt/markdown-it-deflist';
@@ -81,6 +82,7 @@ const defaultOptions = {
   },
   attribution: true,
   checkbox: true,
+  codeSnippet: true,
   emoji: true,
   criticMarkup: true,
   modifyToken: true,
@@ -134,6 +136,7 @@ function use_dirty_dozen(md, options) {
     usePlugin(sanitizer, options.sanitizer, defaultOptions.sanitizer);
 
     usePlugin(checkbox, options.checkbox, defaultOptions.checkbox);
+    usePlugin(codeSnippet, options.codeSnippet, defaultOptions.codeSnippet);
     usePlugin(furigana, options.furigana, defaultOptions.furigana);
 
     usePlugin(abbr, options.abbr, defaultOptions.abbr);
@@ -206,6 +209,7 @@ const pluginDef = {
   attribution,
   attrs,
   checkbox,
+  codeSnippet,
   container,
   criticMarkup,
   deflist,
