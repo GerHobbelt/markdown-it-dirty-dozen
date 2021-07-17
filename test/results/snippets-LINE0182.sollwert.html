@@ -1,0 +1,22 @@
+<html>
+          <head>
+          
+          </head>
+          <body>
+          <pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">autolink</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> silent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> tail<span class="token punctuation">,</span> linkMatch<span class="token punctuation">,</span> emailMatch<span class="token punctuation">,</span> url<span class="token punctuation">,</span> fullUrl<span class="token punctuation">,</span> token<span class="token punctuation">,</span>
+      pos <span class="token operator">=</span> state<span class="token punctuation">.</span>pos<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>src<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token number">0x3C</span> <span class="token comment">/* &lt; */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  tail <span class="token operator">=</span> state<span class="token punctuation">.</span>src<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>tail<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'>'</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+          
