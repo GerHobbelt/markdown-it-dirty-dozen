@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ???
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Poppins:400,400i,500,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/mini-default.css">
+    <link rel="stylesheet" href="../assets/site-specific.css">
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+.container {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 65rem;
+}    
+.red {
+    color: red;
+}
+
+/* can't have two ::before on the same node (which happens in our tests): the last one wins then. So we use before and after... */
+.c1::before {
+  content: " ♥ C1! ";
+}
+.c2::after {
+  content: " ♥ C2! ";
+}
+
+p[with="attrs"] {
+    border: blue solid 1px;
+    padding: 0.1em;
+}
+
+
+ruby > rt {
+    font-size: 75%;
+}
+
+/* override mini-default.css */
+nav * {
+    padding: calc(0.1 * var(--universal-padding)) calc(1.5 * var(--universal-padding));
+}
+
+
+
+/* critic markup test aide */
+
+aside {
+    display: inline-block;
+    background-color: #defbea;
+    padding: 0.1em;
+    border: 1px solid #00823d;
+    margin-left: -3.5em;
+}
+
+
+
+/* alert CSS ripped from the BBootstrap demo & documentation pages */
+
+.alert+.alert, .navbar+.navbar, .progress+.progress {
+    margin-top: 1rem;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert::after, .alert::before {
+    box-sizing: border-box;
+}
+
+.alert-primary {
+    color: #084298;
+    background-color: #cfe2ff;
+    border-color: #b6d4fe;
+}
+.alert-dark {
+    color: #141619;
+    background-color: #d3d3d4;
+    border-color: #bcbebf;
+}
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-primary .alert-link {
+    color: #06357a;
+}
+.alert-link {
+    font-weight: 700;
+}
+.alert-success .alert-link {
+    color: #0c4128;
+}
+.alert-warning .alert-link {
+    color: #523e02;
+}
+.alert-danger .alert-link {
+    color: #6a1a21;
+}
+
+    </style>
+    
+  </head>
+  <body>
+    <pre>
+    Title: ???
+    </pre>
+    <pre>
+    layout: default
+author: irosyadi
+title:  Extended Markdown Cheatsheet
+date: 2020-11-26 21:10:41
+category: markdown
+tags: ["markdown"]
+draft: false
+    </pre>
+
+    <article class="container">
+    
+<section>
+<h1 id="extended-markdown-cheatsheet"><a id="user-content-extended-markdown-cheatsheet" class="anchor" href="#extended-markdown-cheatsheet" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Extended Markdown Cheatsheet</h1>
+<section>
+<h2 id="1-heading-id"><a id="user-content-1-heading-id" class="anchor" href="#1-heading-id" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>1. Heading ID</h2>
+<p>Markdown:</p>
+<pre class="language-md"><code class="language-md"><span class="token title important"><span class="token punctuation">###</span> My Great Heading {#heading-ids}</span>
+</code></pre>
+<p>Markdown</p>
+<section id="my-great-heading">
+<h3 id="my-great-heading"><a id="user-content-my-great-heading" class="anchor" href="#my-great-heading" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>My Great Heading</h3>
+<p>In HTML:</p>
+<h3 id="heading-ids">My Great Heading</h3>
+<p>Link to <a href="#heading-ids">Heading IDs</a></p>
+<hr>
+</section>
+</section>
+<section>
+<h2 id="2-2-code-fencing-and-highlighting"><a id="user-content-22-code-fencing-and-highlighting" class="anchor" href="#22-code-fencing-and-highlighting" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.2. Code Fencing and Highlighting</h2>
+<p><em>Notes:</em></p>
+<ul>
+<li>We can make block code fences without need to be idented</li>
+<li><code>lang</code> is optional to specify the language of the code; if not specified, the app won’t highlight the code;</li>
+<li>We need one empty line before</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>    ```
+    This is a fenced code block.
+    ```
+</code></pre>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>    ~~~
+    This is another fenced code block.
+    ~~~
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre><code>This is a fenced code block.
+</code></pre>
+<pre><code>No language indicated, so no syntax highlighting.
+s = &quot;There is no highlighting for this.&quot;
+But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
+</code></pre>
+<p><em><strong>Showcases</strong></em> (<code>javascript</code>)</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token string">"JavaScript syntax highlighting"</span><span class="token punctuation">;</span>
+<span class="token function">alert</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><em><strong>Showcases</strong></em> (<code>python</code>)</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">#indenting works just fine in the fenced code block</span>
+    s <span class="token operator">=</span> <span class="token string">"Python syntax highlighting"</span>
+    <span class="token keyword">print</span> s
+</code></pre>
+<p><em><strong>Showcases</strong></em> (<code>ruby</code>)</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="token keyword">require</span> <span class="token string">'redcarpet'</span>
+markdown <span class="token operator">=</span> <span class="token constant">Redcarpet</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span>
+puts markdown<span class="token punctuation">.</span>to_html
+</code></pre>
+<hr>
+</section>
+<section>
+<h2 id="2-3-tables"><a id="user-content-23-tables" class="anchor" href="#23-tables" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.3. Tables</h2>
+<p><em>Notes:</em></p>
+<ul>
+<li>we can set alignment in table with a colon (😃</li>
+<li>we can add formatting text, links, code and HTML character code, but not: heading, headings, blockquotes, lists, horizontal rules, images, HTML tags, or fenced code</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre class="language-md"><code class="language-md"><span class="token table"><span class="token table-header-row"><span class="token punctuation">|</span><span class="token table-header important"> Option </span><span class="token punctuation">|</span><span class="token table-header important"> Description </span><span class="token punctuation">|</span>
+</span><span class="token table-line"><span class="token punctuation">|</span> <span class="token punctuation">------</span> <span class="token punctuation">|</span> <span class="token punctuation">-----------</span> <span class="token punctuation">|</span>
+</span><span class="token table-data-rows"><span class="token punctuation">|</span><span class="token table-data"> data   </span><span class="token punctuation">|</span><span class="token table-data"> path to data files to supply the data that will be passed into templates. </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> engine </span><span class="token punctuation">|</span><span class="token table-data"> engine to be used for processing templates. Handlebars is the default. </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> ext    </span><span class="token punctuation">|</span><span class="token table-data"> extension to be used for dest files. </span><span class="token punctuation">|</span>
+</span></span></code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Option">data</td>
+<td data-label="Description">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td data-label="Option">engine</td>
+<td data-label="Description">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td data-label="Option">ext</td>
+<td data-label="Description">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre class="language-md"><code class="language-md"><span class="token table"><span class="token table-header-row"><span class="token punctuation">|</span><span class="token table-header important"> Syntax      </span><span class="token punctuation">|</span><span class="token table-header important"> Description </span><span class="token punctuation">|</span><span class="token table-header important"> Test Text is long    </span><span class="token punctuation">|</span>
+</span><span class="token table-line"><span class="token punctuation">|</span> <span class="token punctuation">:---</span>        <span class="token punctuation">|</span>    <span class="token punctuation">:----:</span>   <span class="token punctuation">|</span>          <span class="token punctuation">---:</span> <span class="token punctuation">|</span>
+</span><span class="token table-data-rows"><span class="token punctuation">|</span><span class="token table-data"> Header from      </span><span class="token punctuation">|</span><span class="token table-data"> Title       </span><span class="token punctuation">|</span><span class="token table-data"> Here's this  is </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> Paragraph   </span><span class="token punctuation">|</span><span class="token table-data"> Text        </span><span class="token punctuation">|</span><span class="token table-data"> And more   </span><span class="token punctuation">|</span>
+</span></span></code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Syntax</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:right">Test Text is long</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Syntax" style="text-align:left">Header from</td>
+<td data-label="Description" style="text-align:center">Title</td>
+<td data-label="Test Text is long" style="text-align:right">Here’s this  is</td>
+</tr>
+<tr>
+<td data-label="Syntax" style="text-align:left">Paragraph</td>
+<td data-label="Description" style="text-align:center">Text</td>
+<td data-label="Test Text is long" style="text-align:right">And more</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre class="language-md"><code class="language-md"><span class="token table"><span class="token table-header-row"><span class="token punctuation">|</span><span class="token table-header important"> Syntax      </span><span class="token punctuation">|</span><span class="token table-header important"> Description </span><span class="token punctuation">|</span><span class="token table-header important"> Test Text is long    </span><span class="token punctuation">|</span>
+</span><span class="token table-line"><span class="token punctuation">|</span> <span class="token punctuation">:---</span>        <span class="token punctuation">|</span>    <span class="token punctuation">:----:</span>   <span class="token punctuation">|</span>          <span class="token punctuation">---:</span> <span class="token punctuation">|</span>
+</span><span class="token table-data-rows"><span class="token punctuation">|</span><span class="token table-data"> <span class="token url">[<span class="token content">Example</span>](<span class="token url">https://www.example.com/</span>)</span>      </span><span class="token punctuation">|</span><span class="token table-data"> <span class="token bold"><span class="token punctuation">**</span><span class="token content">Title</span><span class="token punctuation">**</span></span>       </span><span class="token punctuation">|</span><span class="token table-data"> <span class="token code-snippet code keyword">`Here's this  is`</span> </span><span class="token punctuation">|</span>
+<span class="token punctuation">|</span><span class="token table-data"> Paragraph   </span><span class="token punctuation">|</span><span class="token table-data"> Text        </span><span class="token punctuation">|</span><span class="token table-data"> And more   </span><span class="token punctuation">|</span>
+</span></span></code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Syntax</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:right">Test Text is long</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Syntax" style="text-align:left"><a href="https://www.example.com/">Example</a></td>
+<td data-label="Description" style="text-align:center"><strong>Title</strong></td>
+<td data-label="Test Text is long" style="text-align:right"><code>Here's this  is</code></td>
+</tr>
+<tr>
+<td data-label="Syntax" style="text-align:left">Paragraph</td>
+<td data-label="Description" style="text-align:center">Text</td>
+<td data-label="Test Text is long" style="text-align:right">And more</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section>
+<h2 id="2-4-footnote"><a id="user-content-24-footnote" class="anchor" href="#24-footnote" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.4. Footnote</h2>
+<p><strong>Example: The First Part</strong><br>
+Here’s a simple footnote,<a class="footnote-ref " href="#fn1" id="fnref1"><sup class="footnote-ref">‡</sup></a> and here’s a longer one,<a class="footnote-ref " href="#fn2" id="fnref2"><sup class="footnote-ref">††</sup></a>, and <a class="footnote-ref " href="#fn3" id="fnref3"><sup class="footnote-ref">‡‡</sup></a></p>
+
+<p><strong>Example: The Second Part</strong></p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-1"><aside class="footnotes footnotes-category-section" id="fnsection-1"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn2" class="footnote-item" data-footnote-caption="††"><span class="footnote-caption"><sup class="footnote-caption">††</sup></span><span class="footnote-content"><p>Here’s one with multiple paragraphs.<br>
+For example like this</p>
+ <a href="#fnref2" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn1" class="footnote-item" data-footnote-caption="‡"><span class="footnote-caption"><sup class="footnote-caption">‡</sup></span><span class="footnote-content"><p>This is the first footnote.</p>
+ <a href="#fnref1" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn3" class="footnote-item" data-footnote-caption="‡‡"><span class="footnote-caption"><sup class="footnote-caption">‡‡</sup></span><span class="footnote-content"><p><code>code</code> or code in paragrahps<br>
+<code>code and codes</code></p>
+ <a href="#fnref3" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p><em>Or add inline footnote</em><br>
+Another example of footnote 1 link<a class="footnote-ref " href="#fn4" id="fnref4"><sup class="footnote-ref">¶</sup></a> and footnote 2 link<a class="footnote-ref " href="#fn5" id="fnref5"><sup class="footnote-ref">1</sup></a>.<br>
+Or to add inline footnote<a class="footnote-ref " href="#fn6" id="fnref6"><sup class="footnote-ref">2</sup></a> definition.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-2"><aside class="footnotes footnotes-category-aside" id="fnsection-2"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn6" class="footnote-item" data-footnote-caption="2"><span class="footnote-caption"><sup class="footnote-caption">2</sup></span><span class="footnote-content"><p>Text of inline footnote</p>
+ <a href="#fnref6" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p><em>Or duplictade reference</em><br>
+This duplicated footnote reference<a class="footnote-ref " href="#fn5" id="fnref5-1"><sup class="footnote-ref">1</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-3"><aside class="footnotes footnotes-category-section" id="fnsection-3"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn5" class="footnote-item" data-footnote-caption="1"><span class="footnote-caption"><sup class="footnote-caption">1</sup></span><span class="footnote-content"><p>Another footnote text.</p>
+ <a href="#fnref5" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref5-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn4" class="footnote-item" data-footnote-caption="¶"><span class="footnote-caption"><sup class="footnote-caption">¶</sup></span><span class="footnote-content"><p>Footnote <strong>can have markup</strong><br>
+and multiple paragraphs.</p>
+ <a href="#fnref4" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<hr>
+</section>
+<section>
+<h2 id="2-4-strikethrough-highlighting-underline"><a id="user-content-24-strikethrough-highlighting-underline" class="anchor" href="#24-strikethrough-highlighting-underline" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.4. Strikethrough, Highlighting, Underline</h2>
+<p><strong>Example of strikethrough</strong><br>
+<s>strikethrough</s><br>
+In HTML: <s>strikethrough</s></p>
+<p><strong>Example of mark/highlighting</strong><br>
+<mark>marked text</mark><br>
+in HTML: <mark>marked text</mark></p>
+<p><strong>Example of underline</strong><br>
+<em>underline</em><br>
+in HTML: <u>underline</u></p>
+<hr>
+</section>
+<section>
+<h2 id="2-5-task-lists"><a id="user-content-25-task-lists" class="anchor" href="#25-task-lists" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.5. Task Lists</h2>
+<p><strong>Example</strong></p>
+<ul>
+<li><input type="checkbox" id="checkbox57" checked=""><label for="checkbox57">Write the press release</label></li>
+<li><input type="checkbox" id="checkbox58"><label for="checkbox58">Update the website</label></li>
+<li><input type="checkbox" id="checkbox59"><label for="checkbox59">Contact the media</label></li>
+</ul>
+<hr>
+</section>
+<section>
+<h2 id="2-6-definition-lists"><a id="user-content-26-definition-lists" class="anchor" href="#26-definition-lists" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.6. Definition Lists</h2>
+<p><strong>Example</strong></p>
+<dl>
+<dt>First Term</dt>
+<dd>This is the definition of the first term.</dd>
+<dt>Second Term</dt>
+<dd>This is one definition of the second term.</dd>
+<dd>This is another definition of the second term.</dd>
+</dl>
+<p>In HTML:</p>
+<dl>
+  <dt>First Term</dt>
+  <dd>This is the definition of the first term.</dd>
+  <dt>Second Term</dt>
+  <dd>This is one definition of the second term. </dd>
+  <dd>This is another definition of the second term.</dd>
+</dl>
+<p>*Or *</p>
+<dl>
+<dt>Term 1</dt>
+<dd>
+<p>Definition 1<br>
+with lazy continuation.</p>
+</dd>
+<dt>Term 2 with <em>inline markup</em></dt>
+<dd>
+<p some="" code,="" part="" of="" Definition="" 2="">Definition 2<br>
+</p>
+<p>Third paragraph of definition 2.</p>
+</dd>
+</dl>
+<p><em>Or in compact style:</em></p>
+<dl>
+<dt>Term 1</dt>
+<dd>Definition 1</dd>
+<dt>Term 2</dt>
+<dd>Definition 2a</dd>
+<dd>Definition 2b</dd>
+</dl>
+<hr>
+</section>
+<section>
+<h2 id="2-7-emojies"><a id="user-content-27-emojies" class="anchor" href="#27-emojies" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.7. Emojies</h2>
+<p><strong>Emoji can be copy pasted</strong></p>
+<p>Gone camping! ⛺ Be back soon.<br>
+That is so funny! 😂</p>
+<p><em>Or, use markdown</em></p>
+<p>Gone camping! ⛺ Be back soon.<br>
+That is so funny! 😂</p>
+<blockquote>
+<p>Classic markup: 😉 :crush: 😢 :tear: 😆 😋</p>
+<p>Shortcuts (emoticons): 😃 😦 😎 😉</p>
+</blockquote>
+<hr>
+</section>
+<section>
+<h2 id="2-9-typographic-replacements"><a id="user-content-29-typographic-replacements" class="anchor" href="#29-typographic-replacements" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.9. Typographic replacements</h2>
+<p><strong>Example</strong></p>
+<p>© © ® ® ™ ™ § § ±<br>
+test.. test… test… test?.. test!..<br>
+!!! ??? ,  – —<br>
+“Smartypants, double quotes” and ‘single quotes’</p>
+<hr>
+</section>
+<section>
+<h2 id="2-10-superscript-and-subscript"><a id="user-content-210-superscript-and-subscript" class="anchor" href="#210-superscript-and-subscript" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.10. Superscript and Subscript</h2>
+<p><strong>Example Superscript</strong><br>
+x<sup>2</sup><br>
+In HTML: x<sup>2</sup></p>
+<p><strong>Example Subscript</strong><br>
+H<sub>2</sub>O<br>
+In HTML: H<sub>2</sub>O</p>
+<hr>
+</section>
+<section>
+<h2 id="2-11-inserted-text"><a id="user-content-211-inserted-text" class="anchor" href="#211-inserted-text" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.11. Inserted Text</h2>
+<p><strong>Example</strong><br>
+<ins>Inserted text</ins><br>
+In HTML: <ins>This text has been inserted</ins></p>
+<hr>
+</section>
+<section>
+<h2 id="2-12-abbreviations"><a id="user-content-212-abbreviations" class="anchor" href="#212-abbreviations" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.12. Abbreviations</h2>
+<p><strong>Example</strong><br>
+The “HTML” specification is maintained by the “W3C”.<br>
+*[HTML]: Hyper Text Markup Language<br>
+*[W3C]: World Wide Web Consortium</p>
+<p>In HTML:<br>
+The <abbr title="Hyper Text Markup Language">HTML</abbr> specification is maintained by the <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
+<hr>
+</section>
+<section>
+<h2 id="2-13-html-entities-and-character-codes"><a id="user-content-213-html-entities-and-character-codes" class="anchor" href="#213-html-entities-and-character-codes" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.13. HTML Entities and Character Codes</h2>
+<p><strong>Example</strong></p>
+<p>© &amp;  ¨ ™ ¡ £<br>
+&amp; &lt; &gt; ¥ € ® ± ¶ § ¦ ¯ « ·<br>
+|</p>
+<p><em>Or</em></p>
+<p>X² Y³ ¾ ¼  ×  ÷   »</p>
+<p><em>Or</em></p>
+<p>18ºC  &quot;  '</p>
+<hr>
+</section>
+<section>
+<h2 id="2-14-latex"><a id="user-content-214-latex" class="anchor" href="#214-latex" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.14. Latex</h2>
+<p><em>Note:</em></p>
+<ul>
+<li>Sometimes with <code>\(</code> and <code>\)</code> brackets</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>$E=mc^2$</p>
+<p>$$\sin(\alpha)<sup n="">{\theta}=\sum_{i=0}</sup>(x^i + \cos(f))$$</p>
+<p><em>Or, inline</em></p>
+<p>The Gamma function satisfying  $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral</p>
+<hr>
+</section>
+<section>
+<h2 id="2-15-mentions-tag-font-awesome"><a id="user-content-215-mentions-tag-font-awesome" class="anchor" href="#215-mentions-tag-font-awesome" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.15. Mentions, Tag, Font Awesome</h2>
+<p><em>Note:</em></p>
+<ul>
+<li>with <code>fa-something</code>:</li>
+</ul>
+<p><strong>Example</strong></p>
+<p>This is @mentions<br>
+This is #tags<br>
+This is  <del>tags</del><br>
+This is font awesome :fa-star:</p>
+<hr>
+</section>
+<section>
+<h2 id="2-16-diagram"><a id="user-content-216-diagram" class="anchor" href="#216-diagram" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16. Diagram</h2>
+<p><em>Notes:</em></p>
+<ul>
+<li>Your app should support the specific library or engine to draw the diagram</li>
+<li>You should specify particular language of the fenced code block and write the definition of your diagram within it.</li>
+</ul>
+<section>
+<h3 id="2-16-1-mermaid"><a id="user-content-2161-mermaid" class="anchor" href="#2161-mermaid" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.1 Mermaid</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-mermaid.js</li>
+<li>Rendering diagrams of Flowchart or Sequence or Gantt</li>
+<li>Using <a href="https://github.com/knsv/mermaid">mermaid</a></li>
+<li>Check <a href="https://mermaidjs.github.io">mermaid doc</a> for more information.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<ul>
+<li>
+<p>Flowchart syntax:</p>
+<pre><code>  ```mermaid {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+  graph TD;
+  &lt;code content&gt;
+  ```
+</code></pre>
+</li>
+<li>
+<p>Sequence diagram syntax:</p>
+<pre><code>  ```mermaid {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+  sequenceDiagram
+  &lt;code content&gt;
+  ```
+</code></pre>
+</li>
+<li>
+<p>Gantt diagram syntax:</p>
+<pre><code>  ```mermaid {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+  gantt
+  &lt;code content&gt;
+  ```
+</code></pre>
+</li>
+</ul>
+<p><em><strong>Showcases</strong></em></p>
+<ul>
+<li>Flowchart</li>
+</ul>
+<pre class="language-mermaid"><code class="language-mermaid">graph TD;
+           A--&gt;B;
+           A--&gt;C;
+           B--&gt;D;
+           C--&gt;D;
+</code></pre>
+<pre class="language-mermaid"><code class="language-mermaid">graph TD;
+           A--&gt;B;
+           A--&gt;C;
+           B--&gt;D;
+           C--&gt;D;
+</code></pre>
+<ul>
+<li>Sequence diagram</li>
+</ul>
+<pre class="language-mermaid"><code class="language-mermaid">sequenceDiagram
+           participant Alice
+           participant Bob
+           Alice-&gt;&gt;John: Hello John, how are you?
+           loop Healthcheck
+               John-&gt;&gt;John: Fight against hypochondria
+           end
+           Note right of John: Rational thoughts &lt;br/&gt;prevail!
+           John--&gt;&gt;Alice: Great!
+           John-&gt;&gt;Bob: How about you?
+           Bob--&gt;&gt;John: Jolly good!
+</code></pre>
+<ul>
+<li>Gantt diagram</li>
+</ul>
+<pre class="language-mermaid"><code class="language-mermaid">       gantt
+       dateFormat  YYYY-MM-DD
+       title Adding GANTT diagram to mermaid
+       excludes weekdays 2014-01-10
+
+       section A section
+       Completed task            :done,    des1, 2014-01-06,2014-01-08
+       Active task               :active,  des2, 2014-01-09, 3d
+       Future task               :         des3, after des2, 5d
+       Future task2               :         des4, after des3, 5d
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-2-plantuml"><a id="user-content-2162-plantuml" class="anchor" href="#2162-plantuml" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.2 Plantuml</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-plantuml.js,</li>
+<li>Render diagrams of uml,</li>
+<li>Using <a href="https://plantuml.com">plantuml</a>,</li>
+<li>Check <a href="https://plantuml.com/">plantuml website</a> fpr more information.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```plantuml {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+@startuml
+&lt;code content&gt;
+@enduml
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre class="language-plantuml"><code class="language-plantuml">      @startuml
+      participant User
+
+      User -&gt; A: DoWork
+      activate A
+
+      A -&gt; B: &lt;&lt; createRequest &gt;&gt;
+      activate B
+
+      B -&gt; C: DoWork
+      activate C
+      C --&gt; B: WorkDone
+      destroy C
+
+      B --&gt; A: RequestCreated
+      deactivate B
+
+      A -&gt; User: Done
+      deactivate A
+
+      @enduml
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-3-flowchart"><a id="user-content-2163-flowchart" class="anchor" href="#2163-flowchart" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.3 Flowchart</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-flowchart.js</li>
+<li>Render diagrams of flowchart</li>
+<li>Using <a href="https://github.com/adrai/flowchart.js">flowchart.js</a></li>
+<li>Check <a href="https://flowchart.js.org/">flowchart website</a> for more information.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```flow {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```flowchart {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre class="language-flow"><code class="language-flow">st<span class="token operator">=></span>start<span class="token operator">:</span> Start<span class="token operator">:</span><span class="token operator">></span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>google<span class="token punctuation">.</span>com<span class="token punctuation">[</span>blank<span class="token punctuation">]</span>
+e<span class="token operator">=></span>end<span class="token operator">:</span><span class="token operator">></span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>google<span class="token punctuation">.</span>com
+op1<span class="token operator">=></span>operation<span class="token operator">:</span> My Operation
+sub1<span class="token operator">=></span>subroutine<span class="token operator">:</span> My Subroutine
+cond<span class="token operator">=></span>condition<span class="token operator">:</span> Yes
+or No<span class="token operator">?</span><span class="token operator">:</span><span class="token operator">></span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>google<span class="token punctuation">.</span>com
+io<span class="token operator">=></span>inputoutput<span class="token operator">:</span> catch something<span class="token operator">...</span>
+para<span class="token operator">=></span>parallel<span class="token operator">:</span> parallel tasks
+
+st<span class="token operator">-</span><span class="token operator">></span>op1<span class="token operator">-</span><span class="token operator">></span>cond
+<span class="token function">cond</span><span class="token punctuation">(</span>yes<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>io<span class="token operator">-</span><span class="token operator">></span>e
+<span class="token function">cond</span><span class="token punctuation">(</span>no<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>para
+<span class="token function">para</span><span class="token punctuation">(</span>path1<span class="token punctuation">,</span> bottom<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">sub1</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>op1
+<span class="token function">para</span><span class="token punctuation">(</span>path2<span class="token punctuation">,</span> top<span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span>op1
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre class="language-flowchart"><code class="language-flowchart">st=&gt;start: Start
+e=&gt;end
+op1=&gt;operation: My Operation
+sub1=&gt;subroutine: My Subroutine
+cond=&gt;condition: Yes
+or No?:&gt;https://www.google.com
+io=&gt;inputoutput: catch something
+st-&gt;op1-&gt;cond
+cond(yes)-&gt;io-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op1
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-4-graphvizs-dot"><a id="user-content-2164-graphvizs-dot" class="anchor" href="#2164-graphvizs-dot" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.4 Graphviz’s dot</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-viz.js</li>
+<li>Render diagrams of graphviz’s dot</li>
+<li>Using <a href="https://github.com/mdaines/viz.js">viz.js</a>.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<p>The &lt;engine name&gt; of json’s “engine” field value is ‘circo’, ‘dot’, ‘neato’, ‘osage’, ‘twopi’ in syntax language attribute.</p>
+<pre><code>```dot {&quot;engine&quot;: &quot;&lt;engine name&gt;&quot;, &quot;align&quot;: &quot;&lt;align&gt;&quot;}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<ul>
+<li>Dot example with dot engine:</li>
+</ul>
+<pre class="language-dot"><code class="language-dot"><span class="token keyword">digraph</span> <span class="token graph-name class-name">G</span> <span class="token punctuation">{</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">parse</span> <span class="token operator">-></span> <span class="token node">execute</span><span class="token punctuation">;</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">init</span><span class="token punctuation">;</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">cleanup</span><span class="token punctuation">;</span>
+    <span class="token node">execute</span> <span class="token operator">-></span> <span class="token node">make_string</span><span class="token punctuation">;</span>
+    <span class="token node">execute</span> <span class="token operator">-></span> <span class="token node">printf</span>
+    <span class="token node">init</span> <span class="token operator">-></span> <span class="token node">make_string</span><span class="token punctuation">;</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">printf</span><span class="token punctuation">;</span>
+    <span class="token node">execute</span> <span class="token operator">-></span> <span class="token node">compare</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<br>
+<ul>
+<li>Dot example with circo engine:</li>
+</ul>
+<pre class="language-dot"><code class="language-dot"><span class="token keyword">digraph</span> <span class="token graph-name class-name">G</span> <span class="token punctuation">{</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">parse</span> <span class="token operator">-></span> <span class="token node">execute</span><span class="token punctuation">;</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">init</span><span class="token punctuation">;</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">cleanup</span><span class="token punctuation">;</span>
+    <span class="token node">execute</span> <span class="token operator">-></span> <span class="token node">make_string</span><span class="token punctuation">;</span>
+    <span class="token node">execute</span> <span class="token operator">-></span> <span class="token node">printf</span>
+    <span class="token node">init</span> <span class="token operator">-></span> <span class="token node">make_string</span><span class="token punctuation">;</span>
+    <span class="token node">main</span> <span class="token operator">-></span> <span class="token node">printf</span><span class="token punctuation">;</span>
+    <span class="token node">execute</span> <span class="token operator">-></span> <span class="token node">compare</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-5-railroad-diagrams"><a id="user-content-2165-railroad-diagrams" class="anchor" href="#2165-railroad-diagrams" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.5 Railroad diagrams</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-viz.js</li>
+<li>Render diagrams of railroad</li>
+<li>Using <a href="https://github.com/tabatkins/railroad-diagrams">railroad-diagrams</a>.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```railroad {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre class="language-railroad"><code class="language-railroad">Diagram(
+  Optional('+', 'skip'),
+    Choice(0,
+      NonTerminal('name-start char'),
+      NonTerminal('escape')),
+      ZeroOrMore(
+        Choice(0,
+          NonTerminal('name char'),
+          NonTerminal('escape'))))
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-6-wave-drom"><a id="user-content-2166-wavedrom" class="anchor" href="#2166-wavedrom" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.6 WaveDrom</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-viz.js</li>
+<li>Render diagrams of wavedrom</li>
+<li>Using <a href="https://github.com/wavedrom/wavedrom">wavedrom</a></li>
+<li>Check <a href="https://wavedrom.com">wavedrom website</a> for more information.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```wavedrom {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre class="language-wavedrom"><code class="language-wavedrom">{signal: [
+  {name: 'clk', wave: 'p.....|...'},
+  {name: 'dat', wave: 'x.345x|=.x', data: ['head', 'body', 'tail', 'data']},
+  {name: 'req', wave: '0.1..0|1.0'},
+  {},
+  {name: 'ack', wave: '1.....|01.'}
+]}
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<pre class="language-wavedrom"><code class="language-wavedrom">{ signal: [
+  { name: &quot;pclk&quot;, wave: 'p.......' },
+  { name: &quot;Pclk&quot;, wave: 'P.......' },
+  { name: &quot;nclk&quot;, wave: 'n.......' },
+  { name: &quot;Nclk&quot;, wave: 'N.......' },
+  {},
+  { name: 'clk0', wave: 'phnlPHNL' },
+  { name: 'clk1', wave: 'xhlhLHl.' },
+  { name: 'clk2', wave: 'hpHplnLn' },
+  { name: 'clk3', wave: 'nhNhplPl' },
+  { name: 'clk4', wave: 'xlh.L.Hx' },
+]}
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-7-vega-and-vega-lite"><a id="user-content-2167-vega-and-vega-lite" class="anchor" href="#2167-vega-and-vega-lite" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.7 Vega and Vega-Lite</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-vega.js</li>
+<li>Render diagrams of <a href="https://github.com/vega/vega">Vega</a> and <a href="https://github.com/vega/vega-lite">Vega-Lite</a></li>
+<li>Using <a href="https://github.com/vega/vega-embed">vega-embed</a></li>
+<li>Check <a href="https://vega.github.io/vega/">vega website</a> and <a href="https://vega.github.io/vega-lite">vega-lite website</a> for more information.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```vega {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre><code>```vega-lite {&quot;align&quot;: &quot;left | center | right&quot;, &quot;codeblock&quot;: true | false}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<ul>
+<li>Vega example:</li>
+</ul>
+<pre class="language-vega"><code class="language-vega">{
+  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega/v5.json&quot;,
+  &quot;width&quot;: 200,
+  &quot;height&quot;: 200,
+  &quot;autosize&quot;: &quot;none&quot;,
+
+  &quot;signals&quot;: [
+    {
+      &quot;name&quot;: &quot;startAngle&quot;, &quot;value&quot;: 0,
+      &quot;bind&quot;: {&quot;input&quot;: &quot;range&quot;, &quot;min&quot;: 0, &quot;max&quot;: 6.29, &quot;step&quot;: 0.01}
+    },
+    {
+      &quot;name&quot;: &quot;endAngle&quot;, &quot;value&quot;: 6.29,
+      &quot;bind&quot;: {&quot;input&quot;: &quot;range&quot;, &quot;min&quot;: 0, &quot;max&quot;: 6.29, &quot;step&quot;: 0.01}
+    },
+    {
+      &quot;name&quot;: &quot;padAngle&quot;, &quot;value&quot;: 0,
+      &quot;bind&quot;: {&quot;input&quot;: &quot;range&quot;, &quot;min&quot;: 0, &quot;max&quot;: 0.1}
+    },
+    {
+      &quot;name&quot;: &quot;innerRadius&quot;, &quot;value&quot;: 0,
+      &quot;bind&quot;: {&quot;input&quot;: &quot;range&quot;, &quot;min&quot;: 0, &quot;max&quot;: 90, &quot;step&quot;: 1}
+    },
+    {
+      &quot;name&quot;: &quot;cornerRadius&quot;, &quot;value&quot;: 0,
+      &quot;bind&quot;: {&quot;input&quot;: &quot;range&quot;, &quot;min&quot;: 0, &quot;max&quot;: 10, &quot;step&quot;: 0.5}
+    },
+    {
+      &quot;name&quot;: &quot;sort&quot;, &quot;value&quot;: false,
+      &quot;bind&quot;: {&quot;input&quot;: &quot;checkbox&quot;}
+    }
+  ],
+
+  &quot;data&quot;: [
+    {
+      &quot;name&quot;: &quot;table&quot;,
+      &quot;values&quot;: [
+        {&quot;id&quot;: 1, &quot;field&quot;: 4},
+        {&quot;id&quot;: 2, &quot;field&quot;: 6},
+        {&quot;id&quot;: 3, &quot;field&quot;: 10},
+        {&quot;id&quot;: 4, &quot;field&quot;: 3},
+        {&quot;id&quot;: 5, &quot;field&quot;: 7},
+        {&quot;id&quot;: 6, &quot;field&quot;: 8}
+      ],
+      &quot;transform&quot;: [
+        {
+          &quot;type&quot;: &quot;pie&quot;,
+          &quot;field&quot;: &quot;field&quot;,
+          &quot;startAngle&quot;: {&quot;signal&quot;: &quot;startAngle&quot;},
+          &quot;endAngle&quot;: {&quot;signal&quot;: &quot;endAngle&quot;},
+          &quot;sort&quot;: {&quot;signal&quot;: &quot;sort&quot;}
+        }
+      ]
+    }
+  ],
+
+  &quot;scales&quot;: [
+    {
+      &quot;name&quot;: &quot;color&quot;,
+      &quot;type&quot;: &quot;ordinal&quot;,
+      &quot;domain&quot;: {&quot;data&quot;: &quot;table&quot;, &quot;field&quot;: &quot;id&quot;},
+      &quot;range&quot;: {&quot;scheme&quot;: &quot;category20&quot;}
+    }
+  ],
+
+  &quot;marks&quot;: [
+    {
+      &quot;type&quot;: &quot;arc&quot;,
+      &quot;from&quot;: {&quot;data&quot;: &quot;table&quot;},
+      &quot;encode&quot;: {
+        &quot;enter&quot;: {
+          &quot;fill&quot;: {&quot;scale&quot;: &quot;color&quot;, &quot;field&quot;: &quot;id&quot;},
+          &quot;x&quot;: {&quot;signal&quot;: &quot;width / 2&quot;},
+          &quot;y&quot;: {&quot;signal&quot;: &quot;height / 2&quot;}
+        },
+        &quot;update&quot;: {
+          &quot;startAngle&quot;: {&quot;field&quot;: &quot;startAngle&quot;},
+          &quot;endAngle&quot;: {&quot;field&quot;: &quot;endAngle&quot;},
+          &quot;padAngle&quot;: {&quot;signal&quot;: &quot;padAngle&quot;},
+          &quot;innerRadius&quot;: {&quot;signal&quot;: &quot;innerRadius&quot;},
+          &quot;outerRadius&quot;: {&quot;signal&quot;: &quot;width / 2&quot;},
+          &quot;cornerRadius&quot;: {&quot;signal&quot;: &quot;cornerRadius&quot;}
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<br>
+<ul>
+<li>Vega-Lite example:</li>
+</ul>
+<pre class="language-vega-lite"><code class="language-vega-lite">{
+  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v4.json&quot;,
+  &quot;description&quot;: &quot;Plots two functions using a generated sequence.&quot;,
+  &quot;width&quot;: 300,
+  &quot;height&quot;: 150,
+  &quot;data&quot;: {
+    &quot;sequence&quot;: {
+      &quot;start&quot;: 0,
+      &quot;stop&quot;: 12.7,
+      &quot;step&quot;: 0.1,
+      &quot;as&quot;: &quot;x&quot;
+    }
+  },
+  &quot;transform&quot;: [
+    {
+      &quot;calculate&quot;: &quot;sin(datum.x)&quot;,
+      &quot;as&quot;: &quot;sin(x)&quot;
+    },
+    {
+      &quot;calculate&quot;: &quot;cos(datum.x)&quot;,
+      &quot;as&quot;: &quot;cos(x)&quot;
+    },
+    {
+      &quot;fold&quot;: [&quot;sin(x)&quot;, &quot;cos(x)&quot;]
+    }
+  ],
+  &quot;mark&quot;: &quot;line&quot;,
+  &quot;encoding&quot;: {
+    &quot;x&quot;: {
+      &quot;type&quot;: &quot;quantitative&quot;,
+      &quot;field&quot;: &quot;x&quot;
+    },
+    &quot;y&quot;: {
+      &quot;field&quot;: &quot;value&quot;,
+      &quot;type&quot;: &quot;quantitative&quot;
+    },
+    &quot;color&quot;: {
+      &quot;field&quot;: &quot;key&quot;,
+      &quot;type&quot;: &quot;nominal&quot;,
+      &quot;title&quot;: null
+    }
+  }
+}
+</code></pre>
+</section>
+<section>
+<h3 id="2-16-8-network-sequence"><a id="user-content-2168-network-sequence" class="anchor" href="#2168-network-sequence" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.16.8 Network Sequence</h3>
+<p><em>Notes:</em></p>
+<ul>
+<li>It’s implemented in showdown-sequence.js,</li>
+<li>Render diagrams of sequence</li>
+<li>Using <a href="https://github.com/bramp/js-sequence-diagrams">js-sequence-diagrams</a>.</li>
+<li>Code inside <code>{ }</code> is optional</li>
+</ul>
+<p><em><strong>Syntaxes</strong></em></p>
+<p>The &lt;theme name&gt; of json’s “theme” field value is “hand” or “simple” in syntax language attribute;</p>
+<pre><code>```sequence {&quot;theme&quot;: &quot;&lt;theme name&gt;&quot;, &quot;align&quot;: &quot;&lt;align&gt;&quot;}
+&lt;code content&gt;
+```
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<ul>
+<li>Sequence example with hand theme:</li>
+</ul>
+<pre class="language-sequence"><code class="language-sequence">Alice-&gt;Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob--&gt;Alice: I am good thanks!
+</code></pre>
+<br>
+<ul>
+<li>Sequence example with simple theme:</li>
+</ul>
+<pre class="language-sequence"><code class="language-sequence">Alice-&gt;Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob--&gt;Alice: I am good thanks!
+</code></pre>
+<hr>
+</section>
+</section>
+<section>
+<h2 id="2-17-table-of-content-generation"><a id="user-content-217-table-of-content-generation" class="anchor" href="#217-table-of-content-generation" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.17. Table of Content Generation</h2>
+<p><strong>Example</strong></p>
+<nav class="table-of-contents"><ol><li><a href="#extended-markdown-cheatsheet">Extended Markdown Cheatsheet</a><ol><li><a href="#1-heading-id">1. Heading ID</a><ol><li><a href="#my-great-heading">My Great Heading</a></li></ol></li><li><a href="#2-2-code-fencing-and-highlighting">2.2. Code Fencing and Highlighting</a></li><li><a href="#2-3-tables">2.3. Tables</a></li><li><a href="#2-4-footnote">2.4. Footnote</a></li><li><a href="#2-4-strikethrough-highlighting-underline">2.4. Strikethrough, Highlighting, Underline</a></li><li><a href="#2-5-task-lists">2.5. Task Lists</a></li><li><a href="#2-6-definition-lists">2.6. Definition Lists</a></li><li><a href="#2-7-emojies">2.7. Emojies</a></li><li><a href="#2-9-typographic-replacements">2.9. Typographic replacements</a></li><li><a href="#2-10-superscript-and-subscript">2.10. Superscript and Subscript</a></li><li><a href="#2-11-inserted-text">2.11. Inserted Text</a></li><li><a href="#2-12-abbreviations">2.12. Abbreviations</a></li><li><a href="#2-13-html-entities-and-character-codes">2.13. HTML Entities and Character Codes</a></li><li><a href="#2-14-latex">2.14. Latex</a></li><li><a href="#2-15-mentions-tag-font-awesome">2.15. Mentions, Tag, Font Awesome</a></li><li><a href="#2-16-diagram">2.16. Diagram</a><ol><li><a href="#2-16-1-mermaid">2.16.1 Mermaid</a></li><li><a href="#2-16-2-plantuml">2.16.2 Plantuml</a></li><li><a href="#2-16-3-flowchart">2.16.3 Flowchart</a></li><li><a href="#2-16-4-graphvizs-dot">2.16.4 Graphviz’s dot</a></li><li><a href="#2-16-5-railroad-diagrams">2.16.5 Railroad diagrams</a></li><li><a href="#2-16-6-wave-drom">2.16.6 WaveDrom</a></li><li><a href="#2-16-7-vega-and-vega-lite">2.16.7 Vega and Vega-Lite</a></li><li><a href="#2-16-8-network-sequence">2.16.8 Network Sequence</a></li></ol></li><li><a href="#2-17-table-of-content-generation">2.17. Table of Content Generation</a></li><li><a href="#2-18-admonition">2.18. Admonition</a></li><li><a href="#2-19-attributes">2.19. Attributes</a></li><li><a href="#2-13-custom-containers-or-alerts">2.13. Custom Containers or Alerts</a></li><li><a href="#2-14-comments">2.14. Comments</a></li></ol></li></ol></nav><p><em>Or</em></p>
+<nav class="table-of-contents"><ol><li><a href="#extended-markdown-cheatsheet">Extended Markdown Cheatsheet</a><ol><li><a href="#1-heading-id">1. Heading ID</a><ol><li><a href="#my-great-heading">My Great Heading</a></li></ol></li><li><a href="#2-2-code-fencing-and-highlighting">2.2. Code Fencing and Highlighting</a></li><li><a href="#2-3-tables">2.3. Tables</a></li><li><a href="#2-4-footnote">2.4. Footnote</a></li><li><a href="#2-4-strikethrough-highlighting-underline">2.4. Strikethrough, Highlighting, Underline</a></li><li><a href="#2-5-task-lists">2.5. Task Lists</a></li><li><a href="#2-6-definition-lists">2.6. Definition Lists</a></li><li><a href="#2-7-emojies">2.7. Emojies</a></li><li><a href="#2-9-typographic-replacements">2.9. Typographic replacements</a></li><li><a href="#2-10-superscript-and-subscript">2.10. Superscript and Subscript</a></li><li><a href="#2-11-inserted-text">2.11. Inserted Text</a></li><li><a href="#2-12-abbreviations">2.12. Abbreviations</a></li><li><a href="#2-13-html-entities-and-character-codes">2.13. HTML Entities and Character Codes</a></li><li><a href="#2-14-latex">2.14. Latex</a></li><li><a href="#2-15-mentions-tag-font-awesome">2.15. Mentions, Tag, Font Awesome</a></li><li><a href="#2-16-diagram">2.16. Diagram</a><ol><li><a href="#2-16-1-mermaid">2.16.1 Mermaid</a></li><li><a href="#2-16-2-plantuml">2.16.2 Plantuml</a></li><li><a href="#2-16-3-flowchart">2.16.3 Flowchart</a></li><li><a href="#2-16-4-graphvizs-dot">2.16.4 Graphviz’s dot</a></li><li><a href="#2-16-5-railroad-diagrams">2.16.5 Railroad diagrams</a></li><li><a href="#2-16-6-wave-drom">2.16.6 WaveDrom</a></li><li><a href="#2-16-7-vega-and-vega-lite">2.16.7 Vega and Vega-Lite</a></li><li><a href="#2-16-8-network-sequence">2.16.8 Network Sequence</a></li></ol></li><li><a href="#2-17-table-of-content-generation">2.17. Table of Content Generation</a></li><li><a href="#2-18-admonition">2.18. Admonition</a></li><li><a href="#2-19-attributes">2.19. Attributes</a></li><li><a href="#2-13-custom-containers-or-alerts">2.13. Custom Containers or Alerts</a></li><li><a href="#2-14-comments">2.14. Comments</a></li></ol></li></ol></nav><p><em>Or</em></p>
+<nav class="table-of-contents"><ol><li><a href="#extended-markdown-cheatsheet">Extended Markdown Cheatsheet</a><ol><li><a href="#1-heading-id">1. Heading ID</a><ol><li><a href="#my-great-heading">My Great Heading</a></li></ol></li><li><a href="#2-2-code-fencing-and-highlighting">2.2. Code Fencing and Highlighting</a></li><li><a href="#2-3-tables">2.3. Tables</a></li><li><a href="#2-4-footnote">2.4. Footnote</a></li><li><a href="#2-4-strikethrough-highlighting-underline">2.4. Strikethrough, Highlighting, Underline</a></li><li><a href="#2-5-task-lists">2.5. Task Lists</a></li><li><a href="#2-6-definition-lists">2.6. Definition Lists</a></li><li><a href="#2-7-emojies">2.7. Emojies</a></li><li><a href="#2-9-typographic-replacements">2.9. Typographic replacements</a></li><li><a href="#2-10-superscript-and-subscript">2.10. Superscript and Subscript</a></li><li><a href="#2-11-inserted-text">2.11. Inserted Text</a></li><li><a href="#2-12-abbreviations">2.12. Abbreviations</a></li><li><a href="#2-13-html-entities-and-character-codes">2.13. HTML Entities and Character Codes</a></li><li><a href="#2-14-latex">2.14. Latex</a></li><li><a href="#2-15-mentions-tag-font-awesome">2.15. Mentions, Tag, Font Awesome</a></li><li><a href="#2-16-diagram">2.16. Diagram</a><ol><li><a href="#2-16-1-mermaid">2.16.1 Mermaid</a></li><li><a href="#2-16-2-plantuml">2.16.2 Plantuml</a></li><li><a href="#2-16-3-flowchart">2.16.3 Flowchart</a></li><li><a href="#2-16-4-graphvizs-dot">2.16.4 Graphviz’s dot</a></li><li><a href="#2-16-5-railroad-diagrams">2.16.5 Railroad diagrams</a></li><li><a href="#2-16-6-wave-drom">2.16.6 WaveDrom</a></li><li><a href="#2-16-7-vega-and-vega-lite">2.16.7 Vega and Vega-Lite</a></li><li><a href="#2-16-8-network-sequence">2.16.8 Network Sequence</a></li></ol></li><li><a href="#2-17-table-of-content-generation">2.17. Table of Content Generation</a></li><li><a href="#2-18-admonition">2.18. Admonition</a></li><li><a href="#2-19-attributes">2.19. Attributes</a></li><li><a href="#2-13-custom-containers-or-alerts">2.13. Custom Containers or Alerts</a></li><li><a href="#2-14-comments">2.14. Comments</a></li></ol></li></ol></nav><hr>
+</section>
+<section>
+<h2 id="2-18-admonition"><a id="user-content-218-admonition" class="anchor" href="#218-admonition" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.18. Admonition</h2>
+<p><strong>Example</strong></p>
+<p>!!! note</p>
+<pre><code>This is the **note** admonition body
+
+!!! danger Danger Title
+    This is the **danger** admonition body
+</code></pre>
+<hr>
+</section>
+<section>
+<h2 id="2-19-attributes"><a id="user-content-219-attributes" class="anchor" href="#219-attributes" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.19. Attributes</h2>
+<p><strong>Example</strong></p>
+<p>item <strong style="color:red">bold red</strong></p>
+<p>in HTML: item <strong style="color:red;">bold red</strong></p>
+<hr>
+</section>
+<section>
+<h2 id="2-13-custom-containers-or-alerts"><a id="user-content-213-custom-containers-or-alerts" class="anchor" href="#213-custom-containers-or-alerts" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.13. Custom Containers or Alerts</h2>
+<p><em>Notes:</em></p>
+<ul>
+<li>Some engine such as <code>Markdown-it</code>, you can add some alert text.</li>
+<li>Available variants:</li>
+</ul>
+<pre><code>alert-primary
+alert-secondary
+alert-success
+alert-info
+alert-warning
+alert-danger
+alert-light
+alert-dark
+</code></pre>
+<p><em><strong>Syntaxes</strong></em></p>
+<pre class="language-md"><code class="language-md">::: alert-info
+This is an info text.
+:::
+
+::: alert-danger
+This is a danger text.
+:::
+</code></pre>
+<p><em><strong>Showcases</strong></em></p>
+<p>::: alert-primary
+alert-primary
+:::</p>
+<p>::: alert-secondary
+alert-secondary
+:::</p>
+<p>::: alert-success
+alert-success
+:::</p>
+<p>::: alert-info
+<strong>alert-info</strong>
+:::</p>
+<p>::: alert-warning
+alert-warning
+:::</p>
+<p>::: alert-danger
+alert-danger
+:::</p>
+<p>::: alert-light
+alert-light
+:::</p>
+<p>::: alert-dark
+alert-dark
+:::</p>
+<p>in  HTML</p>
+<div class="alert-warning">
+<p><em>alert-warning</em></p>
+</div>
+<p>or</p>
+<div class="alert alert-info">
+  <i class="fas fa-info-circle"></i> <strong>alert-info</strong> 
+</div>
+<p>or</p>
+<div class="alert alert-warning">
+  <i class="fas fa-warning-circle"></i> <strong>alert-warning</strong> 
+</div>
+<hr>
+</section>
+<section>
+<h2 id="2-14-comments"><a id="user-content-214-comments" class="anchor" href="#214-comments" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>2.14. Comments</h2>
+<p>[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job.</p>
+</section>
+</section>
+
+    </article>
+
+    <footer>
+      © 2021 Ger Hobbelt ::
+      <a href="https://github.com/GerHobbelt/markdown-it-dirty-dozen/blob/master/fixture-mixes/sources/test-page-together-02.md">Edit this page on GitHub</a>
+    </footer>
+  </body>
+</html>

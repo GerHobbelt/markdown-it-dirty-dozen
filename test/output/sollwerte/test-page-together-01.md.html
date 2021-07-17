@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ???
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Poppins:400,400i,500,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/mini-default.css">
+    <link rel="stylesheet" href="../assets/site-specific.css">
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+.container {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 65rem;
+}    
+.red {
+    color: red;
+}
+
+/* can't have two ::before on the same node (which happens in our tests): the last one wins then. So we use before and after... */
+.c1::before {
+  content: " ♥ C1! ";
+}
+.c2::after {
+  content: " ♥ C2! ";
+}
+
+p[with="attrs"] {
+    border: blue solid 1px;
+    padding: 0.1em;
+}
+
+
+ruby > rt {
+    font-size: 75%;
+}
+
+/* override mini-default.css */
+nav * {
+    padding: calc(0.1 * var(--universal-padding)) calc(1.5 * var(--universal-padding));
+}
+
+
+
+/* critic markup test aide */
+
+aside {
+    display: inline-block;
+    background-color: #defbea;
+    padding: 0.1em;
+    border: 1px solid #00823d;
+    margin-left: -3.5em;
+}
+
+
+
+/* alert CSS ripped from the BBootstrap demo & documentation pages */
+
+.alert+.alert, .navbar+.navbar, .progress+.progress {
+    margin-top: 1rem;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert::after, .alert::before {
+    box-sizing: border-box;
+}
+
+.alert-primary {
+    color: #084298;
+    background-color: #cfe2ff;
+    border-color: #b6d4fe;
+}
+.alert-dark {
+    color: #141619;
+    background-color: #d3d3d4;
+    border-color: #bcbebf;
+}
+.alert-info {
+    color: #055160;
+    background-color: #cff4fc;
+    border-color: #b6effb;
+}
+.alert-danger {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-primary .alert-link {
+    color: #06357a;
+}
+.alert-link {
+    font-weight: 700;
+}
+.alert-success .alert-link {
+    color: #0c4128;
+}
+.alert-warning .alert-link {
+    color: #523e02;
+}
+.alert-danger .alert-link {
+    color: #6a1a21;
+}
+
+    </style>
+    
+  </head>
+  <body>
+    <pre>
+    Title: ???
+    </pre>
+    <pre>
+    title: Associative arrays
+people:
+    name: John Smith
+    age: 33
+morePeople: { name: Grace Jones, age: 21 }
+    </pre>
+
+    <article class="container">
+    
+<section>
+<h1 id="heading-table-of-contents"><a id="user-content-heading-table-of-contents" class="anchor" href="#heading-table-of-contents" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Heading: table-of-contents</h1>
+<nav class="table-of-contents"><ol><li><a href="#heading-table-of-contents">Heading: table-of-contents</a></li><li><a href="#heading-toc">Heading: toc</a></li><li><a href="#heading-toc-and-anchor">Heading: toc-and-anchor</a></li><li><a href="#heading-toc-done-right">Heading: toc-done-right</a><ol><li><a href="#sub-heading-1">Sub heading 1</a></li><li><a href="#sub-heading-2">Sub heading 2</a><ol><li><a href="#subsub-heading-2-1">Subsub heading 2.1</a></li><li><a href="#subsub-heading-2-2">Subsub heading 2.2</a></li></ol></li><li><a href="#sub-heading-3">Sub heading 3</a></li><li><a href="#sub-heading-4">Sub heading 4</a></li></ol></li><li><a href="#testing-more">Testing more…</a><ol><li><a href="#footnotes-exemplified">Footnotes Exemplified…</a></li><li><a href="#foo">foo</a></li><li><a href="#critic-markup-html-la-te-x">critic markup ☞          HTML ☞                                    LaTeX</a></li><li><a href="#basic-alerts-example">Basic alerts example</a></li><li><a href="#emojis">emojis</a></li><li><a href="#wiki-links">Wiki links</a></li></ol></li><li><a href="#original-markdown-it-demo-text">Original markdown-it demo text</a></li><li><a href="#h-1-heading">h1 Heading</a><ol><li><a href="#h-2-heading">h2 Heading</a><ol><li><a href="#h-3-heading">h3 Heading</a><ol><li><a href="#h-4-heading">h4 Heading</a><ol><li><a href="#h-5-heading">h5 Heading</a><ol><li><a href="#h-6-heading">h6 Heading</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#horizontal-rules">Horizontal Rules</a></li><li><a href="#typographic-replacements">Typographic replacements</a></li><li><a href="#emphasis">Emphasis</a></li><li><a href="#blockquotes">Blockquotes</a></li><li><a href="#lists">Lists</a></li><li><a href="#code">Code</a></li><li><a href="#tables">Tables</a></li><li><a href="#links">Links</a></li><li><a href="#images">Images</a></li><li><a href="#plugins">Plugins</a><ol><li><a href="#a-href-https-github-com-markdown-it-markdown-it-emoji-emojies-a">Emojies</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-sub-subscript-a-a-href-https-github-com-markdown-it-markdown-it-sup-superscript-a">Subscript / Superscript</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-ins-lt-ins-gt-a">&lt;ins&gt;</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-mark-lt-mark-gt-a">&lt;mark&gt;</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-footnote-footnotes-a">Footnotes</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-deflist-definition-lists-a">Definition lists</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-abbr-abbreviations-a">Abbreviations</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-container-custom-containers-a">Custom containers</a></li></ol></li></ol></li><li><a href="#this-particular-issue-is-em-for-developers-only-em">This particular issue is For Developers Only</a><ol><li><a href="#why">Why?</a></li></ol></li><li><a href="#observed-crappiness">Observed Crappiness?</a></li><li><a href="#em-crazy-ideas-em-to-try">Crazy Ideas To Try?</a></li></ol></nav></section>
+<section>
+<h1 id="heading-toc"><a id="user-content-heading-toc" class="anchor" href="#heading-toc" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Heading: toc</h1>
+<p><ul class="markdownIt-TOC">
+<li><a href="#Heading-table-of-contents">Heading: table-of-contents</a></li>
+<li><a href="#Heading-toc">Heading: toc</a></li>
+<li><a href="#Heading-toc-and-anchor">Heading: toc-and-anchor</a></li>
+<li><a href="#Heading-toc-done-right">Heading: toc-done-right</a>
+<ul>
+<li><a href="#Sub-heading-1">Sub heading 1</a></li>
+<li><a href="#Sub-heading-2">Sub heading 2</a>
+<ul>
+<li><a href="#Subsub-heading-21">Subsub heading 2.1</a></li>
+<li><a href="#Subsub-heading-22">Subsub heading 2.2</a></li>
+</ul>
+</li>
+<li><a href="#Sub-heading-3">Sub heading 3</a></li>
+<li><a href="#Sub-heading-4">Sub heading 4</a></li>
+</ul>
+</li>
+<li><a href="#Testing-more">Testing more…</a>
+<ul>
+<li><a href="#Footnotes-Exemplified">Footnotes Exemplified…</a></li>
+<li><a href="#foo">foo</a></li>
+<li><a href="#critic-markup-HTML-LaTeX">critic markup ☞          HTML ☞                                    LaTeX</a></li>
+<li><a href="#Basic-alerts-example">Basic alerts example</a></li>
+<li><a href="#emojis">emojis</a></li>
+<li><a href="#Wiki-links">Wiki links</a></li>
+</ul>
+</li>
+<li><a href="#Original-markdown-it-demo-text">Original markdown-it demo text</a></li>
+<li><a href="#h1-Heading">h1 Heading 😎</a>
+<ul>
+<li><a href="#h2-Heading">h2 Heading</a>
+<ul>
+<li><a href="#h3-Heading">h3 Heading</a>
+<ul>
+<li><a href="#h4-Heading">h4 Heading</a>
+<ul>
+<li><a href="#h5-Heading">h5 Heading</a>
+<ul>
+<li><a href="#h6-Heading">h6 Heading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Horizontal-Rules">Horizontal Rules</a></li>
+<li><a href="#Typographic-replacements">Typographic replacements</a></li>
+<li><a href="#Emphasis">Emphasis</a></li>
+<li><a href="#Blockquotes">Blockquotes</a></li>
+<li><a href="#Lists">Lists</a></li>
+<li><a href="#Code">Code</a></li>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Links">Links</a></li>
+<li><a href="#Images">Images</a></li>
+<li><a href="#Plugins">Plugins</a>
+<ul>
+<li><a href="#Emojies">Emojies</a></li>
+<li><a href="#Subscript">Subscript</a></li>
+<li><a href="#ins"><ins></a></li>
+<li><a href="#mark"><mark></a></li>
+<li><a href="#Footnotes">Footnotes</a></li>
+<li><a href="#Definition-lists">Definition lists</a></li>
+<li><a href="#Abbreviations">Abbreviations</a></li>
+<li><a href="#Custom-containers">Custom containers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#This-particular-issue-is-For-Developers-Only">This particular issue is <em>For Developers Only</em></a>
+<ul>
+<li><a href="#Why">Why?</a></li>
+</ul>
+</li>
+<li><a href="#Observed-Crappiness">Observed Crappiness?</a></li>
+<li><a href="#Crazy-Ideas-To-Try"><em>Crazy Ideas</em> To Try?</a></li>
+</ul>
+<hr class="footnotes-sep footnotes-category-Error_Unused" id="fnsection-hr-12"><aside class="footnotes footnotes-category-Error_Unused" id="fnsection-12"><h3 class="footnotes-header">Error::Unused</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn5" class="footnote-item" data-footnote-caption="1"><span class="footnote-caption"><sup class="footnote-caption">1</sup></span><span class="footnote-content"><p>baz</p>
+ <a href="#fnref5" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn6" class="footnote-item" data-footnote-caption="2"><span class="footnote-caption"><sup class="footnote-caption">2</sup></span><span class="footnote-content"><section id="foo">
+<h2><a id="foo"></a>foo</h2>
+ <a href="#fnref6" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref6-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref6-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></section>
+</span></li>
+<li tabindex="-1" id="fn7" class="footnote-item" data-footnote-caption="3"><span class="footnote-caption"><sup class="footnote-caption">3</sup></span><span class="footnote-content"><p>foo</p>
+ <a href="#fnref7" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn8" class="footnote-item" data-footnote-caption="4"><span class="footnote-caption"><sup class="footnote-caption">4</sup></span><span class="footnote-content"><p>Here is a footnote.</p>
+ <a href="#fnref8" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn9" class="footnote-item" data-footnote-caption="5"><span class="footnote-caption"><sup class="footnote-caption">5</sup></span><span class="footnote-content"><p>Here is another footnote.</p>
+ <a href="#fnref9" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn10" class="footnote-item" data-footnote-caption="6"><span class="footnote-caption"><sup class="footnote-caption">6</sup></span><span class="footnote-content"><p>Here is the first footnote.</p>
+ <a href="#fnref10" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn11" class="footnote-item" data-footnote-caption="7"><span class="footnote-caption"><sup class="footnote-caption">7</sup></span><span class="footnote-content"><p>Here is the second footnote.</p>
+ <a href="#fnref11" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn12" class="footnote-item" data-footnote-caption="8"><span class="footnote-caption"><sup class="footnote-caption">8</sup></span><span class="footnote-content"><p>Here is the third footnote.</p>
+ <a href="#fnref12" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn13" class="footnote-item" data-footnote-caption="9"><span class="footnote-caption"><sup class="footnote-caption">9</sup></span><span class="footnote-content"><p>Footnote <strong>can have markup</strong></p>
+<p>and multiple paragraphs.</p>
+ <a href="#fnref13" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn14" class="footnote-item" data-footnote-caption="10"><span class="footnote-caption"><sup class="footnote-caption">10</sup></span><span class="footnote-content"><p>Footnote text.</p>
+ <a href="#fnref14" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref14-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn15" class="footnote-item" data-footnote-caption="11"><span class="footnote-caption"><sup class="footnote-caption">11</sup></span><span class="footnote-content"><p>Inlines notes are easier to write, since
+you don’t have to pick an identifier and move down to type the
+note.</p>
+ <a href="#fnref15" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn16" class="footnote-item" data-footnote-caption="12"><span class="footnote-caption"><sup class="footnote-caption">12</sup></span><span class="footnote-content"><p> <em>bar</em> </p>
+ <a href="#fnref16" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn17" class="footnote-item" data-footnote-caption="13"><span class="footnote-caption"><sup class="footnote-caption">13</sup></span><span class="footnote-content"><p>this is another example <a href="https://github.com">https://github.com</a></p>
+ <a href="#fnref17" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn18" class="footnote-item" data-footnote-caption="14"><span class="footnote-caption"><sup class="footnote-caption">14</sup></span><span class="footnote-content"><p>it works!</p>
+ <a href="#fnref18" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn19" class="footnote-item" data-footnote-caption="15"><span class="footnote-caption"><sup class="footnote-caption">15</sup></span><span class="footnote-content"><p>Text of inline footnote</p>
+ <a href="#fnref19" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn4" class="footnote-item" data-footnote-caption="¶"><span class="footnote-caption"><sup class="footnote-caption">¶</sup></span><span class="footnote-content"><p>bar</p>
+ <a href="#fnref4" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn2" class="footnote-item" data-footnote-caption="††"><span class="footnote-caption"><sup class="footnote-caption">††</sup></span><span class="footnote-content"><p>Here’s one with multiple blocks.</p>
+<p>Subsequent paragraphs are indented to show that they
+belong to the previous footnote.</p>
+<pre><code>{ some.code }
+</code></pre>
+<p>The whole paragraph can be indented, or just the first
+line.  In this way, multi-paragraph footnotes work like
+multi-paragraph list items.</p>
+ <a href="#fnref2" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref2-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref2-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn1" class="footnote-item" data-footnote-caption="‡"><span class="footnote-caption"><sup class="footnote-caption">‡</sup></span><span class="footnote-content"><p>Here is the footnote.</p>
+ <a href="#fnref1" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn3" class="footnote-item" data-footnote-caption="‡‡"><span class="footnote-caption"><sup class="footnote-caption">‡‡</sup></span><span class="footnote-content"><p>foo</p>
+ <a href="#fnref3" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref3-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref3-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+(Title)</p>
+</section>
+<section>
+<h1 id="heading-toc-and-anchor"><a id="user-content-heading-toc-and-anchor" class="anchor" href="#heading-toc-and-anchor" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Heading: toc-and-anchor</h1>
+<p><ul class="markdownIt-TOC">
+<li><a href="#Heading-table-of-contents">Heading: table-of-contents</a></li>
+<li><a href="#Heading-toc">Heading: toc</a></li>
+<li><a href="#Heading-toc-and-anchor">Heading: toc-and-anchor</a></li>
+<li><a href="#Heading-toc-done-right">Heading: toc-done-right</a>
+<ul>
+<li><a href="#Sub-heading-1">Sub heading 1</a></li>
+<li><a href="#Sub-heading-2">Sub heading 2</a>
+<ul>
+<li><a href="#Subsub-heading-21">Subsub heading 2.1</a></li>
+<li><a href="#Subsub-heading-22">Subsub heading 2.2</a></li>
+</ul>
+</li>
+<li><a href="#Sub-heading-3">Sub heading 3</a></li>
+<li><a href="#Sub-heading-4">Sub heading 4</a></li>
+</ul>
+</li>
+<li><a href="#Testing-more">Testing more…</a>
+<ul>
+<li><a href="#Footnotes-Exemplified">Footnotes Exemplified…</a></li>
+<li><a href="#foo">foo</a></li>
+<li><a href="#critic-markup-HTML-LaTeX">critic markup ☞          HTML ☞                                    LaTeX</a></li>
+<li><a href="#Basic-alerts-example">Basic alerts example</a></li>
+<li><a href="#emojis">emojis</a></li>
+<li><a href="#Wiki-links">Wiki links</a></li>
+</ul>
+</li>
+<li><a href="#Original-markdown-it-demo-text">Original markdown-it demo text</a></li>
+<li><a href="#h1-Heading">h1 Heading 😎</a>
+<ul>
+<li><a href="#h2-Heading">h2 Heading</a>
+<ul>
+<li><a href="#h3-Heading">h3 Heading</a>
+<ul>
+<li><a href="#h4-Heading">h4 Heading</a>
+<ul>
+<li><a href="#h5-Heading">h5 Heading</a>
+<ul>
+<li><a href="#h6-Heading">h6 Heading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Horizontal-Rules">Horizontal Rules</a></li>
+<li><a href="#Typographic-replacements">Typographic replacements</a></li>
+<li><a href="#Emphasis">Emphasis</a></li>
+<li><a href="#Blockquotes">Blockquotes</a></li>
+<li><a href="#Lists">Lists</a></li>
+<li><a href="#Code">Code</a></li>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Links">Links</a></li>
+<li><a href="#Images">Images</a></li>
+<li><a href="#Plugins">Plugins</a>
+<ul>
+<li><a href="#Emojies">Emojies</a></li>
+<li><a href="#Subscript">Subscript</a></li>
+<li><a href="#ins"><ins></a></li>
+<li><a href="#mark"><mark></a></li>
+<li><a href="#Footnotes">Footnotes</a></li>
+<li><a href="#Definition-lists">Definition lists</a></li>
+<li><a href="#Abbreviations">Abbreviations</a></li>
+<li><a href="#Custom-containers">Custom containers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#This-particular-issue-is-For-Developers-Only">This particular issue is <em>For Developers Only</em></a>
+<ul>
+<li><a href="#Why">Why?</a></li>
+</ul>
+</li>
+<li><a href="#Observed-Crappiness">Observed Crappiness?</a></li>
+<li><a href="#Crazy-Ideas-To-Try"><em>Crazy Ideas</em> To Try?</a></li>
+</ul>
+<hr class="footnotes-sep footnotes-category-Error_Unused" id="fnsection-hr-12"><aside class="footnotes footnotes-category-Error_Unused" id="fnsection-12"><h3 class="footnotes-header">Error::Unused</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn5" class="footnote-item" data-footnote-caption="1"><span class="footnote-caption"><sup class="footnote-caption">1</sup></span><span class="footnote-content"><p>baz</p>
+ <a href="#fnref5" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn6" class="footnote-item" data-footnote-caption="2"><span class="footnote-caption"><sup class="footnote-caption">2</sup></span><span class="footnote-content"><section id="foo">
+<h2><a id="foo"></a>foo</h2>
+ <a href="#fnref6" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref6-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref6-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></section>
+</span></li>
+<li tabindex="-1" id="fn7" class="footnote-item" data-footnote-caption="3"><span class="footnote-caption"><sup class="footnote-caption">3</sup></span><span class="footnote-content"><p>foo</p>
+ <a href="#fnref7" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn8" class="footnote-item" data-footnote-caption="4"><span class="footnote-caption"><sup class="footnote-caption">4</sup></span><span class="footnote-content"><p>Here is a footnote.</p>
+ <a href="#fnref8" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn9" class="footnote-item" data-footnote-caption="5"><span class="footnote-caption"><sup class="footnote-caption">5</sup></span><span class="footnote-content"><p>Here is another footnote.</p>
+ <a href="#fnref9" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn10" class="footnote-item" data-footnote-caption="6"><span class="footnote-caption"><sup class="footnote-caption">6</sup></span><span class="footnote-content"><p>Here is the first footnote.</p>
+ <a href="#fnref10" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn11" class="footnote-item" data-footnote-caption="7"><span class="footnote-caption"><sup class="footnote-caption">7</sup></span><span class="footnote-content"><p>Here is the second footnote.</p>
+ <a href="#fnref11" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn12" class="footnote-item" data-footnote-caption="8"><span class="footnote-caption"><sup class="footnote-caption">8</sup></span><span class="footnote-content"><p>Here is the third footnote.</p>
+ <a href="#fnref12" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn13" class="footnote-item" data-footnote-caption="9"><span class="footnote-caption"><sup class="footnote-caption">9</sup></span><span class="footnote-content"><p>Footnote <strong>can have markup</strong></p>
+<p>and multiple paragraphs.</p>
+ <a href="#fnref13" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn14" class="footnote-item" data-footnote-caption="10"><span class="footnote-caption"><sup class="footnote-caption">10</sup></span><span class="footnote-content"><p>Footnote text.</p>
+ <a href="#fnref14" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref14-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn15" class="footnote-item" data-footnote-caption="11"><span class="footnote-caption"><sup class="footnote-caption">11</sup></span><span class="footnote-content"><p>Inlines notes are easier to write, since
+you don’t have to pick an identifier and move down to type the
+note.</p>
+ <a href="#fnref15" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn16" class="footnote-item" data-footnote-caption="12"><span class="footnote-caption"><sup class="footnote-caption">12</sup></span><span class="footnote-content"><p> <em>bar</em> </p>
+ <a href="#fnref16" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn17" class="footnote-item" data-footnote-caption="13"><span class="footnote-caption"><sup class="footnote-caption">13</sup></span><span class="footnote-content"><p>this is another example <a href="https://github.com">https://github.com</a></p>
+ <a href="#fnref17" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn18" class="footnote-item" data-footnote-caption="14"><span class="footnote-caption"><sup class="footnote-caption">14</sup></span><span class="footnote-content"><p>it works!</p>
+ <a href="#fnref18" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn19" class="footnote-item" data-footnote-caption="15"><span class="footnote-caption"><sup class="footnote-caption">15</sup></span><span class="footnote-content"><p>Text of inline footnote</p>
+ <a href="#fnref19" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn4" class="footnote-item" data-footnote-caption="¶"><span class="footnote-caption"><sup class="footnote-caption">¶</sup></span><span class="footnote-content"><p>bar</p>
+ <a href="#fnref4" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn2" class="footnote-item" data-footnote-caption="††"><span class="footnote-caption"><sup class="footnote-caption">††</sup></span><span class="footnote-content"><p>Here’s one with multiple blocks.</p>
+<p>Subsequent paragraphs are indented to show that they
+belong to the previous footnote.</p>
+<pre><code>{ some.code }
+</code></pre>
+<p>The whole paragraph can be indented, or just the first
+line.  In this way, multi-paragraph footnotes work like
+multi-paragraph list items.</p>
+ <a href="#fnref2" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref2-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref2-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn1" class="footnote-item" data-footnote-caption="‡"><span class="footnote-caption"><sup class="footnote-caption">‡</sup></span><span class="footnote-content"><p>Here is the footnote.</p>
+ <a href="#fnref1" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn3" class="footnote-item" data-footnote-caption="‡‡"><span class="footnote-caption"><sup class="footnote-caption">‡‡</sup></span><span class="footnote-content"><p>foo</p>
+ <a href="#fnref3" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref3-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref3-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+</p>
+</section>
+<section>
+<h1 id="heading-toc-done-right"><a id="user-content-heading-toc-done-right" class="anchor" href="#heading-toc-done-right" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Heading: toc-done-right</h1>
+<p>Note that this plugin will also patch the <code>[[toc]]</code> marker, so…</p>
+<nav class="table-of-contents"><ol><li><a href="#heading-table-of-contents">Heading: table-of-contents</a></li><li><a href="#heading-toc">Heading: toc</a></li><li><a href="#heading-toc-and-anchor">Heading: toc-and-anchor</a></li><li><a href="#heading-toc-done-right">Heading: toc-done-right</a><ol><li><a href="#sub-heading-1">Sub heading 1</a></li><li><a href="#sub-heading-2">Sub heading 2</a><ol><li><a href="#subsub-heading-2-1">Subsub heading 2.1</a></li><li><a href="#subsub-heading-2-2">Subsub heading 2.2</a></li></ol></li><li><a href="#sub-heading-3">Sub heading 3</a></li><li><a href="#sub-heading-4">Sub heading 4</a></li></ol></li><li><a href="#testing-more">Testing more…</a><ol><li><a href="#footnotes-exemplified">Footnotes Exemplified…</a></li><li><a href="#foo">foo</a></li><li><a href="#critic-markup-html-la-te-x">critic markup ☞          HTML ☞                                    LaTeX</a></li><li><a href="#basic-alerts-example">Basic alerts example</a></li><li><a href="#emojis">emojis</a></li><li><a href="#wiki-links">Wiki links</a></li></ol></li><li><a href="#original-markdown-it-demo-text">Original markdown-it demo text</a></li><li><a href="#h-1-heading">h1 Heading</a><ol><li><a href="#h-2-heading">h2 Heading</a><ol><li><a href="#h-3-heading">h3 Heading</a><ol><li><a href="#h-4-heading">h4 Heading</a><ol><li><a href="#h-5-heading">h5 Heading</a><ol><li><a href="#h-6-heading">h6 Heading</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#horizontal-rules">Horizontal Rules</a></li><li><a href="#typographic-replacements">Typographic replacements</a></li><li><a href="#emphasis">Emphasis</a></li><li><a href="#blockquotes">Blockquotes</a></li><li><a href="#lists">Lists</a></li><li><a href="#code">Code</a></li><li><a href="#tables">Tables</a></li><li><a href="#links">Links</a></li><li><a href="#images">Images</a></li><li><a href="#plugins">Plugins</a><ol><li><a href="#a-href-https-github-com-markdown-it-markdown-it-emoji-emojies-a">Emojies</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-sub-subscript-a-a-href-https-github-com-markdown-it-markdown-it-sup-superscript-a">Subscript / Superscript</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-ins-lt-ins-gt-a">&lt;ins&gt;</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-mark-lt-mark-gt-a">&lt;mark&gt;</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-footnote-footnotes-a">Footnotes</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-deflist-definition-lists-a">Definition lists</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-abbr-abbreviations-a">Abbreviations</a></li><li><a href="#a-href-https-github-com-markdown-it-markdown-it-container-custom-containers-a">Custom containers</a></li></ol></li></ol></li><li><a href="#this-particular-issue-is-em-for-developers-only-em">This particular issue is For Developers Only</a><ol><li><a href="#why">Why?</a></li></ol></li><li><a href="#observed-crappiness">Observed Crappiness?</a></li><li><a href="#em-crazy-ideas-em-to-try">Crazy Ideas To Try?</a></li></ol></nav><section>
+<h2 id="sub-heading-1"><a id="user-content-sub-heading-1" class="anchor" href="#sub-heading-1" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 1</h2>
+<p>Some nice text, press <kbd>Ctrl A</kbd> or <kbd>F12</kbd></p>
+<p>furi:</p>
+<ul>
+<li>should parse basic <ruby>body<rp>【</rp><rt>toptext</rt><rp>】</rp></ruby>…</li>
+<li><ruby>漢字<rp>【</rp><rt>かんじ</rt><rp>】</rp></ruby></li>
+<li>Foo <ruby>漢字<rp>【</rp><rt>かんじ</rt><rp>】</rp></ruby> bar.</li>
+<li>Foo <ruby>漢字<rp>【</rp><rt>かんじ</rt><rp>】</rp></ruby> bar <ruby>猫<rp>【</rp><rt>ねこ</rt><rp>】</rp></ruby> baz.</li>
+<li><ruby>食<rp>【</rp><rt>た</rt><rp>】</rp>べる<rt></rt></ruby></li>
+<li><ruby>取<rp>【</rp><rt>と</rt><rp>】</rp>り<rt></rt>返<rp>【</rp><rt>かえ</rt><rp>】</rp>す<rt></rt></ruby></li>
+<li><ruby>漢<rp>【</rp><rt>かん</rt><rp>】</rp>字<rp>【</rp><rt>じ</rt><rp>】</rp></ruby></li>
+<li><ruby>可<rp>【</rp><rt>か</rt><rp>】</rp>愛<rp>【</rp><rt>わい</rt><rp>】</rp>い<rt></rt>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp></ruby></li>
+<li><ruby>可愛<rp>【</rp><rt>かわい</rt><rp>】</rp>い<rt></rt>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp></ruby></li>
+<li><ruby>猫<rp>【</rp><rt>ねこ</rt><rp>】</rp>！？<rt></rt>可愛<rp>【</rp><rt>かわい</rt><rp>】</rp>い！！！w<rt></rt></ruby></li>
+<li><ruby>食べる<rp>【</rp><rt>たべべ</rt><rp>】</rp></ruby></li>
+<li><ruby>アクセラレーター<rp>【</rp><rt>accelerator</rt><rp>】</rp></ruby></li>
+<li><ruby>cat<rp>【</rp><rt>ねこ</rt><rp>】</rp></ruby></li>
+<li><ruby>可愛い<rp>【</rp><rt>kawaii</rt><rp>】</rp></ruby></li>
+<li><ruby>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp></ruby></li>
+<li><ruby>可愛<rp>【</rp><rt>かわい</rt><rp>】</rp>い<rt></rt>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp></ruby></li>
+<li><ruby>漢<rp>【</rp><rt>kan</rt><rp>】</rp>字<rp>【</rp><rt>ji</rt><rp>】</rp></ruby></li>
+<li><ruby>食べる<rp>【</rp><rt>たべる</rt><rp>】</rp></ruby></li>
+<li><ruby>食べる<rp>【</rp><rt>たべる</rt><rp>】</rp></ruby></li>
+<li><ruby>猫<rp>【</rp><rt>ね=こ</rt><rp>】</rp>だ<rt></rt></ruby></li>
+<li><ruby>猫<rp>【</rp><rt>ね＝こ</rt><rp>】</rp>だ<rt></rt></ruby></li>
+<li><ruby>ダメな<rt></rt>奴<rp>【</rp><rt>やつ</rt><rp>】</rp></ruby></li>
+<li><ruby>ﾀﾞﾒな<rt></rt>奴<rp>【</rp><rt>やつ</rt><rp>】</rp></ruby></li>
+<li><ruby>猫だ<rp>【</rp><rt>ねこだよ</rt><rp>】</rp></ruby></li>
+<li><ruby>は猫<rp>【</rp><rt>これはねこ</rt><rp>】</rp></ruby></li>
+<li><ruby>だ<rt>●</rt>か<rt>●</rt>ら<rt>●</rt></ruby></li>
+<li><ruby>だ<rt>●</rt>か<rt>●</rt>ら<rt>●</rt></ruby></li>
+<li><ruby>だ<rt>+</rt>か<rt>+</rt>ら<rt>+</rt></ruby></li>
+<li><ruby>猫<rt>●</rt>i<rt>●</rt>s<rt>●</rt>❤<rt>●</rt></ruby></li>
+<li><ruby>猫<rp>【</rp><rt>ね*こ</rt><rp>】</rp>だ<rt></rt></ruby></li>
+<li><ruby>猫<rp>【</rp><rt>ね＊こ</rt><rp>】</rp>だ<rt></rt></ruby></li>
+<li><ruby>漢字<rp>【</rp><rt>かんじ</rt><rp>】</rp></ruby></li>
+<li><ruby>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp>犬犬犬犬犬<rp>【</rp><rt>いぬ_いぬ-いぬ\\いぬ]いぬ</rt><rp>】</rp></ruby></li>
+<li><ruby>可愛<rp>【</rp><rt>かわい</rt><rp>】</rp>い<rt></rt>犬<rp>【</rp><rt>いぬ</rt><rp>】</rp></ruby></li>
+<li><ruby>可<rp>【</rp><rt>か*わい</rt><rp>】</rp>愛<rp>【</rp><rt>い</rt><rp>】</rp>い<rt></rt>犬<rp>【</rp><rt>ぬ</rt><rp>】</rp></ruby></li>
+</ul>
+</section>
+<section>
+<h2 id="sub-heading-2"><a id="user-content-sub-heading-2" class="anchor" href="#sub-heading-2" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 2</h2>
+<p>Some even nicer text</p>
+<section>
+<h3 id="subsub-heading-2-1"><a id="user-content-subsub-heading-21" class="anchor" href="#subsub-heading-21" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Subsub heading 2.1</h3>
+<p>Some even nicer text</p>
+</section>
+<section>
+<h3 id="subsub-heading-2-2"><a id="user-content-subsub-heading-22" class="anchor" href="#subsub-heading-22" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Subsub heading 2.2</h3>
+<p>Some even nicer text</p>
+</section>
+</section>
+<section>
+<h2 id="sub-heading-3"><a id="user-content-sub-heading-3" class="anchor" href="#sub-heading-3" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 3</h2>
+<p>Some even nicer text</p>
+</section>
+<section>
+<h2 id="sub-heading-4"><a id="user-content-sub-heading-4" class="anchor" href="#sub-heading-4" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 4</h2>
+<p>Some even nicer text</p>
+</section>
+</section>
+<section>
+<h1 id="testing-more"><a id="user-content-testing-more" class="anchor" href="#testing-more" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Testing more…</h1>
+<section>
+<h2 id="footnotes-exemplified"><a id="user-content-footnotes-exemplified" class="anchor" href="#footnotes-exemplified" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Footnotes Exemplified…</h2>
+<p>Here is a footnote reference,<a class="footnote-ref " href="#fn1" id="fnref1"><sup class="footnote-ref">‡</sup></a> and another.<a class="footnote-ref " href="#fn2" id="fnref2"><sup class="footnote-ref">††</sup></a></p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-1"><aside class="footnotes footnotes-category-section" id="fnsection-1"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn2" class="footnote-item" data-footnote-caption="††"><span class="footnote-caption"><sup class="footnote-caption">††</sup></span><span class="footnote-content"><p>Here’s one with multiple blocks.</p>
+<p>Subsequent paragraphs are indented to show that they
+belong to the previous footnote.</p>
+<pre><code>{ some.code }
+</code></pre>
+<p>The whole paragraph can be indented, or just the first
+line.  In this way, multi-paragraph footnotes work like
+multi-paragraph list items.</p>
+ <a href="#fnref2" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref2-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref2-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn1" class="footnote-item" data-footnote-caption="‡"><span class="footnote-caption"><sup class="footnote-caption">‡</sup></span><span class="footnote-content"><p>Here is the footnote.</p>
+ <a href="#fnref1" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>This paragraph won’t be part of the note, because it
+isn’t indented.</p>
+<p>They could terminate each other:</p>
+<p>.
+<a class="footnote-ref footnote-bunched-ref-ref" href="#fn3" id="fnref3"><sup class="footnote-ref">‡‡</sup></a><sup class="footnote-ref-combiner footnote-bunched-ref-ref">,</sup><a class="footnote-ref footnote-bunched-ref-ref" href="#fn4" id="fnref4"><sup class="footnote-ref">¶</sup></a><sup class="footnote-ref-combiner footnote-bunched-ref-ref">,</sup><a class="footnote-ref " href="#fn5" id="fnref5"><sup class="footnote-ref">1</sup></a></p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-2"><aside class="footnotes footnotes-category-section" id="fnsection-2"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn5" class="footnote-item" data-footnote-caption="1"><span class="footnote-caption"><sup class="footnote-caption">1</sup></span><span class="footnote-content"><p>baz</p>
+ <a href="#fnref5" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn4" class="footnote-item" data-footnote-caption="¶"><span class="footnote-caption"><sup class="footnote-caption">¶</sup></span><span class="footnote-content"><p>bar</p>
+ <a href="#fnref4" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn3" class="footnote-item" data-footnote-caption="‡‡"><span class="footnote-caption"><sup class="footnote-caption">‡‡</sup></span><span class="footnote-content"><p>foo</p>
+ <a href="#fnref3" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref3-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref3-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>We support inline notes too (pandoc example):</p>
+<p>Here is an inline note.<a class="footnote-ref " href="#fn15" id="fnref15"><sup class="footnote-ref">11</sup></a></p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-3"><aside class="footnotes footnotes-category-aside" id="fnsection-3"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn15" class="footnote-item" data-footnote-caption="11"><span class="footnote-caption"><sup class="footnote-caption">11</sup></span><span class="footnote-content"><p>Inlines notes are easier to write, since
+you don’t have to pick an identifier and move down to type the
+note.</p>
+ <a href="#fnref15" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>foo<a class="footnote-ref " href="#fn16" id="fnref16"><sup class="footnote-ref">12</sup></a></p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-4"><aside class="footnotes footnotes-category-aside" id="fnsection-4"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn16" class="footnote-item" data-footnote-caption="12"><span class="footnote-caption"><sup class="footnote-caption">12</sup></span><span class="footnote-content"><p> <em>bar</em> </p>
+ <a href="#fnref16" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p><a class="footnote-ref " href="#fn6" id="fnref6"><sup class="footnote-ref">2</sup></a> <a class="footnote-ref " href="#fn6" id="fnref6-1"><sup class="footnote-ref">2</sup></a></p>
+
+<p><a class="footnote-ref " href="#fn6" id="fnref6-2"><sup class="footnote-ref">2</sup></a> <a class="footnote-ref " href="#fn7" id="fnref7"><sup class="footnote-ref">3</sup></a></p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-5"><aside class="footnotes footnotes-category-section" id="fnsection-5"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn6" class="footnote-item" data-footnote-caption="2"><span class="footnote-caption"><sup class="footnote-caption">2</sup></span><span class="footnote-content"></section>
+<section>
+<h2 id="foo"><a id="user-content-foo" class="anchor" href="#foo" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>foo</h2>
+ <a href="#fnref6" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref6-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref6-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></section>
+</span></li>
+<li tabindex="-1" id="fn7" class="footnote-item" data-footnote-caption="3"><span class="footnote-caption"><sup class="footnote-caption">3</sup></span><span class="footnote-content"><p>foo</p>
+ <a href="#fnref7" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Should allow links in inline footnotes
+.
+Example<a class="footnote-ref " href="#fn17" id="fnref17"><sup class="footnote-ref">13</sup></a></p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-6"><aside class="footnotes footnotes-category-aside" id="fnsection-6"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn17" class="footnote-item" data-footnote-caption="13"><span class="footnote-caption"><sup class="footnote-caption">13</sup></span><span class="footnote-content"><p>this is another example <a href="https://github.com">https://github.com</a></p>
+ <a href="#fnref17" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Should allow additional text in numeric footnote reference
+.
+Here is a footnote<a class="footnote-ref " href="#fn8" id="fnref8"><sup class="footnote-ref">4</sup></a> reference with <a class="footnote-ref " href="#fn9" id="fnref9"><span class="footnote-ref-extra-text">added text</span><sup class="footnote-ref">5</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-7"><aside class="footnotes footnotes-category-section" id="fnsection-7"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn8" class="footnote-item" data-footnote-caption="4"><span class="footnote-caption"><sup class="footnote-caption">4</sup></span><span class="footnote-content"><p>Here is a footnote.</p>
+ <a href="#fnref8" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn9" class="footnote-item" data-footnote-caption="5"><span class="footnote-caption"><sup class="footnote-caption">5</sup></span><span class="footnote-content"><p>Here is another footnote.</p>
+ <a href="#fnref9" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Here<a class="footnote-ref " href="#fn10" id="fnref10"><sup class="footnote-ref">6</sup></a> is a footnote <a class="footnote-ref " href="#fn11" id="fnref11"><span class="footnote-ref-extra-text">reference</span><sup class="footnote-ref">7</sup></a> with <a class="footnote-ref " href="#fn12" id="fnref12"><span class="footnote-ref-extra-text">added text</span><sup class="footnote-ref">8</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-8"><aside class="footnotes footnotes-category-section" id="fnsection-8"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn10" class="footnote-item" data-footnote-caption="6"><span class="footnote-caption"><sup class="footnote-caption">6</sup></span><span class="footnote-content"><p>Here is the first footnote.</p>
+ <a href="#fnref10" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn11" class="footnote-item" data-footnote-caption="7"><span class="footnote-caption"><sup class="footnote-caption">7</sup></span><span class="footnote-content"><p>Here is the second footnote.</p>
+ <a href="#fnref11" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn12" class="footnote-item" data-footnote-caption="8"><span class="footnote-caption"><sup class="footnote-caption">8</sup></span><span class="footnote-content"><p>Here is the third footnote.</p>
+ <a href="#fnref12" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Here is a footnote reference,<a class="footnote-ref " href="#fn3" id="fnref3-1"><sup class="footnote-ref">‡‡</sup></a> and another,<a class="footnote-ref " href="#fn2" id="fnref2-1"><sup class="footnote-ref">††</sup></a> and an inline footnote <a class="footnote-ref " href="#fn18" id="fnref18"><sup class="footnote-ref">14</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-9"><aside class="footnotes footnotes-category-aside" id="fnsection-9"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn18" class="footnote-item" data-footnote-caption="14"><span class="footnote-caption"><sup class="footnote-caption">14</sup></span><span class="footnote-content"><p>it works!</p>
+ <a href="#fnref18" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>And then there are duplicate references to those footnotes here<a class="footnote-ref footnote-bunched-ref-ref" href="#fn3" id="fnref3-2"><sup class="footnote-ref">‡‡</sup></a><sup class="footnote-ref-combiner footnote-bunched-ref-ref">,</sup><a class="footnote-ref " href="#fn2" id="fnref2-2"><sup class="footnote-ref">††</sup></a>.</p>
+
+<hr>
+<section>
+<h2 id="critic-markup-html-la-te-x"><a id="user-content-critic-markup-☞----------html-☞------------------------------------latex" class="anchor" href="#critic-markup-☞----------html-☞------------------------------------latex" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>critic markup ☞          HTML ☞                                    LaTeX</h2>
+<p><del>[text]</del> ☞           <code>&lt;del&gt;[text]&lt;/del&gt;</code>        ☞               <code>\st{[text]}</code></p>
+<p><ins>[text]</ins> ☞           <code>&lt;ins&gt;[text]&lt;/ins&gt;</code>       ☞                <code>\underline{[text]}</code></p>
+<p><del>[text1]</del><ins>[text2]</ins> ☞ <code>&lt;del&gt;[text1]&lt;/del&gt;&lt;ins&gt;[text2]&lt;/ins&gt;</code>  ☞  <code>\st{[text1]}\underline{[text2]}</code></p>
+<p><mark>[text]</mark>     ☞       <code>&lt;mark&gt;[text]&lt;/mark&gt;</code>        ☞             <code>\hl{[text]}</code></p>
+<p><aside>[text]</aside>    ☞        <code>&lt;aside&gt;[text]&lt;/aside&gt;</code>         ☞          <code>\marginpar{[text]}</code></p>
+<p>An editor can delete text as he <del>bloody well</del> pleases.</p>
+<p>An editor can also insert text, <ins>as this is his prerogative</ins> and duty when the writer dropped the, ah, word.</p>
+<p>As you know <del>theres</del><ins>there's</ins> always that fuss about their and <del> their </del><ins> there </ins>…</p>
+<p>Among all the bla bla there’s a golden nugget to be found, <mark>if only you'ld go looking</mark>.</p>
+<p>JS HTTP is a collection of low-level javascript HTTP-related modules. <aside>It's awesome!</aside></p>
+<hr>
+</section>
+<section>
+<h2 id="basic-alerts-example"><a id="user-content-basic-alerts-example" class="anchor" href="#basic-alerts-example" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic alerts example</h2>
+<div class="alert alert-warning" role="alert">
+<div class="alert-inner">
+<div class="alert-icon"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span></div>
+<div class="alert-message"><p>Hello world! <a href="#" class="alert-link">Link</a>.</p>
+</div>
+</div>
+</div>
+<p>With option <code>links</code> enabled (by default):</p>
+<p>This is a test. <a href="#">Link</a>.</p>
+<div class="alert alert-success" role="alert">
+<div class="alert-inner">
+<div class="alert-icon"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></div>
+<div class="alert-message"><p>Hello world! <a href="#" class="alert-link">Link</a>.</p>
+</div>
+</div>
+</div>
+<p>This is a test. <a href="#">Link</a>.</p>
+<p>With option <code>icons</code> enabled (not default):</p>
+<p>This is a test. <a href="#">Link</a>.</p>
+<div class="alert alert-danger" role="alert">
+<div class="alert-inner">
+<div class="alert-icon"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></div>
+<div class="alert-message"><p>Uh-oh! <a href="#" class="alert-link">Link</a>.</p>
+</div>
+</div>
+</div>
+<p>This is a test. <a href="#">Link</a>.</p>
+<hr>
+</section>
+<section>
+<h2 id="emojis"><a id="user-content-emojis" class="anchor" href="#emojis" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>emojis</h2>
+<ul>
+<li>
+<p>1️⃣ aaa :fifty:</p>
+<p>😄 😁 😉 💯</p>
+</li>
+<li>
+<p>shortcuts</p>
+<p>:50 |50 :uno aaa</p>
+</li>
+<li>
+<p>skip rewritten defaults</p>
+<p>😄 😃</p>
+</li>
+</ul>
+<p><a href="http://www.example.org/wiki/Special:Preferences">http://www.example.org/wiki/Special:Preferences</a> 😛</p>
+<p><a href="http://www.example.org/foo:joy:bar">http://www.example.org/foo:joy:bar</a> 😂</p>
+<p><a href="http://www.example.org/foo:joy:">bar</a></p>
+<p><a href="http://www.example.org/wiki/Special:Preferences">http://www.example.org/wiki/Special:Preferences</a> 😛</p>
+<p><a href="http://www.example.org/foo:joy:bar">http://www.example.org/foo:joy:bar</a> 😂</p>
+<hr>
+</section>
+<section>
+<h2 id="wiki-links"><a id="user-content-wiki-links" class="anchor" href="#wiki-links" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Wiki links</h2>
+<p><a href="./Wiki_Link.html">Wiki Link</a></p>
+<p><a href="./Help/Wiki_Link.html">Help/Wiki Link</a></p>
+<p><a href="/Main/Wiki_Link.html">/Main/Wiki Link</a></p>
+<p>Here is a <a href="./Wiki_Link.html">Wiki Link</a></p>
+<p><a href="./Wiki_Link.html">Wiki Link</a>s are cool</p>
+<p>Click <a href="./Wiki_Link.html">here</a> to learn about wiki links</p>
+<p>This is [[not a valid wiki link]</p>
+<p>This is [not a valid wiki link]] either</p>
+<p>And here are a few edge cases for the default ‘accept everything’ regex:</p>
+<p>This is <a href="./a_valid_wiki_link]_thanks_to_[the_matching.html">a valid wiki link] thanks to [the matching</a> markers.</p>
+<p>Did <a href="./anyone_test.html">anyone test</a> <a href="./many.html">multiple</a> <a href="./dir/fff.html">links</a> in a single line?</p>
+<p>And <a href="./how..._aboutsomenicepunctuation.html">what?about?this!</a></p>
+<p>While <a href="./dir/file[1].html">this one</a> has brackets in the URL, it <strong>is</strong> accepted.</p>
+<p>However, <a href="./dir/file[[1.html">dir/file[[1</a>|this one<a href="./1.html">1</a>]] does NOT deliver what you’ld expect!</p>
+<p>Neither does <a href="./[[This_one.html">[[This one</a>]] do what it looks like at first glance!</p>
+<p>But <a href="./then,_however,_yada_yada,_--there&#39;s_this_baby--it&#39;s_me,_Papa_Doc.html">then, however, yada yada, --there's this baby--it's me, "Papa Doc"</a> who’ll make it through unscathed.</p>
+<hr>
+<p class="someclass" id="someid" attr="allowed">text</p>
+<p link="/some/page/in/app/id=1">should parse attributes with = ‘{attr=/id=1}’, options</p>
+<p with="attrs">some text</p>
+<p>some text {{with=attrs}}</p>
+<p with="attrs">some text</p>
+<p class="green">some text</p>
+<p css-module="green">some text</p>
+<p id="section2">some text</p>
+<p attr="lorem" class="class" css-module="css-module" id="id">some text</p>
+<p attr="lorem ipsum">some text</p>
+<p class="c1 c2">some text</p>
+<p css-module="c1 c2">some text</p>
+<p css-module="c1.c2">some text</p>
+<p>paragraph <strong class="red">bold</strong> asdf</p>
+<p>paragraph <strong>bold</strong>{{.red}} asdf</p>
+<ul>
+<li class="red">item 1</li>
+<li>item 2</li>
+</ul>
+<p class="someclass" id="someid" attr="allowed">text</p>
+<hr>
+</section>
+</section>
+<section>
+<h1 id="original-markdown-it-demo-text"><a id="user-content-original-markdown-it-demo-text" class="anchor" href="#original-markdown-it-demo-text" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Original markdown-it demo text</h1>
+<p>Here it is:</p>
+<hr>
+<p><strong>Advertisement 😃</strong></p>
+<ul>
+<li><strong><a href="https://nodeca.github.io/pica/demo/">pica</a></strong> - high quality and fast image
+resize in browser.</li>
+<li><strong><a href="https://github.com/nodeca/babelfish/">babelfish</a></strong> - developer friendly
+i18n with plurals support and easy syntax.</li>
+</ul>
+<p>You will like those projects!</p>
+<hr>
+</section>
+<section>
+<h1 id="h-1-heading"><a id="user-content-h1-heading-sunglasses" class="anchor" href="#h1-heading-sunglasses" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>h1 Heading 😎</h1>
+<section>
+<h2 id="h-2-heading"><a id="user-content-h2-heading" class="anchor" href="#h2-heading" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>h2 Heading</h2>
+<section>
+<h3 id="h-3-heading"><a id="user-content-h3-heading" class="anchor" href="#h3-heading" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>h3 Heading</h3>
+<section>
+<h4 id="h-4-heading"><a id="user-content-h4-heading" class="anchor" href="#h4-heading" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>h4 Heading</h4>
+<section>
+<h5 id="h-5-heading"><a id="user-content-h5-heading" class="anchor" href="#h5-heading" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>h5 Heading</h5>
+<section>
+<h6 id="h-6-heading"><a id="user-content-h6-heading" class="anchor" href="#h6-heading" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>h6 Heading</h6>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section>
+<h2 id="horizontal-rules"><a id="user-content-horizontal-rules" class="anchor" href="#horizontal-rules" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Horizontal Rules</h2>
+<hr>
+<hr>
+<hr>
+</section>
+<section>
+<h2 id="typographic-replacements"><a id="user-content-typographic-replacements" class="anchor" href="#typographic-replacements" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Typographic replacements</h2>
+<p>Enable typographer option to see result.</p>
+<p>© © ® ® ™ ™ § § ±</p>
+<p>test.. test… test… test?.. test!..</p>
+<p>!!! ??? ,  – —</p>
+<p>“Smartypants, double quotes” and ‘single quotes’</p>
+</section>
+<section>
+<h2 id="emphasis"><a id="user-content-emphasis" class="anchor" href="#emphasis" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Emphasis</h2>
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p><s>Strikethrough</s></p>
+</section>
+<section>
+<h2 id="blockquotes"><a id="user-content-blockquotes" class="anchor" href="#blockquotes" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Blockquotes</h2>
+<blockquote>
+<p>Blockquotes can also be nested…</p>
+<blockquote>
+<p>…by using additional greater-than signs right next to each other…</p>
+<blockquote>
+<p>…or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</section>
+<section>
+<h2 id="lists"><a id="user-content-lists" class="anchor" href="#lists" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Lists</h2>
+<p>Unordered</p>
+<ul>
+<li>Create a list by starting a line with <code>+</code>, <code>-</code>, or <code>*</code></li>
+<li>Sub-lists are made by indenting 2 spaces:
+<ul>
+<li>Marker character change forces new list start:
+<ul>
+<li>Ac tristique libero volutpat at</li>
+</ul>
+<ul>
+<li>Facilisis in pretium nisl aliquet</li>
+</ul>
+<ul>
+<li>Nulla volutpat aliquam velit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Very easy!</li>
+</ul>
+<p>Ordered</p>
+<ol>
+<li>
+<p>Lorem ipsum dolor sit amet</p>
+</li>
+<li>
+<p>Consectetur adipiscing elit</p>
+</li>
+<li>
+<p>Integer molestie lorem at massa</p>
+</li>
+<li>
+<p>You can use sequential numbers…</p>
+</li>
+<li>
+<p>…or keep all the numbers as <code>1.</code></p>
+</li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol start="57">
+<li>foo</li>
+<li>bar</li>
+</ol>
+</section>
+<section>
+<h2 id="code"><a id="user-content-code" class="anchor" href="#code" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Code</h2>
+<p>Inline <code>code</code></p>
+<p>Indented code</p>
+<pre><code>// Some comments
+line 1 of code
+line 2 of code
+line 3 of code
+</code></pre>
+<p>Block code “fences”</p>
+<pre><code>Sample text here...
+</code></pre>
+<p>Syntax highlighting</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">bar</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> bar<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</section>
+<section>
+<h2 id="tables"><a id="user-content-tables" class="anchor" href="#tables" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Option">data</td>
+<td data-label="Description">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td data-label="Option">engine</td>
+<td data-label="Description">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td data-label="Option">ext</td>
+<td data-label="Description">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Right aligned columns</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Option</th>
+<th style="text-align:right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Option" style="text-align:right">data</td>
+<td data-label="Description" style="text-align:right">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td data-label="Option" style="text-align:right">engine</td>
+<td data-label="Description" style="text-align:right">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td data-label="Option" style="text-align:right">ext</td>
+<td data-label="Description" style="text-align:right">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2 id="links"><a id="user-content-links" class="anchor" href="#links" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Links</h2>
+<p><a href="http://dev.nodeca.com">link text</a></p>
+<p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link with title</a></p>
+<p>Autoconverted link <a href="https://github.com/nodeca/pica">https://github.com/nodeca/pica</a> (enable linkify to see)</p>
+</section>
+<section>
+<h2 id="images"><a id="user-content-images" class="anchor" href="#images" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Images</h2>
+<p><img src="https://octodex.github.com/images/minion.png" alt="Minion">
+<img src="https://octodex.github.com/images/stormtroopocat.jpg" alt="Stormtroopocat" title="The Stormtroopocat"></p>
+<p>Like links, Images also have a footnote style syntax</p>
+<p><img src="https://octodex.github.com/images/dojocat.jpg" alt="Alt text" title="The Dojocat"></p>
+<p>With a reference later in the document defining the URL location:</p>
+</section>
+<section>
+<h2 id="plugins"><a id="user-content-plugins" class="anchor" href="#plugins" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Plugins</h2>
+<p>The killer feature of <code>markdown-it</code> is very effective support of
+<a href="https://www.npmjs.org/browse/keyword/markdown-it-plugin">syntax plugins</a>.</p>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-emoji-emojies-a"><a id="user-content-emojies" class="anchor" href="#emojies" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-emoji">Emojies</a></h3>
+<blockquote>
+<p>Classic markup: 😉 :crush: 😢 :tear: 😆 😋</p>
+<p>Shortcuts (emoticons): 😃 😦 😎 😉</p>
+</blockquote>
+<p>see <a href="https://github.com/markdown-it/markdown-it-emoji#change-output">how to change output</a> with twemoji.</p>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-sub-subscript-a-a-href-https-github-com-markdown-it-markdown-it-sup-superscript-a"><a id="user-content-subscript--superscript" class="anchor" href="#subscript--superscript" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-sub">Subscript</a> / <a href="https://github.com/markdown-it/markdown-it-sup">Superscript</a></h3>
+<ul>
+<li>19<sup>th</sup></li>
+<li>H<sub>2</sub>O</li>
+</ul>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-ins-lt-ins-gt-a"><a id="user-content-ins" class="anchor" href="#ins" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-ins">&lt;ins&gt;</a></h3>
+<p><ins>Inserted text</ins></p>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-mark-lt-mark-gt-a"><a id="user-content-mark" class="anchor" href="#mark" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-mark">&lt;mark&gt;</a></h3>
+<p><mark>Marked text</mark></p>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-footnote-footnotes-a"><a id="user-content-footnotes" class="anchor" href="#footnotes" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-footnote">Footnotes</a></h3>
+<p>Footnote 1 link<a class="footnote-ref " href="#fn13" id="fnref13"><sup class="footnote-ref">9</sup></a>.</p>
+
+<p>Footnote 2 link<a class="footnote-ref " href="#fn14" id="fnref14"><sup class="footnote-ref">10</sup></a>.</p>
+
+<p>Inline footnote<a class="footnote-ref " href="#fn19" id="fnref19"><sup class="footnote-ref">15</sup></a> definition.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-10"><aside class="footnotes footnotes-category-aside" id="fnsection-10"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn19" class="footnote-item" data-footnote-caption="15"><span class="footnote-caption"><sup class="footnote-caption">15</sup></span><span class="footnote-content"><p>Text of inline footnote</p>
+ <a href="#fnref19" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Duplicated footnote reference<a class="footnote-ref " href="#fn14" id="fnref14-1"><sup class="footnote-ref">10</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-11"><aside class="footnotes footnotes-category-section" id="fnsection-11"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn13" class="footnote-item" data-footnote-caption="9"><span class="footnote-caption"><sup class="footnote-caption">9</sup></span><span class="footnote-content"><p>Footnote <strong>can have markup</strong></p>
+<p>and multiple paragraphs.</p>
+ <a href="#fnref13" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn14" class="footnote-item" data-footnote-caption="10"><span class="footnote-caption"><sup class="footnote-caption">10</sup></span><span class="footnote-content"><p>Footnote text.</p>
+ <a href="#fnref14" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref14-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-deflist-definition-lists-a"><a id="user-content-definition-lists" class="anchor" href="#definition-lists" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-deflist">Definition lists</a></h3>
+<dl>
+<dt>Term 1</dt>
+<dd>
+<p>Definition 1
+with lazy continuation.</p>
+</dd>
+<dt>Term 2 with <em>inline markup</em></dt>
+<dd>
+<p>Definition 2</p>
+<pre><code>  { some code, part of Definition 2 }
+</code></pre>
+<p>Third paragraph of definition 2.</p>
+</dd>
+</dl>
+<p><em>Compact style:</em></p>
+<dl>
+<dt>Term 1</dt>
+<dd>Definition 1</dd>
+<dt>Term 2</dt>
+<dd>Definition 2a</dd>
+<dd>Definition 2b</dd>
+</dl>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-abbr-abbreviations-a"><a id="user-content-abbreviations" class="anchor" href="#abbreviations" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-abbr">Abbreviations</a></h3>
+<p>This is HTML abbreviation example.</p>
+<p>It converts “HTML”, but keep intact partial entries like “xxxHTMLyyy” and so on.</p>
+<p>*[HTML]: Hyper Text Markup Language</p>
+</section>
+<section>
+<h3 id="a-href-https-github-com-markdown-it-markdown-it-container-custom-containers-a"><a id="user-content-custom-containers" class="anchor" href="#custom-containers" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a href="https://github.com/markdown-it/markdown-it-container">Custom containers</a></h3>
+<div class="alert alert-warning" role="alert">
+<div class="alert-inner">
+<div class="alert-icon"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span></div>
+<div class="alert-message"><p><em>here be dragons</em></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section>
+<h1 id="this-particular-issue-is-em-for-developers-only-em"><a id="user-content-this-particular-issue-is-for-developers-only" class="anchor" href="#this-particular-issue-is-for-developers-only" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>This particular issue is <em>For Developers Only</em></h1>
+<hr>
+<p><strong>Please file a fresh, new issue if you see something you want to request as a feature or report a bug on or simply talk about.</strong></p>
+<p><strong>Copy&amp;paste the bit of text that’s relevant, if you want.</strong></p>
+<hr>
+<p>The notorious “<em>Mother Of All PRs</em>” for Qiqqa. (Folks who’ve worked with me before, will know the feeling. 😉🤯 )</p>
+<section>
+<h2 id="why"><a id="user-content-why" class="anchor" href="#why" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Why?</h2>
+<p>Because I don’t want to swamp the issue tracker with the stuff I note, think about, or otherwise need to remind myself about at some later point in time, where my brain <em>very probably</em> has already given up attempting to track and manage.</p>
+<p>a.k.a. “<em>Notes To Self</em>”</p>
+<blockquote>
+<p>I’ve been pondering dropping this stuff in the <a href="https://github.com/jimmejardine/qiqqa-open-source/projects">kanban projects</a> but that hasn’t worked out before, because this is about a <strong>lot of details</strong> that <em>do matter</em>, but are <em>clutter</em> for everyone trying to get a handle on the overall state of affairs (like <em>me</em>), so after a long time considering and trying other means, failures all, the current idea is to bundle all these devils in a single issue, with perhaps some check boxes, and then using the github EDIT feature, rather than COMMENTing each time: once an item in this list is done, it can be DELETED as far as I’m concerned. The git commit log serves well for keeping track of what happened and what was done; it’s the ‘gotta do / check this’ buggers that need a place to go and I want to keep it all in a single website, i.e. <em>github</em>.</p>
+</blockquote>
+</section>
+</section>
+<section>
+<h1 id="observed-crappiness"><a id="user-content-observed-crappiness" class="anchor" href="#observed-crappiness" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Observed Crappiness?</h1>
+<ul>
+<li><input type="checkbox" id="checkbox0"><label for="checkbox0">BibTeX editor. OMG. 🤯 I know it’s hacky (hey, <em>I</em> did that back in '19, <strong>I know</strong>), but the parser is… 😒 and the (re)formatter… and the editor modes are 🤡  – find time and effort to do a proper editor one day, please. Doesn’t need to be smart, just <strong>flexible</strong>. <strong>Tolerant</strong>, say.</label></li>
+<li><input type="checkbox" id="checkbox1" checked=""><label for="checkbox1">~antique <code>pdfdraw.exe</code> still locks up on some particular ‘evil PDFs’~ → filed as #305 for it happens almost every day now with my test repo 😩 😭</label></li>
+<li><input type="checkbox" id="checkbox2"><label for="checkbox2">ditto for SynFusion-based annotation, etc. metadata extraction logic: here we end up with a run-away memory consumption problem in .NET, resulting in out-of-memory a little later on.
+→ work is done in MuPDF repo (<code>mutool multipurp</code>): <code>multipurp</code> tool is created to extract a metric ton of PDF metadata, including outlines, annotations and attachments and dump all that to JSON, so we can easily go through this stuff picking up what we want/need at that particular mo.</label></li>
+<li>BibTeX parsing:
+<ul>
+<li><input type="checkbox" id="checkbox3"><label for="checkbox3">check the Unicode translation code: it works <strong>but a little too well</strong>, as <code>\LaTeX</code> and <code>\kern</code> TeX macros at least get their leading chars converted to Unicode, and that’s plain <em>wrong</em>.</label></li>
+<li><input type="checkbox" id="checkbox4"><label for="checkbox4">Go through the test set and vet the results in the sollwert files: there’s very probably a couple of issues lurking in there still.</label></li>
+<li><input type="checkbox" id="checkbox5"><label for="checkbox5">BibTeX (re)formatting? Yech, TABs! 🤢</label></li>
+<li><input type="checkbox" id="checkbox6"><label for="checkbox6">Qiqqa Search: search for <code>fingerprint:HASH</code> (e.g. <code>fingerprint:20359B18C8D6AC93F836962526FDC306118486C</code>) doesn’t work. <em>Would</em> be handy debug/diag tool, while help screen says fingerprint is recognized as a field. Well… (Also does not work in global search. Obviously.)</label></li>
+</ul>
+</li>
+</ul>
+</section>
+<section>
+<h1 id="em-crazy-ideas-em-to-try"><a id="user-content-crazy-ideas-to-try" class="anchor" href="#crazy-ideas-to-try" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><em>Crazy Ideas</em> To Try?</h1>
+<ul>
+<li><input type="checkbox" id="checkbox7"><label for="checkbox7"><a href="https://github.com/unvell/ReoGrid">ReoGrid</a> spreadsheet bulk editing of metadata</label>
+<ul>
+<li><input type="checkbox" id="checkbox8"><label for="checkbox8">free export to Excel that way?</label></li>
+<li><input type="checkbox" id="checkbox9"><label for="checkbox9">how about letting user edit it in another tool, then re-import the spreadsheet and bulk-update the metadata that way?</label></li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox10"><label for="checkbox10">I <em>loath</em> WPF (OK, <em>we already knew that</em>, tell me something <em>new</em>, will ya?); ditch the crappy table in the Sync Manager dialog and replace it with a <a href="https://github.com/unvell/ReoGrid">ReoGrid</a> instance, i.e. make it act like a spreadsheet too. <a href="https://github.com/unvell/ReoGrid">ReoGrid</a> says they can do <strong>readonly</strong> on cells. Yay! 🥳</label></li>
+<li><input type="checkbox" id="checkbox11"><label for="checkbox11">use a Nuke-like node editor interface for the OCR process. Find a way to have it communicate with mupdf+leptonica+tesseract.</label>
+<ul>
+<li>🚫  As different PDFs require different processing, should we store the graph per PDF?</li>
+<li><input type="checkbox" id="checkbox12"><label for="checkbox12">Better to link PDFs to a “OCR template” of some kind: that way we get the user automatically keep them “grouped” that way.</label></li>
+<li><input type="checkbox" id="checkbox13"><label for="checkbox13">Ditto for text extraction!</label>
+<ul>
+<li><strong>Remember your own bloody OnSemi (ex-Fairchild) datasheets with obnoxious cover sheets!</strong></li>
+<li>Remember those Taiwanese Uni PDF papers you have, which have their own flavour of more-or-less useful cover sheets to strip off / <em>reduce</em>.</li>
+<li>Oh! Oh! The cover sheets of that scientific PDF aggregation site you got them from. Suppressed the name, but you know which one I mean! Almost white sheet, images of the authors and a bit of crap. Making it hard to recognize the papers as duplicates when you get them from elsewhere.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox14"><label for="checkbox14">Check NodeJS interaction speed: JSON chat + background ‘webserver’?</label></li>
+<li><input type="checkbox" id="checkbox15"><label for="checkbox15">Big Binary Chunks coming from background processes (node, <a href="https://github.com/ArtifexSoftware/mupdf">mupdf</a>, tesseract, <a href="https://lucene.apache.org/solr/">solr</a>, whatever): Named pipes for bigger loads or is that overkill and do we push everything through a socket anyway? (copy bin blocks vs memory mapped I/O for large data chunks)</label>
+<ul>
+<li><input type="checkbox" id="checkbox16" checked=""><label for="checkbox16">Given what I read about it from others, plus personal experience in the past, <code>mmap()</code> is superb, but for this cross-platform stuff we’ld better stick to named pipes or localhost TCP loopback: the latter being the most generic while pipes would be great, but at least <em>named</em> pipes on Windows are <strong>visible outside the machine</strong>, thus posing a <strong>security risk</strong> when I don’t do something smart about it: <a href="https://docs.microsoft.com/en-us/windows/win32/ipc/named-pipes">https://docs.microsoft.com/en-us/windows/win32/ipc/named-pipes</a> (see the bit there about <code>NT AUTHORITY\NETWORK</code>.</label></li>
+</ul>
+<ul>
+<li><input type="checkbox" id="checkbox17"><label for="checkbox17">memory mapped I/O only works really well when you know the required block size up front, so an alternative might be sending handles to memory mapped areas to share among processes, instead of copying data like mad through pipe or TCP/IP (short-circuited) IPC. Still, that’s more work to code and ensure it’s <em>robust</em>, so I guess we’ll stick with the pipes and local-loopback TCP IPC instead as that’s standard fare and also maps very well onto the idea of running the important stuff in server apps on the local box (civetweb, solr, …)</label></li>
+<li><input type="checkbox" id="checkbox18" checked=""><label for="checkbox18">currently C# code shuffles and copies the image data multiple times at a horrible performance pace: C# isn’t exactly beautiful for image processing (or rather: I’m not versed well enough in the language+libs to make this crap run fast, more probably.</label>
+<ul>
+<li><input type="checkbox" id="checkbox19"><label for="checkbox19">“next stage” would therefor be <em>either</em> checking out the ways pros do image processing in C#, <em>or</em> we move that crap to a C++/C process and deal with the binary blobs traveling across the barrier every time. 😢 💢</label></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox20"><label for="checkbox20"><a href="https://github.com/tesseract-ocr/tesseract/issues/2961">tesseract</a> is <a href="https://github.com/ArtifexSoftware/mupdf/search?q=tesseract&amp;type=commits"><strong>integrated with mupdf by Artifex</strong></a> 👍 👍 👍 🥳  – now open that bugger up and permit scriptable/configurable image processing <strong>inside</strong> <a href="https://github.com/GerHobbelt/mupdf">mupdf-as-you-have-it</a>, so we can optimize OCR. Drive this with the <a href="https://www.foundry.com/products/nuke/features#link112">Nuke</a>-style node editor mentioned above.</label>
+<ul>
+<li>I mention Nuke, because that’s what my brain comes up with for this Rorschach Blot, but it’s more like Autodesk 3dsmax’s Material Editor and their ilk: intermediate or fundamental as visual thumbnail in each node to help track where happens what:
+<ul>
+<li><a href="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/shader-graph/ShaderGraphHologram.jpg">https://unity3d.com/profiles/unity3d/themes/unity/images/pages/shader-graph/ShaderGraphHologram.jpg</a></li>
+<li><a href="https://cdn.soft8soft.com/images/materials_maps_max.jpg">https://cdn.soft8soft.com/images/materials_maps_max.jpg</a></li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox21"><label for="checkbox21"> consider adding <a href="https://docs.opencv.org/master/d7/dbd/group__imgproc.html">OpenCV lib</a> to the mupdf tool, next to <a href="http://leptonica.org/">leptonica</a> (which is already the <em>default</em> part of the pdf-to-tesseract path in there), so we have additional image filters / processing for the OCR workflow. → prepwork for facilitating pre- and postprocessing of PDF image and text data: <a href="https://github.com/GerHobbelt/owemdjee">https://github.com/GerHobbelt/owemdjee</a></label></li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox22"><label for="checkbox22">add a ‘webserver’ mode to mupdf (<strong>mutool + mudraw</strong>: both for metadata extraction, text extraction, OCR processing (and consequent text extraction) and PDF page to image rendering) so we don’t have the (costly?!) tool startup time for every page or bit of (meta)data we’re requesting.</label>
+<ul>
+<li>
+<p><input type="checkbox" id="checkbox23"><label for="checkbox23">be prepared to kill the bugger or expect the bastard to lock up or crash due to <strong>nasty PDF inputs</strong> once every couple of documents: feed the entire evil library through it, and then everything else you can grab off the Net.</label></p>
+<p><strong>Reminder</strong>: the SynFusion libs b0rked out with a HUGE memory leakage just today, and that was only because Qiqqa was doing a bit of <em>annotations</em> extraction via that one today. We got rid of SORAX, but SynFusion is on its way out too. 💢</p>
+<p><input type="checkbox" id="checkbox24" checked=""><label for="checkbox24">→ <code>mutool multipurp</code> is a new tool in the mupdf palette, derived off <code>mutool info</code> and the <code>mupdf</code> gui app. <code>multipurp</code> dumps all available metadata for the PDF in JSON format. This includes attachments, annotations, etc.</label></p>
+</li>
+<li>
+<p><input type="checkbox" id="checkbox25"><label for="checkbox25">see if I should revive <a href="https://github.com/GerHobbelt/mongoose-vanilla">my old mongoose clone</a> for this, or grab another <em>light</em>, <strong>embeddable</strong> C/C++ web server that can do JSON and a whole lot more.</label></p>
+<ul>
+<li><input type="checkbox" id="checkbox26"><label for="checkbox26">what’s it called now? Or was it the original with MIT license that got renamed? Don’t recall precisely. There was a license change back then with some brouhaha, but since Qiqqa and mupdf are (A)GPL, it doesn’t matter no more, right?!</label></li>
+<li><input type="checkbox" id="checkbox27"><label for="checkbox27">I’m not looking at nginx and its ilk: way to much overkill and I’ve working with them before: I want an <strong>embeddable</strong> webserver, which can run on <code>localhost</code> for as long as Qiqqa is <em>alive</em>: started and stopped by Qiqqa, preferably.</label></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox28"><label for="checkbox28">Analyze Qiqqa PDF page render behaviour (we’re doing that now) and see what we can do to improve performance there by caching some sort of LIFO / timestamped cache, where we can <em>age off</em> old slots. No more 3 images per PDF static crap.</label></li>
+<li><input type="checkbox" id="checkbox29"><label for="checkbox29"><strong>Please</strong> wrack your brain for a <strong>smart solution</strong> for the many ‘get it as we need them’ situations in the code, where we SafeThreadPool the work, but <strong>should</strong> ideally should:</label>
+<ul>
+<li><input type="checkbox" id="checkbox30"><label for="checkbox30">respond with a <strong>fake answer</strong> immediately, so the UI gets rendered pronto. (Think the grey boxes on page load you see happenin’ with modern websites, which perform async content loading)</label></li>
+<li><input type="checkbox" id="checkbox31"><label for="checkbox31">don’t care about effin’ WPF INotifyWhatWasIt crap and code bloat, “required” for UI updating. Come up with something leaner and preferably faster / as fast once the ‘async’ data finally arrives.</label></li>
+<li><input type="checkbox" id="checkbox32"><label for="checkbox32"><strong>extra bonus points</strong> when you go through the code and make sure the final result is checked against the current state of affairs in the UI to ensure the data is not already outdated, because the user has moved on and another panel or PDF is currently in view, while the work is about a PDF that’s already closed again.</label></li>
+<li><input type="checkbox" id="checkbox33"><label for="checkbox33"><strong>extra extra bonus points</strong> if you can come up with a solid schema where all this work is <em>abortable</em> without a lot of hassle. It happens in a zillion places and I’ld rather not clutter the whole codebase with <a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/cancellation-in-managed-threads">CancellationTokens processing</a>, if I can get away with something leaner, preferably <strong>much</strong> leaner.</label></li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox34"><label for="checkbox34">rework the async stuff to modern C#</label>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/managed-threading-best-practices">https://docs.microsoft.com/en-us/dotnet/standard/threading/managed-threading-best-practices</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-overview">https://docs.microsoft.com/en-us/dotnet/standard/asynchronous-programming-patterns/event-based-asynchronous-pattern-overview</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/overview-of-synchronization-primitives">https://docs.microsoft.com/en-us/dotnet/standard/threading/overview-of-synchronization-primitives</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/synchronizing-data-for-multithreading">https://docs.microsoft.com/en-us/dotnet/standard/threading/synchronizing-data-for-multithreading</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/threading/synchronizing-data-for-multithreading">https://docs.microsoft.com/en-us/dotnet/standard/threading/synchronizing-data-for-multithreading</a></li>
+<li><a href="https://olitee.com/2015/01/c-async-await-common-deadlock-scenario/">https://olitee.com/2015/01/c-async-await-common-deadlock-scenario/</a></li>
+<li><a href="https://medium.com/devtechblogs/overview-of-c-async-programming-with-thread-pools-and-task-parallel-library-7b18c9fc192d#62e6">https://medium.com/devtechblogs/overview-of-c-async-programming-with-thread-pools-and-task-parallel-library-7b18c9fc192d#62e6</a></li>
+<li><a href="https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/">https://devblogs.microsoft.com/dotnet/understanding-the-whys-whats-and-whens-of-valuetask/</a></li>
+<li><a href="https://stackoverflow.com/questions/9602567/how-to-update-ui-from-another-thread-running-in-another-class#answer-9620011">https://stackoverflow.com/questions/9602567/how-to-update-ui-from-another-thread-running-in-another-class#answer-9620011</a></li>
+</ul>
+</li>
+<li>BibTeX parsing:
+<ul>
+<li><input type="checkbox" id="checkbox35"><label for="checkbox35">run it through the Zotero test set</label></li>
+<li><input type="checkbox" id="checkbox36"><label for="checkbox36">Make that bugger an external lib or use the Zotero scripts via NodeJS, maybe?</label></li>
+<li><input type="checkbox" id="checkbox37"><label for="checkbox37">Idea: any BibTeX or whole DB metadata records (JSON) which do not parse should NOT BE LOST: dump these in a special field called ‘b0rked’ or something, so we can add a UI or tooling process to post-process those. Particularly important when processing damaged or VERY old Qiqqa libraries, where some stuff seems to go wrong, but we cannot find out what exactly goes haywire.</label></li>
+</ul>
+</li>
+<li>NodeJS / async JavaScript
+<ul>
+<li><input type="checkbox" id="checkbox38" checked=""><label for="checkbox38">Ran into this today, keep in mind when moving to electron or doing other JS-based async work:</label>
+<ul>
+<li><code>process.exit()</code> will immediately terminate any pending promises!</li>
+<li><a href="https://github.com/nodejs/node/issues/22088">https://github.com/nodejs/node/issues/22088</a> (read the entire thread!)</li>
+<li><a href="https://stackoverflow.com/questions/46966890/what-happens-when-a-promise-never-resolves">https://stackoverflow.com/questions/46966890/what-happens-when-a-promise-never-resolves</a></li>
+<li><a href="https://github.com/nodejs/node/issues/29355#issuecomment-525935873">https://github.com/nodejs/node/issues/29355#issuecomment-525935873</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tesseract &amp; image binarization/threshold/object detection/…:
+<ul>
+<li>Tesseract OCR: Text localization and detection - PyImageSearch
+<ul>
+<li><a href="https://www.pyimagesearch.com/2020/05/25/tesseract-ocr-text-localization-and-detection/">https://www.pyimagesearch.com/2020/05/25/tesseract-ocr-text-localization-and-detection/</a></li>
+</ul>
+</li>
+<li>pedrofrodenas/image-thresholding-OCR: Local adaptive image binarization algorithm to improve Tesseract OCR accuracy.
+<ul>
+<li><a href="https://github.com/pedrofrodenas/image-thresholding-OCR">https://github.com/pedrofrodenas/image-thresholding-OCR</a></li>
+</ul>
+</li>
+<li>palucdev/CudaOtsu: Otsu’s method thresholding and image binarization on GPU in CUDA
+<ul>
+<li><a href="https://github.com/palucdev/CudaOtsu">https://github.com/palucdev/CudaOtsu</a></li>
+</ul>
+</li>
+<li>OpenCV: Image Thresholding
+<ul>
+<li><a href="https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html">https://docs.opencv.org/master/d7/d4d/tutorial_py_thresholding.html</a></li>
+</ul>
+</li>
+<li>DIGI-VUB/image.binarization: Image Binarization for improving OCR and HTR
+<ul>
+<li><a href="https://github.com/DIGI-VUB/image.binarization">https://github.com/DIGI-VUB/image.binarization</a></li>
+</ul>
+</li>
+<li>brandonmpetty/Doxa: A Local Adaptive Thresholding framework for image binarization written in C++, with JS and Python bindings. Implementing: Otsu, Bernsen, Niblack, Sauvola, Wolf, Gatos, NICK, Su, T.R. Singh, WAN, ISauvola, Bataineh, Chan and Shafait.
+<ul>
+<li><a href="https://github.com/brandonmpetty/Doxa">https://github.com/brandonmpetty/Doxa</a></li>
+</ul>
+</li>
+<li>glefundes/Multimethod-Binarization: Efficient implementation of local thresholding image binarization in python for use in multimethod binarization OCR
+<ul>
+<li><a href="https://github.com/glefundes/Multimethod-Binarization">https://github.com/glefundes/Multimethod-Binarization</a></li>
+</ul>
+</li>
+<li>Tesseract thresholding eliminates text on bright background colors · Issue #1990 · tesseract-ocr/tesseract
+<ul>
+<li><a href="https://github.com/tesseract-ocr/tesseract/issues/1990">https://github.com/tesseract-ocr/tesseract/issues/1990</a></li>
+</ul>
+</li>
+<li>Proper image thresholding to prepare it for OCR in python using opencv - Stack Overflow
+<ul>
+<li><a href="https://stackoverflow.com/questions/52459794/proper-image-thresholding-to-prepare-it-for-ocr-in-python-using-opencv">https://stackoverflow.com/questions/52459794/proper-image-thresholding-to-prepare-it-for-ocr-in-python-using-opencv</a></li>
+</ul>
+</li>
+<li>image processing - Multi otsu(multi-thresholding) with openCV - Stack Overflow
+<ul>
+<li><a href="https://stackoverflow.com/questions/22706742/multi-otsumulti-thresholding-with-opencv">https://stackoverflow.com/questions/22706742/multi-otsumulti-thresholding-with-opencv</a></li>
+</ul>
+</li>
+<li>Image Thresholding — OpenCV-Python Tutorials 1 documentation
+<ul>
+<li><a href="https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html">https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html</a></li>
+</ul>
+</li>
+<li>OCR · GitBook
+<ul>
+<li><a href="https://www.pekatvision.com/doc/last/ocr.html">https://www.pekatvision.com/doc/last/ocr.html</a></li>
+</ul>
+</li>
+<li>Optical Character Recognition Pipeline: Text Detection and Segmentation Part-II | TheAILearner
+<ul>
+<li><a href="https://theailearner.com/2019/05/29/optical-character-recognition-pipeline-text-detection-and-segmentation-part-ii/">https://theailearner.com/2019/05/29/optical-character-recognition-pipeline-text-detection-and-segmentation-part-ii/</a></li>
+</ul>
+</li>
+<li>Automating Receipt Digitization with OCR and Deep Learning
+<ul>
+<li><a href="https://nanonets.com/blog/receipt-ocr/">https://nanonets.com/blog/receipt-ocr/</a></li>
+</ul>
+</li>
+<li>ocr pipeline | TheAILearner
+<ul>
+<li><a href="https://theailearner.com/tag/ocr-pipeline/">https://theailearner.com/tag/ocr-pipeline/</a></li>
+</ul>
+</li>
+<li>Optical Character Recognition Pipeline: Text Detection and Segmentation Part-II | TheAILearner
+<ul>
+<li><a href="https://theailearner.com/2019/05/29/optical-character-recognition-pipeline-text-detection-and-segmentation-part-ii/">https://theailearner.com/2019/05/29/optical-character-recognition-pipeline-text-detection-and-segmentation-part-ii/</a></li>
+</ul>
+</li>
+<li>A comprehensive guide to OCR with Tesseract, OpenCV and Python | by Suresh Thiyagaraj | NanoNets | Dec, 2020 | Medium
+<ul>
+<li><a href="https://medium.com/nanonets/a-comprehensive-guide-to-ocr-with-tesseract-opencv-and-python-fd42f69e8ca8">https://medium.com/nanonets/a-comprehensive-guide-to-ocr-with-tesseract-opencv-and-python-fd42f69e8ca8</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox39" checked=""><label for="checkbox39">my old work on nearly 10 year old mongoose (a.k.a. civetweb) has been revived and still works, including the ‘book sample server app’ with drag&amp;drop GUI.</label>
+<ul>
+<li><input type="checkbox" id="checkbox40"><label for="checkbox40">Had forgotten civetweb came with embedded Lua for scripting. Soit.</label></li>
+<li><input type="checkbox" id="checkbox41"><label for="checkbox41">Can serve me well as test server around mupdf &amp; friends.</label></li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox42"><label for="checkbox42">Do a web page for the releases as there’ll be several flavours all the time (production, beta, raw test)</label></li>
+<li><input type="checkbox" id="checkbox43"><label for="checkbox43">Serialization:</label>
+<ul>
+<li>
+<p>to disk (<em>persistence</em>)</p>
+<ul>
+<li><input type="checkbox" id="checkbox44"><label for="checkbox44">JSON: UTF8Json for speed? Or regular JSON?</label></li>
+</ul>
+</li>
+<li>
+<p>to database (<em>persistence</em> in database records)</p>
+<ul>
+<li><input type="checkbox" id="checkbox45"><label for="checkbox45">JSON: UTF8Json for speed? Or regular JSON?
+Keep in mind that we’re considering NOT having everything in memory, i.e. <strong>query database on demand</strong>! This would benefit from faster data I/O. Nevertheless, for diagnostic purposes, it might be best to stay with a human-readable format such as JSON. Otherwise, see below for binary protocols (FlatBuffers, etc.)</label></li>
+</ul>
+</li>
+<li>
+<p>between <em>processes</em> (NOT PERSISTED.)</p>
+<p>This concerns processes where we have reasonable/full control of both ends: PDF processor, frontend (+ business logic layer? or do we have that one separate? If we use Chromely or <code>electron</code>, you’re transferring data as message between backend layer (C#/node) and browser/UI frontend anyway, so <em>there</em> is another interface comms layer, however you turn it)</p>
+<p>Processes where we DO NOT have full control (or don’t want to patch one side to <em>gain control</em>) will generally speak JSON (or XML?): SOLR//ES</p>
+<ul>
+<li><input type="checkbox" id="checkbox46"><label for="checkbox46"><a href="http://google.github.io/flatbuffers/index.html#flatbuffers_overview">Google FlatBuffers</a> (<a href="https://github.com/dvidelabs/flatcc">flatcc</a> for C)</label></li>
+<li><input type="checkbox" id="checkbox47"><label for="checkbox47"><sub>msgpack</sub> (nah…)</label></li>
+<li><input type="checkbox" id="checkbox48"><label for="checkbox48"><a href="https://github.com/chronoxor/FastBinaryEncoding">FBE</a> (as a faster flavor/deriv of Flatbuffers)</label></li>
+<li><input type="checkbox" id="checkbox49"><label for="checkbox49"><a href="https://github.com/rikimaru0345/Ceras">Ceras</a> (just to keep in mind for slightly different purposes… Not really a candidate here.)</label></li>
+<li><input type="checkbox" id="checkbox50"><label for="checkbox50"><a href="https://github.com/RainwayApp/bebop">Bebop</a> - while I’m an old fan of <a href="https://en.wikipedia.org/wiki/Cowboy_Bebop">Cowboy Bebop</a> too 😆 this one’s currently lacking a C/C++ target. If that can be tweaked from the JS target, this might be the coolest one yet, though certainly not as <em>mainstream</em> as Flatbuffers. Has C# and JS/TS targets, so that’s covering the other 66% for me.</label></li>
+</ul>
+<p>Just some stuff about FlatBuffers:</p>
+<ul>
+<li><a href="https://engineering.fb.com/2015/07/31/android/improving-facebook-s-performance-on-android-with-flatbuffers/">https://engineering.fb.com/2015/07/31/android/improving-facebook-s-performance-on-android-with-flatbuffers/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox51"><label for="checkbox51"><code>electron</code> or <code>NW.js</code> (here’s some reasons why I would ride that one rather than electron for something like Qiqqa – shoot! browser crash &amp; links lost! 😭 Anyway, older: <a href="http://my2iu.blogspot.com/2017/06/nwjs-vs-electron.html">http://my2iu.blogspot.com/2017/06/nwjs-vs-electron.html</a> and google stats: <a href="https://trends.google.com/trends/explore?q=nwjs,Electron%20js,Chromely,nw.js">https://trends.google.com/trends/explore?q=nwjs,Electron js,Chromely,nw.js</a>) or <code>Chromely</code>?</label>
+<ul>
+<li><input type="checkbox" id="checkbox52"><label for="checkbox52">electron (so <em>mainstream</em>. And yet… Why haven’t I switched already? → Because somewhere inside my brain something is going <em>NO</em>, but I’m not entirely sure why. Except probably the reflection on Brook’s Second System Syndrome that this would evoke at max power setting, perrr-haps? 🤡</label></li>
+<li><input type="checkbox" id="checkbox53"><label for="checkbox53">NW.js (better integration of UI frontend into backend layer, where a thin layer of Qiqqa business logic would reside. Promised faster UI updates that way as it takes out one hefty comms interface.</label></li>
+<li><input type="checkbox" id="checkbox54"><label for="checkbox54">Chromely (no <code>nodejs</code>, backend layer is C#. Which is fine and might help me moving as the overall “business glue” logic wouldn’t need to be rewritten from scratch. That might save a bundle.</label></li>
+</ul>
+</li>
+<li><input type="checkbox" id="checkbox55"><label for="checkbox55">considering the new identifier hash (I have two PDFs colliding on SHA1 in the evil PDF corpus; since Qiqqa uses a ‘stripped’ version of SHA1 (bug since start of life), there’s more collisions probable. Need the same keying system for other files too, BTW.</label>
+<ul>
+<li><input type="checkbox" id="checkbox56"><label for="checkbox56"> SHA512 is reported as generally <em>faster</em> than SHA256. There’s also a SHA512 “special” called SHA512/256, which takes care of the usual shitty results you get re distrib/collis when <em>truncating</em> (crypto) hashes: <a href="https://eprint.iacr.org/2010/548.pdf">https://eprint.iacr.org/2010/548.pdf</a> + <a href="https://crypto.stackexchange.com/questions/26336/sha-512-faster-than-sha-256">https://crypto.stackexchange.com/questions/26336/sha-512-faster-than-sha-256</a> → BLAKE2b → BLAKE3 (<a href="https://github.com/BLAKE3-team/BLAKE3">https://github.com/BLAKE3-team/BLAKE3</a>) (Keep in mind the <a href="https://eprint.iacr.org/2019/1492.pdf">Too Much Crypto</a> article: this would however replace our b0rked SHA1 keying with a <em>faster</em> and <em>better</em> hash: collision risk now effectively zero, instead of ‘a fluke, but <em>possible</em>’ – as shown with the PDFs in the Evil Corpus.</label></li>
+</ul>
+</li>
+</ul>
+</section>
+
+    </article>
+
+    <footer>
+      © 2021 Ger Hobbelt ::
+      <a href="https://github.com/GerHobbelt/markdown-it-dirty-dozen/blob/master/fixture-mixes/sources/test-page-together-01.md">Edit this page on GitHub</a>
+    </footer>
+  </body>
+</html>

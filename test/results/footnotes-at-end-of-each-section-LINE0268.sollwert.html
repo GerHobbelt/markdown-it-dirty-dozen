@@ -1,0 +1,643 @@
+<html>
+          <head>
+          <style>
+/* WARNING: @media queries don't work with var(...): https://bholmes.dev/blog/alternative-to-css-variable-media-queries/ */
+:root {
+  --aside-min-width: 53rem;
+}    
+
+body {
+    margin-left: 20em;
+    max-width: 55em;
+
+    font-family: system-ui, sans-serif;
+}
+
+/* footnote reference styling in the text */
+sup.footnote-ref > a {
+    color: #0066a5;
+    font-weight: bold;
+    text-decoration: none;
+    /* https://cssgradient.io/ */
+    background-color: rgb(255,128,0);
+    background: linear-gradient(188deg, rgb(255 183 111) 0%, rgb(255,230,152) 7%, rgb(255,255,202) 100%);
+    padding-bottom: 0.35em;
+}
+sup.footnote-ref > a:hover {
+    background: #0066a5;        /* override the gradient! */
+    color:  white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+sup.footnote-ref-combiner {
+    /* display: none; */
+    /* opacity: 0; */
+    margin-left: -0.2em;   /* compensate for left-side link's SUP having 0.3em padding */
+}
+
+span.footnote-ref-extra-text {
+    color: #d00000;
+    font-size: 66%;
+    font-weight: 300;
+}
+
+/* footnote styling in the footnote sections */
+li.footnote-item {
+    list-style-type: none;
+    position:  relative;        /* used to position the BACKREF links */
+
+    border-top: 1px solid #adadad;
+    margin-left: 0;
+}
+span.footnote-caption {
+    position: absolute;
+    xfloat: left;
+    margin-left:  -2.2em;
+
+    margin-top: -1px;
+    border-top: 1px solid #adadad;
+
+    font-weight: bold;
+
+    /* use gradient to fake a bar that cannot be placed there with border style,
+       because we want the top border to continue uninterrupted along the entire width of float+LI.
+
+       [Edit:]Now this same technique is used to accentuate the caption a tad while the UL
+       has been pressed into service for rendering that desired 'bar' as we want it to span
+       the entire height of the footnote! */
+    background: linear-gradient(90deg, #f3f3f3 0%, #f3f3f3 1.75em, rgba(255,255,255,0) 1.75em, rgba(255,255,255,0) 100%);
+    width: 2.2em;
+    box-sizing: border-box;
+    display: block;
+    margin-right: 0;
+    padding-bottom: 0.3em;   /* make the footnote caption symbol look more centered while sticking to the baseline. */
+    padding-left: 0.1em;
+}
+span.footnote-caption > sup {
+    background-color: #f3f3f3a0
+}
+
+/* correct for Chrome jumpiness when we scale the page */
+.footnote-content p:first-of-type {
+    margin-block-start: 0;
+}
+
+/* back-ref link at footnote:  small and positioned low and a little off so it's clearly not part of the content. */
+a.footnote-backref {
+    color: #0066a5;
+    font-weight: bold;
+    text-decoration: none;
+    font-size:  65%;
+    vertical-align: bottom;
+    padding-left: 0.05em;
+    padding-right: 0.05em;
+
+    position: absolute;
+    /* right: 0.5em; */
+    bottom: -1.4em;        /* relative to LI */
+
+    xfloat: right;
+    display: inline-block;
+    background-color: #b3b3b329;
+}
+
+a.footnote-backref-R0 {
+    right: 0.1em; 
+}
+a.footnote-backref-R1 {
+    right: 1.3em; 
+}
+a.footnote-backref-R2 {
+    right: 2.5em; 
+}
+a.footnote-backref-R3 {
+    right: 3.7em; 
+}
+a.footnote-backref-R4 {
+    right: 4.9em; 
+}
+
+/* rendering sidenotes, section notes' sections and endnote sections: */
+hr.footnotes-sep {
+    display:  none;
+}
+aside.footnotes {
+    padding-left: 0.5em;
+    border-left: solid 2em orange;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    border-top: solid 4px #ff9614;
+    border-bottom: solid 1px #f1b694;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+}
+aside.footnotes > h3 {
+    color: #ff9614;
+}
+aside.footnotes > ul.footnotes-list {
+    margin-top: 0;
+    /* margin-bottom: -1em; */  /* correct for P tag's margin-block-end: 1em */
+    margin-bottom: -0.2em;      /* compensates for dropped BACKREF links */
+
+    /* use gradient to fake a bar that cannot be placed there with border style,
+       because we want the footnote marker to stick out to the other side of this 'border'. */
+    background: linear-gradient(90deg, #f3f3f3 0%, #f3f3f3 1.75em, rgb(255,128,0) 1.75em, rgb(255,128,0) 2em, rgb(255,255,255) 2em, rgb(255,255,255) 100%);
+
+    /* make space for the footnote caption FLOAT: */
+    padding-left: 2.2em;
+}
+
+aside.footnotes-category-aside {
+    float: left;
+    clear: left;
+    /* position: absolute; */
+
+    /* move into the left edge of BODY: */
+    margin-left: -19.5em;
+    width: 19em;
+
+    /* make sure the sidenote takes the exact width and no surprises when we fiddle with the border styles! */
+    box-sizing: border-box;
+
+    /* move up; rough guestimate to land alongside the footnote reference itself. */
+    margin-top: -3em;
+    /* fix for the margin-top hack:  make sure multiple loating sidenotes don't overlap and have a bit of space between them (0.5em). */
+    margin-bottom: 3.5em;
+
+    padding-left: 0.5em;
+    border-right: solid 1em #34af39;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    border-top: solid 4px #3b8c27;
+    border-bottom: solid 1px #52a563;
+    border-left: solid 1px #3b8c27;
+
+    background: #ffffffa6;
+}
+aside.footnotes-category-aside > ul.footnotes-list {
+    margin-top: 0;
+    /* margin-bottom: -1em; */  /* correct for P tag's margin-block-end: 1em */
+    margin-bottom: -0.2em;      /* compensates for dropped BACKREF links */
+
+    /* use gradient to fake a bar that cannot be placed there with border style,
+       because we want the footnote marker to stick out to the other side of this 'border'. */
+    background: linear-gradient(90deg, #f3f3f3 0%, #f3f3f3 1.75em, #3b8c27 1.75em, #3b8c27 2em, rgb(255,255,255) 2em, rgb(255,255,255) 100%);
+
+    /* make space for the footnote caption FLOAT: */
+    padding-left: 2.2em;
+
+    font-size: 85%;
+}
+
+/* force a bit of breathing room in the floating sidenote between the ASIDE border and the P text. */
+aside.footnotes-category-aside p {
+    margin-right: 0.3em;
+}
+aside.footnotes-category-aside > h3 {
+    margin: 0;
+    color: #3b8c27;
+
+    font-size: 85%;
+}
+
+/* ... and then the real horror begins:  correcting floats for NESTED notes:  */
+@media (min-width: 53rem) {
+    aside.footnotes aside.footnotes-category-aside {
+        margin-left: -24em;
+    }
+    aside.footnotes li aside.footnotes-category-aside {
+        margin-left: -26.5em;
+    }
+    /* ... and FLOATING sidenotes inside LISTS */
+    li aside.footnotes-category-aside {
+        margin-left: -22em;
+    }
+    /* ... and the error cases that are simply too much work otherwise: */
+    #fnsection-13 {
+        margin-left: -24em;
+    }
+}
+
+/* more legible footnote symbols */
+sup.footnote-ref, sup.footnote-caption {
+    font-family: serif;
+}
+sup.footnote-ref {
+    margin-right: 0.3em;
+    margin-left: 0.15em;
+}
+a.footnote-ref {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+aside.footnotes-category-Error_Unused span.footnote-caption {
+    margin-left: -7.2em;
+    width:  7.2em;
+    padding-right:  0.5em;
+    background: none;
+}
+aside.footnotes-category-Error_Unused sup.footnote-caption {
+    background-color: #f3f3f35c;
+}
+aside.footnotes-category-Error_Unused ul.footnotes-list {
+    padding-left: 7.2em;
+    background: linear-gradient(90deg, #ffdede 0%, #f3f3f3 6.75em, red 6.75em, red 7em, rgb(255,255,255) 7em, rgb(255,255,255) 100%);
+}
+
+/* and move the ASIDE sidenotes IN-LINE when the screen isn't wide enough to easily facilitate them. */
+@media (max-width: 53rem) {
+    aside.footnotes-category-aside {
+        float: none;
+        clear: none;
+
+        margin-left: auto;
+        width: auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}
+</style>
+
+          </head>
+          <body>
+          <section>
+<h1 id="testing-1"><a id="user-content-testing-1" class="anchor" href="#testing-1" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Testing 1</h1>
+<section>
+<h2 id="sub-heading-2"><a id="user-content-sub-heading-2" class="anchor" href="#sub-heading-2" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 2</h2>
+<p>How to style this using classical CSS?</p>
+<p>Example:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">li.footnote-item</span> <span class="token punctuation">{</span>
+    <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token comment">/* position:  relative; */</span>
+<span class="token punctuation">}</span>
+<span class="token selector">span.footnote-caption</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* position: absolute; */</span>
+    <span class="token property">float</span><span class="token punctuation">:</span>  left<span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span>  -1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<section>
+<h3 id="subsub-heading-2-1"><a id="user-content-subsub-heading-21" class="anchor" href="#subsub-heading-21" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Subsub heading 2.1</h3>
+<p>Some even nicer text</p>
+</section>
+<section>
+<h3 id="subsub-heading-2-2"><a id="user-content-subsub-heading-22" class="anchor" href="#subsub-heading-22" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Subsub heading 2.2</h3>
+<p>Some even nicer text</p>
+<p>Here is an inline footnote reference<a class="footnote-ref " href="#fn19" id="fnref19"><sup class="footnote-ref">15</sup></a> for every one of us.</p>
+
+<p>Plus an aside<a class="footnote-ref " href="#fn20" id="fnref20"><sup class="footnote-ref">16</sup></a> for every one of us.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-1"><aside class="footnotes footnotes-category-aside" id="fnsection-1"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn20" class="footnote-item" data-footnote-caption="16"><span class="footnote-caption"><sup class="footnote-caption">16</sup></span><span class="footnote-content"><p>that <code>(A1)</code> should be plugged in right at the end of this paragraph!</p>
+ <a href="#fnref20" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Plus a 2nd aside<a class="footnote-ref " href="#fn21" id="fnref21"><sup class="footnote-ref">17</sup></a> for every one of us.
+Plus a 3rd aside<a class="footnote-ref " href="#fn22" id="fnref22"><sup class="footnote-ref">18</sup></a> for every one of us.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-2"><aside class="footnotes footnotes-category-aside" id="fnsection-2"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn21" class="footnote-item" data-footnote-caption="17"><span class="footnote-caption"><sup class="footnote-caption">17</sup></span><span class="footnote-content"><p>that <code>(A2)</code> should be plugged in right at the end of this paragraph!</p>
+ <a href="#fnref21" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn22" class="footnote-item" data-footnote-caption="18"><span class="footnote-caption"><sup class="footnote-caption">18</sup></span><span class="footnote-content"><p>that <code>(A3)</code> should be plugged in right at the end of this paragraph!</p>
+ <a href="#fnref22" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Avec du blah blah surplus pour les experiments…</p>
+</section>
+</section>
+<section>
+<h2 id="sub-heading-3"><a id="user-content-sub-heading-3" class="anchor" href="#sub-heading-3" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 3</h2>
+<p>Some even nicer text</p>
+</section>
+<section>
+<h2 id="sub-heading-4"><a id="user-content-sub-heading-4" class="anchor" href="#sub-heading-4" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 4</h2>
+<p>Some even nicer text</p>
+</section>
+</section>
+<section>
+<h1 id="testing-2"><a id="user-content-testing-2" class="anchor" href="#testing-2" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Testing 2</h1>
+<section>
+<h2 id="footnotes-exemplified"><a id="user-content-footnotes-exemplified" class="anchor" href="#footnotes-exemplified" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Footnotes Exemplified…</h2>
+<p>Here is a footnote reference<a class="footnote-ref " href="#fn1" id="fnref1"><sup class="footnote-ref">‡</sup></a>, and another<a class="footnote-ref " href="#fn2" id="fnref2"><sup class="footnote-ref">††</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-3"><aside class="footnotes footnotes-category-section" id="fnsection-3"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn2" class="footnote-item" data-footnote-caption="††"><span class="footnote-caption"><sup class="footnote-caption">††</sup></span><span class="footnote-content"><p>Here’s <code>(D)</code> one with multiple blocks.</p>
+<p>Subsequent paragraphs are indented to show that they
+belong to the previous footnote.</p>
+<pre><code>{ some.code }
+</code></pre>
+<p>The whole paragraph can be indented, or just the first
+line.  In this way, multi-paragraph footnotes work like
+multi-paragraph list items.</p>
+ <a href="#fnref2" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn1" class="footnote-item" data-footnote-caption="‡"><span class="footnote-caption"><sup class="footnote-caption">‡</sup></span><span class="footnote-content"><p>Here <code>(C)</code> is the footnote.</p>
+ <a href="#fnref1" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>This paragraph won’t be part of the note, because it
+isn’t indented.</p>
+</section>
+</section>
+<section>
+<h1 id="testing-3"><a id="user-content-testing-3" class="anchor" href="#testing-3" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Testing 3</h1>
+<section>
+<h2 id="footnotes-galore"><a id="user-content-footnotes-galore" class="anchor" href="#footnotes-galore" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Footnotes Galore</h2>
+<p>Here is a footnote reference<a class="footnote-ref " href="#fn3" id="fnref3"><sup class="footnote-ref">‡‡</sup></a>, and another<a class="footnote-ref " href="#fn4" id="fnref4"><sup class="footnote-ref">¶</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-4"><aside class="footnotes footnotes-category-aside" id="fnsection-4"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn3" class="footnote-item" data-footnote-caption="‡‡"><span class="footnote-caption"><sup class="footnote-caption">‡‡</sup></span><span class="footnote-content"><p>Here <code>(E)</code> is the 2nd footnote.</p>
+ <a href="#fnref3" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref3-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-5"><aside class="footnotes footnotes-category-section" id="fnsection-5"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn4" class="footnote-item" data-footnote-caption="¶"><span class="footnote-caption"><sup class="footnote-caption">¶</sup></span><span class="footnote-content"><p>Here <code>(F)</code> is the 3rd footnote.</p>
+ <a href="#fnref4" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref4-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+</section>
+<section>
+<h2 id="sub-heading-3-1"><a id="user-content-sub-heading-3-1" class="anchor" href="#sub-heading-3-1" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Sub heading 3</h2>
+<p>Some even nicer text with <em>nested</em> inline footnotes A<a class="footnote-ref " href="#fn23" id="fnref23"><sup class="footnote-ref">19</sup></a> &amp; Alice.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-6"><aside class="footnotes footnotes-category-aside" id="fnsection-6"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn23" class="footnote-item" data-footnote-caption="19"><span class="footnote-caption"><sup class="footnote-caption">19</sup></span><span class="footnote-content"><p><code>(G)</code> nested<a class="footnote-ref " href="#fn24" id="fnref24"><sup class="footnote-ref">20</sup></a> horrors abound. Chtulhu footnote style?</p>
+ <a href="#fnref23" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn24" class="footnote-item" data-footnote-caption="20"><span class="footnote-caption"><sup class="footnote-caption">20</sup></span><span class="footnote-content"><p>into <code>(H)</code> the deep<a class="footnote-ref " href="#fn25" id="fnref25"><sup class="footnote-ref">21</sup></a> end near a rabbit hole.</p>
+ <a href="#fnref24" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn25" class="footnote-item" data-footnote-caption="21"><span class="footnote-caption"><sup class="footnote-caption">21</sup></span><span class="footnote-content"><p>that’s <code>(I)</code> closer to a black hole<a class="footnote-ref " href="#fn26" id="fnref26"><sup class="footnote-ref">22</sup></a> of footnote <strong>depth</strong><a class="footnote-ref " href="#fn27" id="fnref27"><sup class="footnote-ref">23</sup></a> ravine.</p>
+ <a href="#fnref25" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn26" class="footnote-item" data-footnote-caption="22"><span class="footnote-caption"><sup class="footnote-caption">22</sup></span><span class="footnote-content"><p>getting <code>(J)</code> scientific, are we now?</p>
+ <a href="#fnref26" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn27" class="footnote-item" data-footnote-caption="23"><span class="footnote-caption"><sup class="footnote-caption">23</sup></span><span class="footnote-content"><p>one <code>(K)</code> wonders how many <em>fathom</em> this would be, then…</p>
+ <a href="#fnref27" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<section>
+<h3 id="footnotes-galore-1"><a id="user-content-footnotes-galore-1" class="anchor" href="#footnotes-galore-1" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Footnotes Galore</h3>
+<p>Here is a footnote reference<a class="footnote-ref " href="#fn5" id="fnref5"><sup class="footnote-ref">1</sup></a>, and another<a class="footnote-ref " href="#fn8" id="fnref8"><sup class="footnote-ref">4</sup></a>. <strong>Note that the footnotes all have a letter in braces, e.g. <code>(B)</code>, to denote their <em>expected</em> order in the final output. This is done to ease visual (manual) inspection and debugging while testing the (<em>insanely</em>) nested footnotes.</strong></p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-7"><aside class="footnotes footnotes-category-aside" id="fnsection-7"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn28" class="footnote-item" data-footnote-caption="24"><span class="footnote-caption"><sup class="footnote-caption">24</sup></span><span class="footnote-content"><p>it <code>(M)</code> can get complicated<a class="footnote-ref " href="#fn7" id="fnref7"><sup class="footnote-ref">LBL</sup></a> if you are not careful!</p>
+ <a href="#fnref28" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-8"><aside class="footnotes footnotes-category-section" id="fnsection-8"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn5" class="footnote-item" data-footnote-caption="1"><span class="footnote-caption"><sup class="footnote-caption">1</sup></span><span class="footnote-content"><p>Here <code>(L)</code> is the X footnote. With a footnote<a class="footnote-ref " href="#fn6" id="fnref6"><sup class="footnote-ref">2</sup></a> nested in itself<a class="footnote-ref " href="#fn28" id="fnref28"><sup class="footnote-ref">24</sup></a> and of itself. Yada.</p>
+ <a href="#fnref5" class="footnote-backref footnote-backref-0 footnote-backref-R3">↩︎</a> <a href="#fnref5-1" class="footnote-backref footnote-backref-1 footnote-backref-R2">↩︎</a> <a href="#fnref5-2" class="footnote-backref footnote-backref-2 footnote-backref-R1">↩︎</a> <a href="#fnref5-3" class="footnote-backref footnote-backref-3 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn6" class="footnote-item" data-footnote-caption="2"><span class="footnote-caption"><sup class="footnote-caption">2</sup></span><span class="footnote-content"><p>that’s <code>(N)</code> what <em>he</em><a class="footnote-ref " href="#fn8" id="fnref8-1"><sup class="footnote-ref">4</sup></a> said.</p>
+ <a href="#fnref6" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref6-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref6-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn8" class="footnote-item" data-footnote-caption="4"><span class="footnote-caption"><sup class="footnote-caption">4</sup></span><span class="footnote-content"><p>Here <code>(P)</code> is the Y footnote. And a bit<a class="footnote-ref " href="#fn3" id="fnref3-1"><sup class="footnote-ref">‡‡</sup></a> of cross<a class="footnote-ref footnote-bunched-ref-ref" href="#fn4" id="fnref4-1"><sup class="footnote-ref">¶</sup></a><sup class="footnote-ref-combiner footnote-bunched-ref-ref">,</sup><a class="footnote-ref footnote-bunched-ref-ref" href="#fn5" id="fnref5-1"><sup class="footnote-ref">1</sup></a><sup class="footnote-ref-combiner footnote-bunched-ref-ref">,</sup><a class="footnote-ref " href="#fn6" id="fnref6-1"><sup class="footnote-ref">2</sup></a> fertilization<a class="footnote-ref footnote-bunched-ref-text" href="#fn7" id="fnref7-1"><sup class="footnote-ref">LBL</sup></a><sup class="footnote-ref-combiner footnote-bunched-ref-text">,</sup><a class="footnote-ref " href="#fn5" id="fnref5-2"><span class="footnote-ref-extra-text">(with local label override!)</span><sup class="footnote-ref">1</sup></a>. We even have a cycle<a class="footnote-ref " href="#fn5" id="fnref5-3"><sup class="footnote-ref">1</sup></a>!</p>
+ <a href="#fnref8" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref8-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn7" class="footnote-item" data-footnote-caption="LBL"><span class="footnote-caption"><sup class="footnote-caption">LBL</sup></span><span class="footnote-content"><p>Can <code>(O)</code> I interest you in bridge for sale?</p>
+<p>This one comes cheap, one careful owner. Satisfaction guaranteed!</p>
+ <a href="#fnref7" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref7-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-9"><aside class="footnotes footnotes-category-aside" id="fnsection-9"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn3" class="footnote-item" data-footnote-caption="‡‡"><span class="footnote-caption"><sup class="footnote-caption">‡‡</sup></span><span class="footnote-content"><p>Here <code>(E)</code> is the 2nd footnote.</p>
+ <a href="#fnref3" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref3-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+</section>
+</section>
+</section>
+<section>
+<h1 id="een-verhaal-of-opstel-schrijven"><a id="user-content-een-verhaal-of-opstel-schrijven" class="anchor" href="#een-verhaal-of-opstel-schrijven" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Een verhaal of opstel schrijven</h1>
+<p>Als je iets wilt vertellen – en een verhaal schrijven is ook “iets vertellen”: het maakt niet uit of je het hoort of leest – dan zijn er een paar dingen die helpen om het “een goed verhaal” te maken:</p>
+<ul>
+<li>Een begin, (een midden) en een eind.</li>
+<li>Enige samenhang: waar gaat het over? Wat wil je overdragen? Oftewel: hoe wil je dat de lezer / toehoorder het verhaal beleeft?</li>
+<li>Enige structuur.</li>
+<li>En enige variatie in de taal: “dynamiek” – net als in muziek.</li>
+</ul>
+<p>En heel belangrijk:</p>
+<ul>
+<li>Voor <em>wie</em> is het verhaal bedoeld? (Je “doelgroep”; Engels: “target audience”) Wat vinden ze leuk? Wat is hun “niveau”? – beter gezegd: wat kun je voeren aan taal en wat wil je bereiken?<a class="footnote-ref " href="#fn9" id="fnref9"><sup class="footnote-ref">5</sup></a></li>
+</ul>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-10"><aside class="footnotes footnotes-category-aside" id="fnsection-10"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn30" class="footnote-item" data-footnote-caption="26"><span class="footnote-caption"><sup class="footnote-caption">26</sup></span><span class="footnote-content"><p>Engels voor “onderstroom”. Wat er “<em>tussen de regels door gezegd of gedaan wordt.</em>” De “<em>verborgen berichtenstroom</em>,” zeg maar.</p>
+ <a href="#fnref30" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<hr class="footnotes-sep footnotes-category-section" id="fnsection-hr-11"><aside class="footnotes footnotes-category-section" id="fnsection-11"><h3 class="footnotes-header">Section Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn9" class="footnote-item" data-footnote-caption="5"><span class="footnote-caption"><sup class="footnote-caption">5</sup></span><span class="footnote-content"><p>Terwijl je deze tekst leest, is deze tekst zelf ook onderworpen aan deze zelfde vragen:</p>
+<ul>
+<li>
+<p>Heeft dit verhaal een begin, een midden en een eind?</p>
+</li>
+<li>
+<p>Is het verhaal goed te volgen? Komen de ideeën<a class="footnote-ref " href="#fn29" id="fnref29"><sup class="footnote-ref">25</sup></a>, gegevens en aanbevolen aanpak uit de tekst bij je binnen?</p>
+</li>
+<li><hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-12"><aside class="footnotes footnotes-category-aside" id="fnsection-12"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn29" class="footnote-item" data-footnote-caption="25"><span class="footnote-caption"><sup class="footnote-caption">25</sup></span><span class="footnote-content"><p><a href="https://www.vlaanderen.be/taaladvies/idee-idee%C3%ABn-ide%C3%ABen-ide%C3%ABn">Idee: ideeën / ideëen* / ideën*?</a></p>
+ <a href="#fnref29" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Zit er enig verband in? Is het verhaal goed geörganiseerd? Volgen de onderdelen elkaar logisch op?</p>
+</li>
+<li>
+<p>Waar is de <em>dynamiek</em>? Ìs er enige <em>dynamiek</em> in het verhaal te vinden? En zo ja, hoe komt die over? Helpt die om de tekst te <em>verteren</em> of blijft 't steken bij <em>herkauwen</em>?</p>
+</li>
+<li>
+<p>En de belangrijkste van het rijtje: voor <em>wie</em> is dit verhaal geschreven<a class="footnote-ref " href="#fn10" id="fnref10"><sup class="footnote-ref">6</sup></a>? En wat lijkt de doelstelling van de schrijver? Is er, naar de doelgroep – of doelgroep-<strong>en</strong>! – toe misschien nog sprake van een <em>dubbele agenda</em>, een dubbel doel, een &quot;<em>undercurrent</em><a class="footnote-ref " href="#fn30" id="fnref30"><sup class="footnote-ref">26</sup></a>? Hoe goed pas ik in die doelgroep<a class="footnote-ref " href="#fn10" id="fnref10-1"><sup class="footnote-ref">6</sup></a>?</p>
+</li>
+</ul>
+ <a href="#fnref9" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn10" class="footnote-item" data-footnote-caption="6"><span class="footnote-caption"><sup class="footnote-caption">6</sup></span><span class="footnote-content"><p>🤯 Wat de doelgroep is, dat weten we wellicht al. 🤨 Toch?</p>
+<p>Maar wat de schrijver daar mee <em>doet</em>, met die doelgroep, dat is even andere koek.</p>
+<p>In ieder geval lijkt het me wel duidelijk dat de schrijver zich helemaal geen zorgen maakt over de <em>woordenschat</em> van de lezer. En die is niet <em>klein</em>, integendeel!</p>
+<p>Of is het zo, <em>wetende wie de doelgroep zijn</em>, dat de schrijver wellicht een <em>extra</em> <em>leerdoel</em> heeft gesteld? Of misschien zelfs wel twéé extra leerdoelen, want de schrijver is niet zo van “lekker eenvoudig”, hm? 😜</p>
+<p>Inderdaad, de schrijver heeft als extra <em>leerdoelen</em> gekozen voor:</p>
+<ol>
+<li><strong>nieuwe woorden leren</strong>? “woordenschat verruimen” zoals dat dan heet. Dat zien we aan de uitleg en verwijzingen naar het woordenboek in de notities die door de tekst verspreid staan.</li>
+</ol>
+<p>Daarbij valt op dat de schrijver vaak <em>spreektaal</em> gebruikt en “er een handje van heeft” om naast nieuwe woorden ook “<em>idioom</em>” te gebruiken: <em>idioom</em> is in <em>taalvaardigheid</em> een volgende stap: het gebruiken van <em>zinsneden</em> (kleine stukjes tekst), die <em>samen</em> een betekenis hebben die niet hetzelfde is als de letterlijke betekenis van elk woord uit die <em>zinsnede</em>.</p>
+<p><em>Uitdrukkingen &amp; gezegden</em> ken je al. <em>Idioom</em> is al datgeen in taal wat een uitdrukking of een gezegde vormt, maar <em>idioom</em> is veel meer dan dat! Eigenlijk is <em>idioom</em> al datgeen wat in taal niet letterlijk genomen moet worden.</p>
+<p>“<em>Er een handje van hebben</em>” is een voorbeeld van <em>idioom</em><a class="footnote-ref " href="#fn31" id="fnref31"><sup class="footnote-ref">27</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-13"><aside class="footnotes footnotes-category-aside" id="fnsection-13"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn31" class="footnote-item" data-footnote-caption="27"><span class="footnote-caption"><sup class="footnote-caption">27</sup></span><span class="footnote-content"><p>Nederlands: idoom = Engels: <em>idiom</em></p>
+ <a href="#fnref31" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>“Denkraam” is ook zoiets en onderdeel van <em>idioom</em>: in deze tekst is het een “hommage” (indirecte verwijzing met respect) aan een andere schrijver.
+Uit de context van “<em>[…] kan helpen om het denkraam te reinigen</em>” is direct de betekenis van deze <em>zinsnede</em> duidelijk, ondanks dat dit een woordcombinatie is, die nog niet eerder zo is ingezet in Nederland (bij mijn weten), ondanks dat de oorspronkelijke auteur, die het woord in de Nederlandse taal heeft geïntroduceerd met “brein/intelligentie” als betekenis, het woord veelvuldig in zijn verhalen heeft gebruikt.</p>
+<p>::: tip</p>
+<p>Hier zie je dus een voorbeeld van <em>taalvariatie en -vernieuwing</em>: we zijn dan al volledig bezig met de <em>dynamiek</em> van de taal in de tekst: we <em>spelen</em> met de taal. En dàt is een niet-zo-subtiel doelgroep filter: denk maar eens na over hoeveel taalvaardigheid je moet hebben (hoe goed je taal moet zijn) om dit te kunnen volgen. Hoe goed je taal moet zijn om hier <em>plezier</em> uit te halen in plaats van bonkende slapen en zware oogleden.</p>
+<p>Dit soort werk vind je niet alleen bij literatuur maar komt ook voor bij rappers en andere artiesten die hun taal niet alleen als <em>middel</em> maar ook als <em>filter</em> of <em>wapen</em> inzetten, om gericht een doelgroep aan te spreken – en vaak tegelijkertijd precies dezelfde tekst onbegrijpelijk maken voor mensen die buiten die doelgroep vallen. Taalvernieuwing (of is het taal-<em>verandering</em>?) is van alle tijden.</p>
+<p>:::</p>
+<p>In dit geval verwijs ik graag naar <a href="https://af.wikipedia.org/wiki/Idioom">het Afrikaanse Wikipedia artikel over <em>idioom</em></a>: veel leuker dan de Nederlandsee versie, die gortdroog haar verhaal doet voor de <em>gestudeerden</em> onder ons.</p>
+<ol start="2">
+<li>leren lezen en <em>begrijpen</em> van teksten <strong>zover als mogelijk</strong>: de belangrijke vaardigheid om teksten te kunnen lezen, waar je (nog) niet alle kennis vboor aan boord hebt, maar wel in staat bent om een beeld, een idee, over te krijgen.</li>
+</ol>
+<p>Dit is namelijk dezelfde soort brein-vaardigheid die je ontwikkelt door bijvoorbeeld met diverse computersystemen te werken: je leert gaandeweg makkelijk de grote lijnen in een verhaal of beeldstructuur (computer: <em>user interface</em>) te ontdekken en dan zelf deze te gebruiken: de plaatjes (<em>icoontjes</em>) zijn elke keer weer anders, waar ze staan en hoe je er bij komt (<em>interface layout</em>) is elke keer weer anders, maar na een aantal systemen ervaren te hebben ontwikkel je een <em>gevoel</em> (<em>intuïtie</em>) wat er beschikbaar zou moeten zijn, waar je dat wellicht kunt vinden en hoe je er mee kunt werken.</p>
+<p>Met tekst is het net zo: geen <em>pixels</em> dit keer maar <em>taal</em>: je hoeft niet alles direct op te pikken om de tekst toch voor je eigen doel te kunnen gebruiken: ontdekken wat de nuttige informatie voor jou is, die jou kan helpen om zelf nog betere verhalen te gaan schrijven.</p>
+ <a href="#fnref10" class="footnote-backref footnote-backref-0 footnote-backref-R1">↩︎</a> <a href="#fnref10-1" class="footnote-backref footnote-backref-1 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<section>
+<h2 id="begin-amp-einde-of-ehhh"><a id="user-content-begin--einde-of-ehhh-" class="anchor" href="#begin--einde-of-ehhh-" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Begin &amp; Einde (of, ehhh, …?)</h2>
+<p>Tsja. Moeilijk. 😰 Wat wilde ik ook alweer precies vertellen? Ik dacht nog: een mooi einde er aan breien is lastig en nu zit ik al stuk op “beginnen”. 😰</p>
+<p>Heb je al een begin, schrijf het op. Type het in.</p>
+<p>::: tip</p>
+<p>TIP! Type het in, fouten verbeteren doen we later. Uit je hoofd, in de computer ermee!</p>
+<p>:::</p>
+<p>Daarom eerst, voordat we het over die onderwerpen hierboven gaan hebben, eerst een belangrijk ding voor een schrijver: het <em>proces</em>.</p>
+</section>
+<section>
+<h2 id="schrijven-is-een-em-proces-em"><a id="user-content-schrijven-is-een-proces" class="anchor" href="#schrijven-is-een-proces" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Schrijven is een <em>proces</em></h2>
+<p>Het is uiterst zelden dat je gaat zitten, je pen of computer pakt en gaat schrijven of typen, af en toe misschien even een slok drinken neemt, doorgaat en dóór gaat en dan: 🍾 Tah💪Dah!! 🎉 Klaarrrr!!! ✨🎈</p>
+<p>Prachtig als het een keer gebeurt. 🦄Magisch!🦄 De rest van de tijd is het:</p>
+<ul>
+<li>🤔 Beetje Denken</li>
+<li>👩‍🔧 Beginnen = Doen</li>
+<li>🏗 Structuur opzetten</li>
+<li>✍ Kladje maken</li>
+<li>👷 Bijwerken</li>
+</ul>
+<p>En dat alles niet noodzakelijkerwijs in die volgorde maar zeker wel meerdere rondjes, tot je tevreden bent met het resultaat.</p>
+<section>
+<h3 id="beetje-denken"><a id="user-content-beetje-denken" class="anchor" href="#beetje-denken" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Beetje Denken</h3>
+<p>Niet te veel en vooral niet te lang doen.</p>
+<p>Lijkt misschien heel verstandig, dat “denken voordat je doet”, maar uit alle mogelijke hoeken en gaten en een hele lange historie van verhalen en hun makers en vertellers komt één ding duidelijk naar voren:</p>
+</section>
+<section>
+<h3 id="strong-beginnen-strong"><a id="user-content-beginnen" class="anchor" href="#beginnen" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><strong>Beginnen!</strong></h3>
+<p>Het maakt niet uit hoe het er uit ziet of wat je er nú van denkt, maar schrijf het op.</p>
+<p>Dus: begin met schrijven en ga er mee door tot je “leeg” bent.</p>
+<p>Wees niet bang om het later nòg een keer op te schrijven: zelfs de beroemdste en beste schrijvers, die je nonchalant vertellen dat het allemaal vanzelf ging bij hen, houden angstvallig geheim dat ze een torenhoge stapel zware dozen, propvol papieren volgekriebeld met hun handschrift naar het Oud Papier brengen. Elke maand weer.</p>
+<p>En als je denkt: “dat kan slimmer!” dan hebben we nieuws voor je: <em>ja, dat kan slimmer!</em> Daarom typen we het tegenwoordig in de computer of spreken het in (met hulp van spraakherkenning) en slepen we ons geen breuk meer aan oud papier maar hameren we heden ten dage des te vaker op de {Delete} en {Backspace} toets.</p>
+<p>👩‍🔬 Slimme, nieuwsgierige onderzoekers zijn er ook al lange tijd mee bezig. En wat hebben zij ontdekt?</p>
+<p>Dat het uiteindelijk het snelste gaat en beste werk oplevert als je “<em>itereert</em>”. Da’s chique taal voor “rondjes draaien”. <em>Herhalen</em> dus. Rondjes draaien door <em>Het Proces</em> wat ik eerder heb benoemd: <em>Beetje Denken</em> en dan <em>Doen</em>, <em>Doen</em> en nog een stukje <em>Doen</em>. 😁 En dan weer <em>Beetje Denken</em>, <em>en zo voort</em>.</p>
+<p>Want wat hebben die slimme onderzoekers namelijk ontdekt:</p>
+<ul>
+<li>
+<p>Schrijven (en een hele hoop andere actiteiten) zijn zo complex dat ze niet in één keer, helemaal tot in het díepste detail, lekker toegankelijk in ons hoofd passen. 't <em>Kan</em>, maar 't blijft <em>proppen</em>.</p>
+</li>
+<li>
+<p>Èn dat dè manier om daarmee om te gaan is door het in <em>fasen</em> te doen.</p>
+</li>
+</ul>
+<p>“Fasen” klinkt wellicht als heel gestructureerd werken van begin tot bitter eind, maar dat is nu juist níet de goede manier bij een creatief proces: daarom praten velen liever over “<em>itereren als proces</em>”: gewoon èrgens mee beginnen, dat een tijdje volhouden tot je niet verder komt, dan een ander onderdeel oppakken en mee aan de slag gaan, tot je weer tegen barrières aan begint te lopen, en zo gaan we rond &amp; rond, zodat het geheel langzaam tot leven komt en er beter uit gaat zien.</p>
+<p>Natuurlijk zijn er mensen die liever eerst een structuurtje opzetten om daarna pas stukken tekst bij die onderdelen te schrijven, maar er zijn ook genoeg die baat hebben bij eerst een paar stukken tekst schrijven en pas daarna meer aandacht te geven aan organiseren van hun epistel.</p>
+<p>Vroeger, voordat de computer overal gemeengoed was, had de tweede groep het moeilijker, want copy&amp;paste doe je héél snel in een <em>editor</em> op de computer, terwijl dat knip&amp;plak toch best wel een gedoe geeft als je alleen pen en papier (en schaar en lijm) bij de hand hebt. Zo komt het dat nu nog op school heel sterk de nadruk ligt op de eerste variant, waarbij je met structuur opzetten begint. Dat is misschien nog handig als je heel formulaïsche stukken (bijvoorbeeld een rapport over onderzoeksresultaten of een meetverslag in een laboratorium) moet opstellen maar voor creatief schrijven is het nogal beperkend als het niet je manier van denken is. Laten we wel zijn: als je een creatief idee hebt, dan begint dat toch met een <em>idee</em>, dus een stukje verhaal, en niet met een technische <em>structuur</em>?</p>
+<p>Het punt van dit betoog is: alles is even belangrijk en je kunt jezelf, dankzij moderne techniek zoals <em>editors</em> (computer-software), permiteren om te ontdekken waar je voorkeur ligt qua <em>start</em> van het proces. Uiteindelijk moet je toch alle punten aandacht geven en dat <em>itereren</em> betekent dat je ze ook allemaal meerdere keren zult oppakken.</p>
+<section>
+<h4 id="oeps"><a id="user-content-oeps" class="anchor" href="#oeps" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Oeps!?</h4>
+<p>Fijn allemaal, maar wat nu met die Diepe Denkers en ander volk dat dogmatisch<a class="footnote-ref " href="#fn32" id="fnref32"><sup class="footnote-ref">28</sup></a> met Structureren begint bij elke nieuwe klus? Waarom blijven ze dat zo doen als het minder zou werken?!</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-14"><aside class="footnotes footnotes-category-aside" id="fnsection-14"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn32" class="footnote-item" data-footnote-caption="28"><span class="footnote-caption"><sup class="footnote-caption">28</sup></span><span class="footnote-content"><p>niet voor rede vatbaar, vasthoudend aan één enkel vast stramien alsof het een onwrikbare natuurwet betreft.
+(Zie ook <a href="https://www.ensie.nl/van-dale/dogmatisch">het woordenboek</a>.)</p>
+ <a href="#fnref32" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<ul>
+<li>
+<p>Mensen zijn niet altijd even logisch en rationeel, ongeacht wat ze zelf beweren: bij velen werkt het zo dat als ze eenmaal een bepaald patroon hebben ontdekt of aangeleerd – of het nu goed of slecht is maakt niet uit, zolang ze maar <em>ooit</em> het idee kregen dat dít hen ging helpen – dan blijven ze er soms zelfs een leven lang heilig in geloven en sterk aan verknocht. <em>Psychologie</em><a class="footnote-ref " href="#fn33" id="fnref33"><sup class="footnote-ref">29</sup></a>. Héél leerzaam.</p>
+</li>
+<li><hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-15"><aside class="footnotes footnotes-category-aside" id="fnsection-15"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn33" class="footnote-item" data-footnote-caption="29"><span class="footnote-caption"><sup class="footnote-caption">29</sup></span><span class="footnote-content"><p>mensen proberen te begrijpen. Hoe denken ze. Waarom doen ze wat ze doen. Waarom doen ze zo raar? Alleen<a class="footnote-ref " href="#fn34" id="fnref34"><sup class="footnote-ref">30</sup></a>, of met z’n allen<a class="footnote-ref " href="#fn35" id="fnref35"><sup class="footnote-ref">31</sup></a>.</p>
+ <a href="#fnref33" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn34" class="footnote-item" data-footnote-caption="30"><span class="footnote-caption"><sup class="footnote-caption">30</sup></span><span class="footnote-content"><p><em>psychologie</em></p>
+ <a href="#fnref34" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn35" class="footnote-item" data-footnote-caption="31"><span class="footnote-caption"><sup class="footnote-caption">31</sup></span><span class="footnote-content"><p><em>sociale psychologie</em></p>
+ <a href="#fnref35" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Daarbij lopen die Diepe Denkers, die graag alles eerst uitdenken – <em>uitpuzzelen</em> – vóórdat ze er mee aan de slag gaan, vaak loeihard vast in hun eigen Denken. Zó hard zelfs dat er dan geen letter op papier komt, ook niet als de tijd dringt en je het al in had moeten leveren. Met Gierende Paniek in de bol tot gevolg. Daar is zelfs een <em>naam</em> voor: <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/writers_block/index.html">Writers’ Block</a>.</p>
+</li>
+</ul>
+<p>En wij dan? Is “itereren” dan ook niet één vast systeem? Lopen wij dan niet óók de kans op <em>vastlopen</em>?</p>
+<p>Tsja, in principe niet, <em>nee</em> dus, maar het menselijk brein is nogal halsstarrig en wij maken daardoor kans op “rondgieren”: dat gebeurt als je een onderdeeltje oppakt, er even geen gat in ziet en dan (<em>logisch</em>!) dus maar meteen doorschiet naar het volgende onderdeel<a class="footnote-ref " href="#fn36" id="fnref36"><sup class="footnote-ref">32</sup></a>. Waar je tegen die tijd natuurlijk ook niet uit komt, want je hoofd is al op hol, dus blijf je door je proces heen draven zonder ook maar één stap vooruit te komen.</p>
+<hr class="footnotes-sep footnotes-category-aside" id="fnsection-hr-16"><aside class="footnotes footnotes-category-aside" id="fnsection-16"><h3 class="footnotes-header">Side Notes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn36" class="footnote-item" data-footnote-caption="32"><span class="footnote-caption"><sup class="footnote-caption">32</sup></span><span class="footnote-content"><p>want dat was toch de bedoeling van <em>itereren</em>?!</p>
+ <a href="#fnref36" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<p>Wat kun je dàn nog doen?</p>
+<p>Tsja, lastig. Maar de <em>consensus</em> onder de geleerden is wel: <strong>Even Totaal Wat Anders Doen</strong>.</p>
+<p>Daarom hebben we pauzes, eten we niet altijd heel precies om klokslag 8, 12 en 6 dezelfde drie maaltijden per dag, maar pakken we “tussendoor” een drankje of snacken we even wat als we ons tè leeg voelen. En schuift “het eten” wel eens voren, dan naar achteren.</p>
+<p>Zulke momenten, waar je net hebt ontdekt dat je vast zat in een muur van eigen Denken of als een malle in je proces aan het rondjes draven was, zijn <em>ideaal</em> om de boel even de boel te laten en even naar de sportschool te gaan of een wandeling te maken zonder gedachten. <em>Even Een Frisse Neus Halen.</em>  Verkwist je dan je tijd? Nee, want je productiviteit was al nul en die kan door de onderbreking alleen maar verbeteren daarna.</p>
+<p>Moet je d’r natuurlijk geen gewoonte van maken om bij het eerste beste obstakeltje de deur uit te stuiteren of andere dingen te gaan doen, want het enige wat je dan bereikt is dat je riant voer voor psychologen wordt maar voor jezelf niet veel nuttigs meer kunt doen: de <em>crux</em> is om te leren ontdekken wanneer je werkelijk <em>vast</em> komt te zitten en een onderbreking van je activiteit <em>werkelijk</em> kan helpen om het denkraam te reinigen.</p>
+</section>
+</section>
+</section>
+</section>
+<section>
+<h1 id="bunch-of-citations"><a id="user-content-bunch-of-citations" class="anchor" href="#bunch-of-citations" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Bunch of Citations</h1>
+<section>
+<h2 id="normative-references"><a id="user-content-normative-references" class="anchor" href="#normative-references" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Normative References</h2>
+<p>Here’s one<a class="footnote-ref " href="#fn13" id="fnref13"><sup class="footnote-ref">CSS-SYNTAX-3</sup></a>. But the others will be listed in the UNUSED section at the end!</p>
+
+<p>Incidentally, it doesn’t matter if you reference it like this: <em>regular<a class="footnote-ref " href="#fn13" id="fnref13-1"><sup class="footnote-ref">CSS-SYNTAX-3</sup></a>:</em></p>
+<pre><code>[^CSS-SYNTAX-3]
+</code></pre>
+<p>or with “<em>label override marker <code>@</code></em>” as in <em>ref<a class="footnote-ref " href="#fn13" id="fnref13-2"><sup class="footnote-ref">CSS-SYNTAX-3</sup></a></em>:</p>
+<pre><code>[^@CSS-SYNTAX-3]
+</code></pre>
+<p>as the override flag has already been set below at the footnote <em>definition</em>:</p>
+<pre><code>[^@CSS-SYNTAX-3]:: yada yada...
+</code></pre>
+<p><em>One</em> spot with that override flag suffices!</p>
+</section>
+</section>
+<section>
+<h1 id="fer-yer-scolling-and-jumping-services-some-trailblazing-ipsum"><a id="user-content-fer-yer-scolling-and-jumping-services-some-trailblazing-ipsum" class="anchor" href="#fer-yer-scolling-and-jumping-services-some-trailblazing-ipsum" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Fer yer scolling and jumping services: some trailblazing ipsum!</h1>
+<p>Receive fiat corporate investment financial health public corporate bonds municipal bear market Moody’s return risk market index. Lucrative credit upswing corporate bonds exchange passively federal potential tax consulting municipal bonds. Market exposure rates municipal bonds value fall tax index funds established fiat return.</p>
+<p>Index funds notes holder quarterly. Exchange municipal money established funds value notes capital quarterly IRA bear term lucrative. Interest funds credit debt shares established corporate bull.</p>
+<p>Corporation consulting funds exchange growth junk bonds. Passively Standard &amp; Poor’s credit quality growth funds private. Nikkei comodity federal securities credit quality performance bull Standard &amp; Poor’s. Fitch rollover notes potential mutual funds government expenses risk.</p>
+<p>Corporate district upswing holder rates NASDAQ lucrative financial health exchange traded funds prices fluctuate taxpayer substantially income. Improve mutual funds private NYSE receive expenses junk bonds established credit fiat NASDAQ maturities notes. Market index prices exchange traded funds junk bonds credit quality substantially capitalization appeal money dividends mutual funds performance inverse. Market receive funds rollover index yield exchange traded funds interest rate municipal growth mutual funds. Investment comodity funds dividends downturn corporate issuer money.</p>
+<p>NYSE index funds benchmark called interest volatile default passively financial health. Bull quarterly called dividends managed mutual funds treasury risk district prices market index.</p>
+<p>Maturities capital Fitch management benchmark inverse. Issuer finance rise industry capitalization interest rate NASDAQ federal managed Dow Jones lucrative value money. Securities management investment grade bonds. Securities debt shares downturn. Exchange bear management established shares investment funds downturn hedge fund. Funds Standard &amp; Poor’s interest rate bear established downturn credit shares improve fall appeal Dow Jones index. Interest rate money municipal bonds bondholders Moody’s debt managed economy quarterly credit.</p>
+<p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+<p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+<p>Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration.</p>
+<p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
+<p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas. Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>
+<p>Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+<p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>
+<p>Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing. Holistically pontificate installed base portals after maintainable products.</p>
+<p>Phosfluorescently engage worldwide methodologies with web-enabled technology. Interactively coordinate proactive e-commerce via process-centric “outside the box” thinking. Completely pursue scalable customer service through sustainable potentialities.</p>
+<p>Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services. Seamlessly empower fully researched growth strategies and interoperable internal or “organic” sources.</p>
+<p>Credibly innovate granular internal or “organic” sources whereas high standards in web-readiness. Energistically scale future-proof core competencies vis-a-vis impactful experiences. Dramatically synthesize integrated schemas with optimal networks.</p>
+<p>Interactively procrastinate high-payoff content without backward-compatible data. Quickly cultivate optimal processes and tactical architectures. Completely iterate covalent strategic theme areas via accurate e-markets.</p>
+<p>Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.</p>
+<p>Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies without market-driven best practices.</p>
+<p>Distinctively exploit optimal alignments for intuitive bandwidth. Quickly coordinate e-business applications through revolutionary catalysts for change. Seamlessly underwhelm optimal testing procedures whereas bricks-and-clicks processes.</p>
+<p>Synergistically evolve 2.0 technologies rather than just in time initiatives. Quickly deploy strategic networks with compelling e-business. Credibly pontificate highly efficient manufactured products and enabled data.</p>
+<p>Dynamically target high-payoff intellectual capital for customized technologies. Objectively integrate emerging core competencies before process-centric communities. Dramatically evisculate holistic innovation rather than client-centric data.</p>
+<p>Progressively maintain extensive infomediaries via extensible niches. Dramatically disseminate standardized metrics after resource-leveling processes. Objectively pursue diverse catalysts for change for interoperable meta-services.</p>
+<p>Proactively fabricate one-to-one materials via effective e-business. Completely synergize scalable e-commerce rather than high standards in e-services. Assertively iterate resource maximizing products after leading-edge intellectual capital.</p>
+<p>Distinctively re-engineer revolutionary meta-services and premium architectures. Intrinsically incubate intuitive opportunities and real-time potentialities. Appropriately communicate one-to-one technology after plug-and-play networks.</p>
+<p>Quickly aggregate B2B users and worldwide potentialities. Progressively plagiarize resource-leveling e-commerce through resource-leveling core competencies. Dramatically mesh low-risk high-yield alignments before transparent e-tailers.</p>
+<p>Appropriately empower dynamic leadership skills after business portals. Globally myocardinate interactive supply chains with distinctive quality vectors. Globally revolutionize global sources through interoperable services.</p>
+<p>Enthusiastically mesh long-term high-impact infrastructures vis-a-vis efficient customer service. Professionally fashion wireless leadership rather than prospective experiences. Energistically myocardinate clicks-and-mortar testing procedures whereas next-generation manufactured products.</p>
+<p>Dynamically reinvent market-driven opportunities and ubiquitous interfaces. Energistically fabricate an expanded array of niche markets through robust products. Appropriately implement visionary e-services vis-a-vis strategic web-readiness.</p>
+<p>Compellingly embrace empowered e-business after user friendly intellectual capital. Interactively actualize front-end processes with effective convergence. Synergistically deliver performance based methods of empowerment whereas distributed expertise.</p>
+<p>Efficiently enable enabled sources and cost effective products. Completely synthesize principle-centered information after ethical communities. Efficiently innovate open-source infrastructures via inexpensive materials.</p>
+<p>Objectively integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets.</p>
+<p>Uniquely matrix economically sound value through cooperative technology. Competently parallel task fully researched data and enterprise process improvements. Collaboratively expedite quality manufactured products via client-focused results.</p>
+<p>Quickly communicate enabled technology and turnkey leadership skills. Uniquely enable accurate supply chains rather than frictionless technology. Globally network focused materials vis-a-vis cost effective manufactured products<a class="footnote-ref " href="#fn6" id="fnref6-2"><sup class="footnote-ref">2</sup></a>.</p>
+<hr class="footnotes-sep footnotes-category-end" id="fnsection-hr-17"><aside class="footnotes footnotes-category-end" id="fnsection-17"><h3 class="footnotes-header">Endnotes</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn19" class="footnote-item" data-footnote-caption="15"><span class="footnote-caption"><sup class="footnote-caption">15</sup></span><span class="footnote-content"><p>the <code>(B)</code> way you might imagine, we got fruitcakes all around Santa Monica</p>
+ <a href="#fnref19" class="footnote-backref footnote-backref-0 footnote-backref-R0">↩︎</a></span></li>
+<li tabindex="-1" id="fn13" class="footnote-item" data-footnote-caption="CSS-SYNTAX-3"><span class="footnote-caption"><sup class="footnote-caption">CSS-SYNTAX-3</sup></span><span class="footnote-content"><p>Tab Atkins Jr.; Simon Sapin. CSS Syntax Module Level 3. 16 July 2019. CR. URL: <a href="https://www.w3.org/TR/css-syntax-3/">https://www.w3.org/TR/css-syntax-3/</a></p>
+ <a href="#fnref13" class="footnote-backref footnote-backref-0 footnote-backref-R2">↩︎</a> <a href="#fnref13-1" class="footnote-backref footnote-backref-1 footnote-backref-R1">↩︎</a> <a href="#fnref13-2" class="footnote-backref footnote-backref-2 footnote-backref-R0">↩︎</a></span></li>
+</ul>
+</aside>
+<hr class="footnotes-sep footnotes-category-Error_Unused" id="fnsection-hr-18"><aside class="footnotes footnotes-category-Error_Unused" id="fnsection-18"><h3 class="footnotes-header">Error::Unused</h3><ul class="footnotes-list">
+<li tabindex="-1" id="fn11" class="footnote-item" data-footnote-caption="CSS-CASCADE-5"><span class="footnote-caption"><sup class="footnote-caption">CSS-CASCADE-5</sup></span><span class="footnote-content"><p>Elika Etemad; Miriam Suzanne; Tab Atkins Jr.. CSS Cascading and Inheritance Level 5. 8 June 2021. WD. URL: <a href="https://www.w3.org/TR/css-cascade-5/">https://www.w3.org/TR/css-cascade-5/</a></p>
+</span></li>
+<li tabindex="-1" id="fn12" class="footnote-item" data-footnote-caption="CSS-CONDITIONAL-3"><span class="footnote-caption"><sup class="footnote-caption">CSS-CONDITIONAL-3</sup></span><span class="footnote-content"><p>David Baron; Elika Etemad; Chris Lilley. CSS Conditional Rules Module Level 3. 8 December 2020. CR. URL: <a href="https://www.w3.org/TR/css-conditional-3/">https://www.w3.org/TR/css-conditional-3/</a></p>
+</span></li>
+<li tabindex="-1" id="fn14" class="footnote-item" data-footnote-caption="CSS-VALUES-3"><span class="footnote-caption"><sup class="footnote-caption">CSS-VALUES-3</sup></span><span class="footnote-content"><p>Tab Atkins Jr.; Elika Etemad. CSS Values and Units Module Level 3. 6 June 2019. CR. URL: <a href="https://www.w3.org/TR/css-values-3/">https://www.w3.org/TR/css-values-3/</a></p>
+</span></li>
+<li tabindex="-1" id="fn15" class="footnote-item" data-footnote-caption="CSS-VALUES-4"><span class="footnote-caption"><sup class="footnote-caption">CSS-VALUES-4</sup></span><span class="footnote-content"><p>Tab Atkins Jr.; Elika Etemad. CSS Values and Units Module Level 4. 11 November 2020. WD. URL: <a href="https://www.w3.org/TR/css-values-4/">https://www.w3.org/TR/css-values-4/</a></p>
+</span></li>
+<li tabindex="-1" id="fn16" class="footnote-item" data-footnote-caption="CSS-VARIABLES-1"><span class="footnote-caption"><sup class="footnote-caption">CSS-VARIABLES-1</sup></span><span class="footnote-content"><p>Tab Atkins Jr.. CSS Custom Properties for Cascading Variables Module Level 1. 3 December 2015. CR. URL: <a href="https://www.w3.org/TR/css-variables-1/">https://www.w3.org/TR/css-variables-1/</a></p>
+</span></li>
+<li tabindex="-1" id="fn17" class="footnote-item" data-footnote-caption="DOM"><span class="footnote-caption"><sup class="footnote-caption">DOM</sup></span><span class="footnote-content"><p>Anne van Kesteren. DOM Standard. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></p>
+</span></li>
+<li tabindex="-1" id="fn18" class="footnote-item" data-footnote-caption="RFC2119"><span class="footnote-caption"><sup class="footnote-caption">RFC2119</sup></span><span class="footnote-content"><p>S. Bradner. Key words for use in RFCs to Indicate Requirement Levels. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a></p>
+</span></li>
+</ul>
+</aside>
+</section>
+
+          
