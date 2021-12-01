@@ -4,7 +4,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('@gerhobbelt/markdown-it-abbr'), require('@gerhobbelt/markdown-it-alerts'), require('@gerhobbelt/markdown-it-anchor'), require('@gerhobbelt/markdown-it-attribution'), require('@gerhobbelt/markdown-it-attrs'), require('@gerhobbelt/markdown-it-checkbox'), require('@gerhobbelt/markdown-it-code-snippet-enhanced'), require('@gerhobbelt/markdown-it-container'), require('@gerhobbelt/markdown-it-criticmarkup'), require('@gerhobbelt/markdown-it-deflist'), require('@gerhobbelt/markdown-it-emoji'), require('@gerhobbelt/markdown-it-fontawesome'), require('@gerhobbelt/markdown-it-footnote'), require('@gerhobbelt/markdown-it-for-inline'), require('@gerhobbelt/markdown-it-front-matter'), require('@gerhobbelt/markdown-it-furigana'), require('@gerhobbelt/markdown-it-github-headings'), require('@gerhobbelt/markdown-it-hashtag'), require('@gerhobbelt/markdown-it-header-sections'), require('@gerhobbelt/markdown-it-implicit-figures'), require('@gerhobbelt/markdown-it-include'), require('@gerhobbelt/markdown-it-ins'), require('@gerhobbelt/markdown-it-kbd'), require('@gerhobbelt/markdown-it-mark'), require('@gerhobbelt/markdown-it-mathjax'), require('@gerhobbelt/markdown-it-modify-token'), require('@gerhobbelt/markdown-it-named-headings'), require('@gerhobbelt/markdown-it-prism'), require('@gerhobbelt/markdown-it-regexp'), require('@gerhobbelt/markdown-it-responsive'), require('@gerhobbelt/markdown-it-samp'), require('@gerhobbelt/markdown-it-sanitizer'), require('@gerhobbelt/markdown-it-shortcode-tag'), require('@gerhobbelt/markdown-it-smartarrows'), require('@gerhobbelt/markdown-it-strikethrough-alt'), require('@gerhobbelt/markdown-it-sub'), require('@gerhobbelt/markdown-it-sup'), require('@gerhobbelt/markdown-it-table-of-contents'), require('@gerhobbelt/markdown-it-title'), require('@gerhobbelt/markdown-it-toc'), require('@gerhobbelt/markdown-it-toc-and-anchor'), require('@gerhobbelt/markdown-it-toc-done-right'), require('@gerhobbelt/markdown-it-wikilinks')) :
   typeof define === 'function' && define.amd ? define(['@gerhobbelt/markdown-it-abbr', '@gerhobbelt/markdown-it-alerts', '@gerhobbelt/markdown-it-anchor', '@gerhobbelt/markdown-it-attribution', '@gerhobbelt/markdown-it-attrs', '@gerhobbelt/markdown-it-checkbox', '@gerhobbelt/markdown-it-code-snippet-enhanced', '@gerhobbelt/markdown-it-container', '@gerhobbelt/markdown-it-criticmarkup', '@gerhobbelt/markdown-it-deflist', '@gerhobbelt/markdown-it-emoji', '@gerhobbelt/markdown-it-fontawesome', '@gerhobbelt/markdown-it-footnote', '@gerhobbelt/markdown-it-for-inline', '@gerhobbelt/markdown-it-front-matter', '@gerhobbelt/markdown-it-furigana', '@gerhobbelt/markdown-it-github-headings', '@gerhobbelt/markdown-it-hashtag', '@gerhobbelt/markdown-it-header-sections', '@gerhobbelt/markdown-it-implicit-figures', '@gerhobbelt/markdown-it-include', '@gerhobbelt/markdown-it-ins', '@gerhobbelt/markdown-it-kbd', '@gerhobbelt/markdown-it-mark', '@gerhobbelt/markdown-it-mathjax', '@gerhobbelt/markdown-it-modify-token', '@gerhobbelt/markdown-it-named-headings', '@gerhobbelt/markdown-it-prism', '@gerhobbelt/markdown-it-regexp', '@gerhobbelt/markdown-it-responsive', '@gerhobbelt/markdown-it-samp', '@gerhobbelt/markdown-it-sanitizer', '@gerhobbelt/markdown-it-shortcode-tag', '@gerhobbelt/markdown-it-smartarrows', '@gerhobbelt/markdown-it-strikethrough-alt', '@gerhobbelt/markdown-it-sub', '@gerhobbelt/markdown-it-sup', '@gerhobbelt/markdown-it-table-of-contents', '@gerhobbelt/markdown-it-title', '@gerhobbelt/markdown-it-toc', '@gerhobbelt/markdown-it-toc-and-anchor', '@gerhobbelt/markdown-it-toc-done-right', '@gerhobbelt/markdown-it-wikilinks'], factory) :
   (global = global || self, global.markdownitDirtyDozen = factory(global.abbr, global.alerts, global.anchor, global.attribution, global.attrs, global.checkbox, global.codeSnippet, global.container, global.criticMarkup, global.deflist, global.emoji, global.fontawesome, global.footnote, global.forInline, global.frontMatter, global.furigana, global.githubHeadings, global.hashtag, global.headerSections, global.implicitFigures, global.include, global.ins, global.kbd, global.mark, global.mathjax, global.modifyToken, global.namedHeadings, global.prism, global.regexp, global.responsive, global.samp, global.sanitizer, global.shortcodeTag, global.smartarrows, global.strikethroughAlt, global.sub, global.sup, global.tableOfContents, global.title, global.toc, global.tocAndAnchor, global.tocDoneRight, global.wikilinks));
-}(this, (function (abbr, alerts, anchor, attribution, attrs, checkbox, codeSnippet, container, criticMarkup, deflist, emoji, fontawesome, footnote, forInline, frontMatter, furigana, githubHeadings, hashtag, headerSections, implicitFigures, include, ins, kbd, mark, mathjax, modifyToken, namedHeadings, prism, regexp, responsive, samp, sanitizer, shortcodeTag, smartarrows, strikethroughAlt, sub, sup, tableOfContents, title, toc, tocAndAnchor, tocDoneRight, wikilinks) { 'use strict';
+})(this, (function (abbr, alerts, anchor, attribution, attrs, checkbox, codeSnippet, container, criticMarkup, deflist, emoji, fontawesome, footnote, forInline, frontMatter, furigana, githubHeadings, hashtag, headerSections, implicitFigures, include, ins, kbd, mark, mathjax, modifyToken, namedHeadings, prism, regexp, responsive, samp, sanitizer, shortcodeTag, smartarrows, strikethroughAlt, sub, sup, tableOfContents, title, toc, tocAndAnchor, tocDoneRight, wikilinks) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -136,51 +136,51 @@
     console.log('dirty-dozen options:', options);
 
     if (options) {
-      usePlugin(include__default['default'], options.include, defaultOptions.include);
-      usePlugin(frontMatter__default['default'], options.frontMatter, defaultOptions.frontMatter);
-      usePlugin(sanitizer__default['default'], options.sanitizer, defaultOptions.sanitizer);
-      usePlugin(checkbox__default['default'], options.checkbox, defaultOptions.checkbox);
-      usePlugin(codeSnippet__default['default'], options.codeSnippet, defaultOptions.codeSnippet);
-      usePlugin(furigana__default['default'], options.furigana, defaultOptions.furigana);
-      usePlugin(abbr__default['default'], options.abbr, defaultOptions.abbr);
-      usePlugin(attribution__default['default'], options.attribution, defaultOptions.attribution);
-      usePlugin(attrs__default['default'], options.attrs, defaultOptions.attrs);
-      usePlugin(emoji__default['default'], options.emoji, defaultOptions.emoji);
-      usePlugin(fontawesome__default['default'], options.fontawesome, defaultOptions.fontawesome);
-      usePlugin(forInline__default['default'], options.forInline, defaultOptions.forInline);
-      usePlugin(hashtag__default['default'], options.hashtag, defaultOptions.hashtag);
-      usePlugin(criticMarkup__default['default'], options.criticMarkup, defaultOptions.criticMarkup);
-      usePlugin(ins__default['default'], options.ins, defaultOptions.ins);
-      usePlugin(kbd__default['default'], options.kbd, defaultOptions.kbd);
-      usePlugin(mark__default['default'], options.mark, defaultOptions.mark);
-      usePlugin(samp__default['default'], options.samp, defaultOptions.samp);
-      usePlugin(shortcodeTag__default['default'], options.shortcodeTag, defaultOptions.shortcodeTag);
-      usePlugin(smartarrows__default['default'], options.smartarrows, defaultOptions.smartarrows);
-      usePlugin(strikethroughAlt__default['default'], options.strikethroughAlt, defaultOptions.strikethroughAlt);
-      usePlugin(sub__default['default'], options.sub, defaultOptions.sub);
-      usePlugin(sup__default['default'], options.sup, defaultOptions.sup);
-      usePlugin(deflist__default['default'], options.deflist, defaultOptions.deflist);
-      usePlugin(implicitFigures__default['default'], options.implicitFigures, defaultOptions.implicitFigures);
-      usePlugin(responsive__default['default'], options.responsive, defaultOptions.responsive);
-      usePlugin(mathjax__default['default'], options.mathjax, defaultOptions.mathjax);
-      usePlugin(prism__default['default'], options.prism, defaultOptions.prism); //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
+      usePlugin(include__default["default"], options.include, defaultOptions.include);
+      usePlugin(frontMatter__default["default"], options.frontMatter, defaultOptions.frontMatter);
+      usePlugin(sanitizer__default["default"], options.sanitizer, defaultOptions.sanitizer);
+      usePlugin(checkbox__default["default"], options.checkbox, defaultOptions.checkbox);
+      usePlugin(codeSnippet__default["default"], options.codeSnippet, defaultOptions.codeSnippet);
+      usePlugin(furigana__default["default"], options.furigana, defaultOptions.furigana);
+      usePlugin(abbr__default["default"], options.abbr, defaultOptions.abbr);
+      usePlugin(attribution__default["default"], options.attribution, defaultOptions.attribution);
+      usePlugin(attrs__default["default"], options.attrs, defaultOptions.attrs);
+      usePlugin(emoji__default["default"], options.emoji, defaultOptions.emoji);
+      usePlugin(fontawesome__default["default"], options.fontawesome, defaultOptions.fontawesome);
+      usePlugin(forInline__default["default"], options.forInline, defaultOptions.forInline);
+      usePlugin(hashtag__default["default"], options.hashtag, defaultOptions.hashtag);
+      usePlugin(criticMarkup__default["default"], options.criticMarkup, defaultOptions.criticMarkup);
+      usePlugin(ins__default["default"], options.ins, defaultOptions.ins);
+      usePlugin(kbd__default["default"], options.kbd, defaultOptions.kbd);
+      usePlugin(mark__default["default"], options.mark, defaultOptions.mark);
+      usePlugin(samp__default["default"], options.samp, defaultOptions.samp);
+      usePlugin(shortcodeTag__default["default"], options.shortcodeTag, defaultOptions.shortcodeTag);
+      usePlugin(smartarrows__default["default"], options.smartarrows, defaultOptions.smartarrows);
+      usePlugin(strikethroughAlt__default["default"], options.strikethroughAlt, defaultOptions.strikethroughAlt);
+      usePlugin(sub__default["default"], options.sub, defaultOptions.sub);
+      usePlugin(sup__default["default"], options.sup, defaultOptions.sup);
+      usePlugin(deflist__default["default"], options.deflist, defaultOptions.deflist);
+      usePlugin(implicitFigures__default["default"], options.implicitFigures, defaultOptions.implicitFigures);
+      usePlugin(responsive__default["default"], options.responsive, defaultOptions.responsive);
+      usePlugin(mathjax__default["default"], options.mathjax, defaultOptions.mathjax);
+      usePlugin(prism__default["default"], options.prism, defaultOptions.prism); //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
 
-      usePlugin(container__default['default'], options.container, defaultOptions.container);
-      usePlugin(title__default['default'], options.title, defaultOptions.title);
-      usePlugin(footnote__default['default'], options.footnote, defaultOptions.footnote);
-      usePlugin(alerts__default['default'], options.alerts, defaultOptions.alerts);
-      usePlugin(headerSections__default['default'], options.headerSections, defaultOptions.headerSections);
-      usePlugin(namedHeadings__default['default'], options.namedHeadings, defaultOptions.namedHeadings);
-      usePlugin(tableOfContents__default['default'], options.tableOfContents, defaultOptions.tableOfContents);
-      usePlugin(toc__default['default'], options.toc, defaultOptions.toc);
-      usePlugin(tocAndAnchor__default['default'], options.tocAndAnchor, defaultOptions.tocAndAnchor);
-      usePlugin(tocDoneRight__default['default'], options.tocDoneRight, defaultOptions.tocDoneRight);
-      usePlugin(githubHeadings__default['default'], options.githubHeadings, defaultOptions.githubHeadings);
-      usePlugin(anchor__default['default'], options.anchor, defaultOptions.anchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
+      usePlugin(container__default["default"], options.container, defaultOptions.container);
+      usePlugin(title__default["default"], options.title, defaultOptions.title);
+      usePlugin(footnote__default["default"], options.footnote, defaultOptions.footnote);
+      usePlugin(alerts__default["default"], options.alerts, defaultOptions.alerts);
+      usePlugin(headerSections__default["default"], options.headerSections, defaultOptions.headerSections);
+      usePlugin(namedHeadings__default["default"], options.namedHeadings, defaultOptions.namedHeadings);
+      usePlugin(tableOfContents__default["default"], options.tableOfContents, defaultOptions.tableOfContents);
+      usePlugin(toc__default["default"], options.toc, defaultOptions.toc);
+      usePlugin(tocAndAnchor__default["default"], options.tocAndAnchor, defaultOptions.tocAndAnchor);
+      usePlugin(tocDoneRight__default["default"], options.tocDoneRight, defaultOptions.tocDoneRight);
+      usePlugin(githubHeadings__default["default"], options.githubHeadings, defaultOptions.githubHeadings);
+      usePlugin(anchor__default["default"], options.anchor, defaultOptions.anchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
 
-      usePlugin(wikilinks__default['default'], options.wikilinks, defaultOptions.wikilinks);
-      usePlugin(regexp__default['default'], options.regexp, defaultOptions.regexp);
-      usePlugin(modifyToken__default['default'], options.modifyToken, defaultOptions.modifyToken);
+      usePlugin(wikilinks__default["default"], options.wikilinks, defaultOptions.wikilinks);
+      usePlugin(regexp__default["default"], options.regexp, defaultOptions.regexp);
+      usePlugin(modifyToken__default["default"], options.modifyToken, defaultOptions.modifyToken);
     }
 
     return md;
@@ -188,54 +188,54 @@
 
   const pluginDef = {
     use_dirty_dozen,
-    abbr: abbr__default['default'],
-    alerts: alerts__default['default'],
-    anchor: anchor__default['default'],
-    attribution: attribution__default['default'],
-    attrs: attrs__default['default'],
-    checkbox: checkbox__default['default'],
-    codeSnippet: codeSnippet__default['default'],
-    container: container__default['default'],
-    criticMarkup: criticMarkup__default['default'],
-    deflist: deflist__default['default'],
-    emoji: emoji__default['default'],
-    fontawesome: fontawesome__default['default'],
-    footnote: footnote__default['default'],
-    forInline: forInline__default['default'],
-    frontMatter: frontMatter__default['default'],
-    furigana: furigana__default['default'],
-    githubHeadings: githubHeadings__default['default'],
-    hashtag: hashtag__default['default'],
-    headerSections: headerSections__default['default'],
+    abbr: abbr__default["default"],
+    alerts: alerts__default["default"],
+    anchor: anchor__default["default"],
+    attribution: attribution__default["default"],
+    attrs: attrs__default["default"],
+    checkbox: checkbox__default["default"],
+    codeSnippet: codeSnippet__default["default"],
+    container: container__default["default"],
+    criticMarkup: criticMarkup__default["default"],
+    deflist: deflist__default["default"],
+    emoji: emoji__default["default"],
+    fontawesome: fontawesome__default["default"],
+    footnote: footnote__default["default"],
+    forInline: forInline__default["default"],
+    frontMatter: frontMatter__default["default"],
+    furigana: furigana__default["default"],
+    githubHeadings: githubHeadings__default["default"],
+    hashtag: hashtag__default["default"],
+    headerSections: headerSections__default["default"],
     //highlighted,
     //highlightjs,
-    implicitFigures: implicitFigures__default['default'],
-    include: include__default['default'],
-    ins: ins__default['default'],
-    kbd: kbd__default['default'],
-    mark: mark__default['default'],
-    mathjax: mathjax__default['default'],
-    modifyToken: modifyToken__default['default'],
-    namedHeadings: namedHeadings__default['default'],
-    prism: prism__default['default'],
-    regexp: regexp__default['default'],
-    responsive: responsive__default['default'],
-    samp: samp__default['default'],
-    sanitizer: sanitizer__default['default'],
-    shortcodeTag: shortcodeTag__default['default'],
-    smartarrows: smartarrows__default['default'],
-    strikethroughAlt: strikethroughAlt__default['default'],
-    sub: sub__default['default'],
-    sup: sup__default['default'],
-    tableOfContents: tableOfContents__default['default'],
-    title: title__default['default'],
-    toc: toc__default['default'],
-    tocAndAnchor: tocAndAnchor__default['default'],
-    tocDoneRight: tocDoneRight__default['default'],
-    wikilinks: wikilinks__default['default']
+    implicitFigures: implicitFigures__default["default"],
+    include: include__default["default"],
+    ins: ins__default["default"],
+    kbd: kbd__default["default"],
+    mark: mark__default["default"],
+    mathjax: mathjax__default["default"],
+    modifyToken: modifyToken__default["default"],
+    namedHeadings: namedHeadings__default["default"],
+    prism: prism__default["default"],
+    regexp: regexp__default["default"],
+    responsive: responsive__default["default"],
+    samp: samp__default["default"],
+    sanitizer: sanitizer__default["default"],
+    shortcodeTag: shortcodeTag__default["default"],
+    smartarrows: smartarrows__default["default"],
+    strikethroughAlt: strikethroughAlt__default["default"],
+    sub: sub__default["default"],
+    sup: sup__default["default"],
+    tableOfContents: tableOfContents__default["default"],
+    title: title__default["default"],
+    toc: toc__default["default"],
+    tocAndAnchor: tocAndAnchor__default["default"],
+    tocDoneRight: tocDoneRight__default["default"],
+    wikilinks: wikilinks__default["default"]
   };
 
   return pluginDef;
 
-})));
+}));
 //# sourceMappingURL=markdownItDirtyDozen.umd.js.map

@@ -227,5 +227,5 @@ const pluginDef = {
   wikilinks
 };
 
-export default pluginDef;
+export { pluginDef as default };
 //# sourceMappingURL=markdownItDirtyDozen.modern.js.map

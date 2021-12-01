@@ -176,51 +176,51 @@ function use_dirty_dozen(md, options) {
   console.log('dirty-dozen options:', options);
 
   if (options) {
-    usePlugin(include__default['default'], options.include, defaultOptions.include);
-    usePlugin(frontMatter__default['default'], options.frontMatter, defaultOptions.frontMatter);
-    usePlugin(sanitizer__default['default'], options.sanitizer, defaultOptions.sanitizer);
-    usePlugin(checkbox__default['default'], options.checkbox, defaultOptions.checkbox);
-    usePlugin(codeSnippet__default['default'], options.codeSnippet, defaultOptions.codeSnippet);
-    usePlugin(furigana__default['default'], options.furigana, defaultOptions.furigana);
-    usePlugin(abbr__default['default'], options.abbr, defaultOptions.abbr);
-    usePlugin(attribution__default['default'], options.attribution, defaultOptions.attribution);
-    usePlugin(attrs__default['default'], options.attrs, defaultOptions.attrs);
-    usePlugin(emoji__default['default'], options.emoji, defaultOptions.emoji);
-    usePlugin(fontawesome__default['default'], options.fontawesome, defaultOptions.fontawesome);
-    usePlugin(forInline__default['default'], options.forInline, defaultOptions.forInline);
-    usePlugin(hashtag__default['default'], options.hashtag, defaultOptions.hashtag);
-    usePlugin(criticMarkup__default['default'], options.criticMarkup, defaultOptions.criticMarkup);
-    usePlugin(ins__default['default'], options.ins, defaultOptions.ins);
-    usePlugin(kbd__default['default'], options.kbd, defaultOptions.kbd);
-    usePlugin(mark__default['default'], options.mark, defaultOptions.mark);
-    usePlugin(samp__default['default'], options.samp, defaultOptions.samp);
-    usePlugin(shortcodeTag__default['default'], options.shortcodeTag, defaultOptions.shortcodeTag);
-    usePlugin(smartarrows__default['default'], options.smartarrows, defaultOptions.smartarrows);
-    usePlugin(strikethroughAlt__default['default'], options.strikethroughAlt, defaultOptions.strikethroughAlt);
-    usePlugin(sub__default['default'], options.sub, defaultOptions.sub);
-    usePlugin(sup__default['default'], options.sup, defaultOptions.sup);
-    usePlugin(deflist__default['default'], options.deflist, defaultOptions.deflist);
-    usePlugin(implicitFigures__default['default'], options.implicitFigures, defaultOptions.implicitFigures);
-    usePlugin(responsive__default['default'], options.responsive, defaultOptions.responsive);
-    usePlugin(mathjax__default['default'], options.mathjax, defaultOptions.mathjax);
-    usePlugin(prism__default['default'], options.prism, defaultOptions.prism); //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
+    usePlugin(include__default["default"], options.include, defaultOptions.include);
+    usePlugin(frontMatter__default["default"], options.frontMatter, defaultOptions.frontMatter);
+    usePlugin(sanitizer__default["default"], options.sanitizer, defaultOptions.sanitizer);
+    usePlugin(checkbox__default["default"], options.checkbox, defaultOptions.checkbox);
+    usePlugin(codeSnippet__default["default"], options.codeSnippet, defaultOptions.codeSnippet);
+    usePlugin(furigana__default["default"], options.furigana, defaultOptions.furigana);
+    usePlugin(abbr__default["default"], options.abbr, defaultOptions.abbr);
+    usePlugin(attribution__default["default"], options.attribution, defaultOptions.attribution);
+    usePlugin(attrs__default["default"], options.attrs, defaultOptions.attrs);
+    usePlugin(emoji__default["default"], options.emoji, defaultOptions.emoji);
+    usePlugin(fontawesome__default["default"], options.fontawesome, defaultOptions.fontawesome);
+    usePlugin(forInline__default["default"], options.forInline, defaultOptions.forInline);
+    usePlugin(hashtag__default["default"], options.hashtag, defaultOptions.hashtag);
+    usePlugin(criticMarkup__default["default"], options.criticMarkup, defaultOptions.criticMarkup);
+    usePlugin(ins__default["default"], options.ins, defaultOptions.ins);
+    usePlugin(kbd__default["default"], options.kbd, defaultOptions.kbd);
+    usePlugin(mark__default["default"], options.mark, defaultOptions.mark);
+    usePlugin(samp__default["default"], options.samp, defaultOptions.samp);
+    usePlugin(shortcodeTag__default["default"], options.shortcodeTag, defaultOptions.shortcodeTag);
+    usePlugin(smartarrows__default["default"], options.smartarrows, defaultOptions.smartarrows);
+    usePlugin(strikethroughAlt__default["default"], options.strikethroughAlt, defaultOptions.strikethroughAlt);
+    usePlugin(sub__default["default"], options.sub, defaultOptions.sub);
+    usePlugin(sup__default["default"], options.sup, defaultOptions.sup);
+    usePlugin(deflist__default["default"], options.deflist, defaultOptions.deflist);
+    usePlugin(implicitFigures__default["default"], options.implicitFigures, defaultOptions.implicitFigures);
+    usePlugin(responsive__default["default"], options.responsive, defaultOptions.responsive);
+    usePlugin(mathjax__default["default"], options.mathjax, defaultOptions.mathjax);
+    usePlugin(prism__default["default"], options.prism, defaultOptions.prism); //usePlugin(highlightjs, options.highlightjs, defaultOptions.highlightjs);
 
-    usePlugin(container__default['default'], options.container, defaultOptions.container);
-    usePlugin(title__default['default'], options.title, defaultOptions.title);
-    usePlugin(footnote__default['default'], options.footnote, defaultOptions.footnote);
-    usePlugin(alerts__default['default'], options.alerts, defaultOptions.alerts);
-    usePlugin(headerSections__default['default'], options.headerSections, defaultOptions.headerSections);
-    usePlugin(namedHeadings__default['default'], options.namedHeadings, defaultOptions.namedHeadings);
-    usePlugin(tableOfContents__default['default'], options.tableOfContents, defaultOptions.tableOfContents);
-    usePlugin(toc__default['default'], options.toc, defaultOptions.toc);
-    usePlugin(tocAndAnchor__default['default'], options.tocAndAnchor, defaultOptions.tocAndAnchor);
-    usePlugin(tocDoneRight__default['default'], options.tocDoneRight, defaultOptions.tocDoneRight);
-    usePlugin(githubHeadings__default['default'], options.githubHeadings, defaultOptions.githubHeadings);
-    usePlugin(anchor__default['default'], options.anchor, defaultOptions.anchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
+    usePlugin(container__default["default"], options.container, defaultOptions.container);
+    usePlugin(title__default["default"], options.title, defaultOptions.title);
+    usePlugin(footnote__default["default"], options.footnote, defaultOptions.footnote);
+    usePlugin(alerts__default["default"], options.alerts, defaultOptions.alerts);
+    usePlugin(headerSections__default["default"], options.headerSections, defaultOptions.headerSections);
+    usePlugin(namedHeadings__default["default"], options.namedHeadings, defaultOptions.namedHeadings);
+    usePlugin(tableOfContents__default["default"], options.tableOfContents, defaultOptions.tableOfContents);
+    usePlugin(toc__default["default"], options.toc, defaultOptions.toc);
+    usePlugin(tocAndAnchor__default["default"], options.tocAndAnchor, defaultOptions.tocAndAnchor);
+    usePlugin(tocDoneRight__default["default"], options.tocDoneRight, defaultOptions.tocDoneRight);
+    usePlugin(githubHeadings__default["default"], options.githubHeadings, defaultOptions.githubHeadings);
+    usePlugin(anchor__default["default"], options.anchor, defaultOptions.anchor); //usePlugin(highlighted, options.highlighted, defaultOptions.highlighted);
 
-    usePlugin(wikilinks__default['default'], options.wikilinks, defaultOptions.wikilinks);
-    usePlugin(regexp__default['default'], options.regexp, defaultOptions.regexp);
-    usePlugin(modifyToken__default['default'], options.modifyToken, defaultOptions.modifyToken);
+    usePlugin(wikilinks__default["default"], options.wikilinks, defaultOptions.wikilinks);
+    usePlugin(regexp__default["default"], options.regexp, defaultOptions.regexp);
+    usePlugin(modifyToken__default["default"], options.modifyToken, defaultOptions.modifyToken);
   }
 
   return md;
@@ -228,51 +228,51 @@ function use_dirty_dozen(md, options) {
 
 const pluginDef = {
   use_dirty_dozen,
-  abbr: abbr__default['default'],
-  alerts: alerts__default['default'],
-  anchor: anchor__default['default'],
-  attribution: attribution__default['default'],
-  attrs: attrs__default['default'],
-  checkbox: checkbox__default['default'],
-  codeSnippet: codeSnippet__default['default'],
-  container: container__default['default'],
-  criticMarkup: criticMarkup__default['default'],
-  deflist: deflist__default['default'],
-  emoji: emoji__default['default'],
-  fontawesome: fontawesome__default['default'],
-  footnote: footnote__default['default'],
-  forInline: forInline__default['default'],
-  frontMatter: frontMatter__default['default'],
-  furigana: furigana__default['default'],
-  githubHeadings: githubHeadings__default['default'],
-  hashtag: hashtag__default['default'],
-  headerSections: headerSections__default['default'],
+  abbr: abbr__default["default"],
+  alerts: alerts__default["default"],
+  anchor: anchor__default["default"],
+  attribution: attribution__default["default"],
+  attrs: attrs__default["default"],
+  checkbox: checkbox__default["default"],
+  codeSnippet: codeSnippet__default["default"],
+  container: container__default["default"],
+  criticMarkup: criticMarkup__default["default"],
+  deflist: deflist__default["default"],
+  emoji: emoji__default["default"],
+  fontawesome: fontawesome__default["default"],
+  footnote: footnote__default["default"],
+  forInline: forInline__default["default"],
+  frontMatter: frontMatter__default["default"],
+  furigana: furigana__default["default"],
+  githubHeadings: githubHeadings__default["default"],
+  hashtag: hashtag__default["default"],
+  headerSections: headerSections__default["default"],
   //highlighted,
   //highlightjs,
-  implicitFigures: implicitFigures__default['default'],
-  include: include__default['default'],
-  ins: ins__default['default'],
-  kbd: kbd__default['default'],
-  mark: mark__default['default'],
-  mathjax: mathjax__default['default'],
-  modifyToken: modifyToken__default['default'],
-  namedHeadings: namedHeadings__default['default'],
-  prism: prism__default['default'],
-  regexp: regexp__default['default'],
-  responsive: responsive__default['default'],
-  samp: samp__default['default'],
-  sanitizer: sanitizer__default['default'],
-  shortcodeTag: shortcodeTag__default['default'],
-  smartarrows: smartarrows__default['default'],
-  strikethroughAlt: strikethroughAlt__default['default'],
-  sub: sub__default['default'],
-  sup: sup__default['default'],
-  tableOfContents: tableOfContents__default['default'],
-  title: title__default['default'],
-  toc: toc__default['default'],
-  tocAndAnchor: tocAndAnchor__default['default'],
-  tocDoneRight: tocDoneRight__default['default'],
-  wikilinks: wikilinks__default['default']
+  implicitFigures: implicitFigures__default["default"],
+  include: include__default["default"],
+  ins: ins__default["default"],
+  kbd: kbd__default["default"],
+  mark: mark__default["default"],
+  mathjax: mathjax__default["default"],
+  modifyToken: modifyToken__default["default"],
+  namedHeadings: namedHeadings__default["default"],
+  prism: prism__default["default"],
+  regexp: regexp__default["default"],
+  responsive: responsive__default["default"],
+  samp: samp__default["default"],
+  sanitizer: sanitizer__default["default"],
+  shortcodeTag: shortcodeTag__default["default"],
+  smartarrows: smartarrows__default["default"],
+  strikethroughAlt: strikethroughAlt__default["default"],
+  sub: sub__default["default"],
+  sup: sup__default["default"],
+  tableOfContents: tableOfContents__default["default"],
+  title: title__default["default"],
+  toc: toc__default["default"],
+  tocAndAnchor: tocAndAnchor__default["default"],
+  tocDoneRight: tocDoneRight__default["default"],
+  wikilinks: wikilinks__default["default"]
 };
 
 module.exports = pluginDef;

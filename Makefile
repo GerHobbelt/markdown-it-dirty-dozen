@@ -99,7 +99,7 @@ superclean: clean
 	-rm -f ./package-lock.json
 
 prep: superclean
-	-ncu -a --packageFile=package.json
+	-ncu -u --packageFile=package.json
 	-npm install
 	-npm prune
 	-npm audit fix
